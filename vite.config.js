@@ -16,7 +16,7 @@ export default defineConfig({
           vendor: ['react', 'react-dom'],
           motion: ['framer-motion'],
           icons: ['react-icons/fa'],
-          pdf: ['jspdf', 'jspdf-autotable']
+          pdf: ['jspdf']
         }
       }
     },
