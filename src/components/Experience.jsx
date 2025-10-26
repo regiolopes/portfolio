@@ -132,7 +132,7 @@ const Experience = () => {
                   <div className="card p-8">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                       <div>
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">>
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                           {exp.title}
                         </h3>
                         <div className="flex items-center text-primary-600 font-semibold mb-2">
