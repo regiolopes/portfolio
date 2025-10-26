@@ -1,4 +1,3 @@
-# Configuração para Netlify
 [[redirects]]
   from = "/*"
   to = "/index.html"
