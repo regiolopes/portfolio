@@ -46,6 +46,10 @@ export default {
         'slide-up': 'slideUp 0.5s ease-out',
         'bounce-slow': 'bounce 2s infinite',
       },
+      scale: {
+        '102': '1.02',
+        '105': '1.05',
+      },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
