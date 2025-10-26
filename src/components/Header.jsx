@@ -41,12 +41,12 @@ const Header = () => {
           : 'bg-transparent'
       }`}
     >
-      <nav className="container-max section-padding">
+      <nav className="container-max py-3 md:py-4 px-4 md:px-6">
         <div className="flex items-center justify-between">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-2xl font-bold text-primary-600"
+            className="text-xl md:text-2xl font-bold text-primary-600"
           >
             Regio
           </motion.div>

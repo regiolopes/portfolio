@@ -30,7 +30,7 @@ const Hero = () => {
   }
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center section-padding pt-20">
+    <section id="hero" className="min-h-screen flex items-center justify-center section-padding pt-16 md:pt-20 px-4 md:px-6">
       <div className="container-max">
         <motion.div
           variants={containerVariants}
@@ -42,7 +42,7 @@ const Hero = () => {
             variants={itemVariants}
             className="mb-8"
           >
-            <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-2xl hover:shadow-3xl transition-shadow duration-300">
+            <div className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-4 md:mb-6 rounded-full overflow-hidden border-3 md:border-4 border-white shadow-2xl hover:shadow-3xl transition-shadow duration-300">
               <img 
                 src="/assets/profile.png" 
                 alt="Regio Lopes" 
@@ -60,7 +60,7 @@ const Hero = () => {
 
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl font-bold text-gray-900 mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 mb-4 md:mb-6"
           >
             Olá, eu sou{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-800">
@@ -70,14 +70,14 @@ const Hero = () => {
 
           <motion.h2
             variants={itemVariants}
-            className="text-2xl md:text-3xl text-gray-600 mb-8 font-medium"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 mb-6 md:mb-8 font-medium px-4"
           >
             Supervisor de Dados e Desenvolvimento | Engenheiro de Dados | Desenvolvedor Back-End
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="text-base md:text-lg lg:text-xl text-gray-500 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4"
           >
             Supervisor de Dados e Desenvolvimento com mais de 5 anos de experiência em desenvolvimento BackEnd e Engenharia de Dados. 
             Especialista em criar soluções tecnológicas inovadoras e implementar arquiteturas escaláveis para gerenciamento e análise de dados.
@@ -85,7 +85,7 @@ const Hero = () => {
 
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-4"
           >
             <motion.a
               href="#projects"

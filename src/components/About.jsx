@@ -58,18 +58,18 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
-          >
-            Sobre Mim
-          </motion.h2>
-          <motion.p
-            variants={itemVariants}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
-          >
-            Engenheiro de Dados e Desenvolvedor de Software apaixonado por criar soluções inovadoras
-          </motion.p>
+        <motion.h2
+          variants={itemVariants}
+          className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6"
+        >
+          Sobre Mim
+        </motion.h2>
+        <motion.p
+          variants={itemVariants}
+          className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4"
+        >
+          Engenheiro de Dados e Desenvolvedor de Software apaixonado por criar soluções inovadoras
+        </motion.p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">

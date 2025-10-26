@@ -99,13 +99,13 @@ const Skills = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6"
           >
             Habilidades Técnicas
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4"
           >
             Tecnologias e ferramentas que domino para criar soluções de dados robustas
           </motion.p>
