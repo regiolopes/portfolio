@@ -63,74 +63,74 @@ const Projects = () => {
         "Configuração do Metabase em ambiente on-premise"
       ]
     },
-    {
-      id: 3,
-      title: "API Backend com Node.js e NestJS",
-      description: "Sistema backend robusto desenvolvido com Node.js e NestJS, oferecendo APIs REST eficientes e seguras para aplicações empresariais.",
-      image: "/api/placeholder/600/400",
-      category: "software-development",
-      technologies: ["Node.js", "NestJS", "PostgreSQL", "JavaScript", "Azure"],
-      github: "https://github.com/regiolopes/backend-api",
-      demo: "",
-      features: [
-        "Arquitetura modular com NestJS",
-        "APIs REST documentadas",
-        "Autenticação e autorização robustas",
-        "Integração com bancos de dados relacionais",
-        "Deploy automatizado na Azure"
-      ]
-    },
-    {
-      id: 4,
-      title: "Sistema de Monitoramento de Dados",
-      description: "Solução de monitoramento e qualidade de dados implementada com Apache Airflow, garantindo a integridade e confiabilidade dos dados processados.",
-      image: "/api/placeholder/600/400",
-      category: "data-engineering",
-      technologies: ["Apache Airflow", "Python", "PostgreSQL", "Azure", "SQL"],
-      github: "https://github.com/regiolopes/data-monitoring",
-      demo: "",
-      features: [
-        "Orquestração de workflows com Airflow",
-        "Validação automática de qualidade de dados",
-        "Alertas em tempo real para anomalias",
-        "Dashboards de métricas de performance",
-        "Integração com sistemas de notificação"
-      ]
-    },
-    {
-      id: 5,
-      title: "Migração de Dados para Azure",
-      description: "Projeto de migração completa de infraestrutura de dados on-premise para Azure, otimizando custos e melhorando a performance dos sistemas.",
-      image: "/api/placeholder/600/400",
-      category: "cloud",
-      technologies: ["Azure", "Azure Data Factory", "Databricks", "SQL", "Python"],
-      github: "https://github.com/regiolopes/azure-migration",
-      demo: "",
-      features: [
-        "Migração de bancos de dados para Azure SQL",
-        "Modernização de pipelines de dados",
-        "Implementação de soluções de backup e recovery",
-        "Otimização de custos na nuvem",
-        "Monitoramento de performance pós-migração"
-      ]
-    },
-    {
-      id: 6,
-      title: "Sistema de Suporte Técnico",
-      description: "Plataforma de suporte técnico desenvolvida para otimizar processos de Help Desk e melhorar a experiência dos usuários internos.",
-      image: "/api/placeholder/600/400",
-      category: "software-development",
-      technologies: ["PHP", "MySQL", "JavaScript", "HTML", "CSS"],
-      github: "https://github.com/regiolopes/support-system",
-      demo: "",
-      features: [
-        "Sistema de tickets de suporte",
-        "Base de conhecimento integrada",
-        "Relatórios de performance do suporte",
-        "Integração com sistemas corporativos",
-        "Interface responsiva e intuitiva"
-      ]
-    }
+    // {
+    //   id: 3,
+    //   title: "API Backend com Node.js e NestJS",
+    //   description: "Sistema backend robusto desenvolvido com Node.js e NestJS, oferecendo APIs REST eficientes e seguras para aplicações empresariais.",
+    //   image: "/api/placeholder/600/400",
+    //   category: "software-development",
+    //   technologies: ["Node.js", "NestJS", "PostgreSQL", "JavaScript", "Azure"],
+    //   github: "https://github.com/regiolopes/backend-api",
+    //   demo: "",
+    //   features: [
+    //     "Arquitetura modular com NestJS",
+    //     "APIs REST documentadas",
+    //     "Autenticação e autorização robustas",
+    //     "Integração com bancos de dados relacionais",
+    //     "Deploy automatizado na Azure"
+    //   ]
+    // },
+    // {
+    //   id: 4,
+    //   title: "Sistema de Monitoramento de Dados",
+    //   description: "Solução de monitoramento e qualidade de dados implementada com Apache Airflow, garantindo a integridade e confiabilidade dos dados processados.",
+    //   image: "/api/placeholder/600/400",
+    //   category: "data-engineering",
+    //   technologies: ["Apache Airflow", "Python", "PostgreSQL", "Azure", "SQL"],
+    //   github: "https://github.com/regiolopes/data-monitoring",
+    //   demo: "",
+    //   features: [
+    //     "Orquestração de workflows com Airflow",
+    //     "Validação automática de qualidade de dados",
+    //     "Alertas em tempo real para anomalias",
+    //     "Dashboards de métricas de performance",
+    //     "Integração com sistemas de notificação"
+    //   ]
+    // },
+    // {
+    //   id: 5,
+    //   title: "Migração de Dados para Azure",
+    //   description: "Projeto de migração completa de infraestrutura de dados on-premise para Azure, otimizando custos e melhorando a performance dos sistemas.",
+    //   image: "/api/placeholder/600/400",
+    //   category: "cloud",
+    //   technologies: ["Azure", "Azure Data Factory", "Databricks", "SQL", "Python"],
+    //   github: "https://github.com/regiolopes/azure-migration",
+    //   demo: "",
+    //   features: [
+    //     "Migração de bancos de dados para Azure SQL",
+    //     "Modernização de pipelines de dados",
+    //     "Implementação de soluções de backup e recovery",
+    //     "Otimização de custos na nuvem",
+    //     "Monitoramento de performance pós-migração"
+    //   ]
+    // },
+    // {
+    //   id: 6,
+    //   title: "Sistema de Suporte Técnico",
+    //   description: "Plataforma de suporte técnico desenvolvida para otimizar processos de Help Desk e melhorar a experiência dos usuários internos.",
+    //   image: "/api/placeholder/600/400",
+    //   category: "software-development",
+    //   technologies: ["PHP", "MySQL", "JavaScript", "HTML", "CSS"],
+    //   github: "https://github.com/regiolopes/support-system",
+    //   demo: "",
+    //   features: [
+    //     "Sistema de tickets de suporte",
+    //     "Base de conhecimento integrada",
+    //     "Relatórios de performance do suporte",
+    //     "Integração com sistemas corporativos",
+    //     "Interface responsiva e intuitiva"
+    //   ]
+    // }
   ]
 
   const categories = [
@@ -164,7 +164,7 @@ const Projects = () => {
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl text-gray-600 max-w-3xl mx-auto mb-8"
+            className="text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto mb-8"
           >
             Soluções inovadoras que desenvolvi para resolver problemas reais
           </motion.p>
@@ -181,7 +181,7 @@ const Projects = () => {
                 className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                   activeFilter === category.id
                     ? 'bg-primary-600 text-white shadow-lg'
-                    : 'bg-white text-gray-600 hover:bg-primary-50 hover:text-primary-600 border border-gray-200'
+                    : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400 border border-gray-200 dark:border-gray-600'
                 }`}
               >
                 <category.icon />
@@ -218,19 +218,19 @@ const Projects = () => {
               </div>
               
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
                   {project.title}
                 </h3>
                 
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-gray-700 dark:text-gray-200 mb-4 leading-relaxed">
                   {project.description}
                 </p>
 
                 <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-gray-900 mb-2">Principais Features:</h4>
+                  <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">Principais Features:</h4>
                   <ul className="space-y-1">
                     {project.features.slice(0, 2).map((feature, index) => (
-                      <li key={index} className="text-sm text-gray-600 flex items-start">
+                      <li key={index} className="text-sm text-gray-700 dark:text-gray-200 flex items-start">
                         <span className="text-primary-600 mr-2">•</span>
                         {feature}
                       </li>
@@ -243,7 +243,7 @@ const Projects = () => {
                     {project.technologies.map((tech, index) => (
                       <span
                         key={index}
-                        className="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs font-medium"
+                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded text-xs font-medium"
                       >
                         {tech}
                       </span>
@@ -256,7 +256,7 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-600 hover:text-primary-600 transition-colors"
+                    className="flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                   >
                     <FaGithub />
                     <span className="text-sm">Código</span>
@@ -266,7 +266,7 @@ const Projects = () => {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-gray-600 hover:text-primary-600 transition-colors"
+                      className="flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                     >
                       <FaExternalLinkAlt />
                       <span className="text-sm">Demo</span>

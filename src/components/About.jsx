@@ -66,7 +66,7 @@ const About = () => {
         </motion.h2>
         <motion.p
           variants={itemVariants}
-          className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4"
+          className="text-lg md:text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto px-4"
         >
           Engenheiro de Dados e Desenvolvedor de Software apaixonado por criar soluções inovadoras
         </motion.p>
@@ -87,7 +87,7 @@ const About = () => {
             </motion.h3>
             <motion.div
               variants={itemVariants}
-              className="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed"
+              className="space-y-4 text-gray-700 dark:text-gray-200 leading-relaxed"
             >
               <p>
                 Sou um BackEnd Developer e Engenheiro de Dados com uma paixão por desenvolver soluções tecnológicas inovadoras. 
@@ -125,7 +125,7 @@ const About = () => {
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                   {item.title}
                 </h4>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
+                <p className="text-sm text-gray-700 dark:text-gray-200">
                   {item.description}
                 </p>
               </motion.div>

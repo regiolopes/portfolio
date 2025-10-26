@@ -78,7 +78,7 @@ const Certifications = () => {
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto"
           >
             Certificações profissionais que validam minha expertise técnica
           </motion.p>
@@ -102,15 +102,15 @@ const Certifications = () => {
                 <FaCertificate className="text-2xl text-primary-600" />
               </div>
               
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                 {cert.name}
               </h3>
               
-              <p className="text-sm text-gray-600 mb-2">
+              <p className="text-sm text-gray-700 dark:text-gray-200 mb-2">
                 {cert.authority}
               </p>
               
-              <p className="text-xs text-gray-500 mb-4">
+              <p className="text-xs text-gray-600 dark:text-gray-300 mb-4">
                 {cert.date} {cert.expiry && `- ${cert.expiry}`}
               </p>
               

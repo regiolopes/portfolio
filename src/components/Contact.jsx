@@ -99,7 +99,7 @@ const Contact = () => {
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto"
           >
             Interessado em trabalhar juntos? Entre em contato e vamos criar algo incrível!
           </motion.p>
@@ -134,18 +134,18 @@ const Contact = () => {
                     <info.icon className="text-primary-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">{info.title}</h4>
+                    <h4 className="font-semibold text-gray-900 dark:text-white">{info.title}</h4>
                     {info.link ? (
                       <a
                         href={info.link}
-                        className="text-gray-600 hover:text-primary-600 transition-colors"
+                        className="text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                         target={info.link.startsWith('http') ? '_blank' : undefined}
                         rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
                       >
                         {info.value}
                       </a>
                     ) : (
-                      <p className="text-gray-600">{info.value}</p>
+                      <p className="text-gray-700 dark:text-gray-200">{info.value}</p>
                     )}
                   </div>
                 </motion.div>
@@ -156,10 +156,10 @@ const Contact = () => {
               variants={itemVariants}
               className="mt-12 p-6 bg-gradient-to-br from-primary-50 to-primary-100 rounded-xl"
             >
-              <h4 className="text-xl font-semibold text-gray-900 mb-4">
+              <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                 Disponibilidade
               </h4>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-700 dark:text-gray-200 mb-4">
                 Estou sempre aberto a novas oportunidades e projetos interessantes. 
                 Se você tem uma ideia ou precisa de ajuda com dados, vamos conversar!
               </p>

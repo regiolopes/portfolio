@@ -105,7 +105,7 @@ const Skills = () => {
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4"
+            className="text-lg md:text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto px-4"
           >
             Tecnologias e ferramentas que domino para criar soluções de dados robustas
           </motion.p>
@@ -131,10 +131,10 @@ const Skills = () => {
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skill.name}>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
                         {skill.name}
                       </span>
-                      <span className="text-sm text-gray-500 dark:text-gray-400">
+                      <span className="text-sm text-gray-600 dark:text-gray-300">
                         {skill.level}%
                       </span>
                     </div>

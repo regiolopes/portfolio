@@ -102,7 +102,7 @@ const Experience = () => {
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto"
           >
             Minha jornada profissional em tecnologia e dados
           </motion.p>
@@ -158,7 +158,7 @@ const Experience = () => {
                         {exp.description.map((item, itemIndex) => (
                           <li key={itemIndex} className="flex items-start">
                             <span className="text-primary-600 mr-2">•</span>
-                            <span className="text-gray-600">{item}</span>
+                            <span className="text-gray-700 dark:text-gray-200">{item}</span>
                           </li>
                         ))}
                       </ul>
