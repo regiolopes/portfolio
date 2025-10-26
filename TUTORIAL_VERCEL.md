@@ -129,6 +129,14 @@ npm install
 npm run build
 ```
 
+### Problema 1.2: Terser not found
+```bash
+# Erro: terser not found. Since Vite v3, terser has become an optional dependency
+# Solução:
+npm install terser --save-dev
+npm run build
+```
+
 ### Problema 1.1: Invalid vercel.json
 ```bash
 # Erro: Invalid vercel.json file provided
