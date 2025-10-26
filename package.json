@@ -1,0 +1,70 @@
+{
+  "name": "rp-meuportifolio",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Portfólio profissional para Engenheiro de Dados e Programador",
+  "keywords": [
+    "portfolio",
+    "data-engineer",
+    "programmer",
+    "react",
+    "vite",
+    "tailwindcss"
+  ],
+  "author": "Regio",
+  "license": "MIT",
+  "homepage": "https://regio-portfolio.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/regio/rp_meuportifolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/regio/rp_meuportifolio/issues"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "setup": "./setup.sh",
+    "deploy:vercel": "vercel --prod",
+    "deploy:netlify": "netlify deploy --prod --dir=dist"
+  },
+  "dependencies": {
+    "framer-motion": "^10.16.16",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "vite": "^5.0.8"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
