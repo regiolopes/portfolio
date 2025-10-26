@@ -49,7 +49,7 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="section-padding bg-white">
+    <section id="about" className="section-padding bg-white dark:bg-gray-900">
       <div className="container-max">
         <motion.div
           variants={containerVariants}
@@ -58,21 +58,21 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
-          >
-            Sobre Mim
-          </motion.h2>
-          <motion.p
-            variants={itemVariants}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
-          >
-            Engenheiro de Dados e Desenvolvedor de Software apaixonado por criar soluções inovadoras
-          </motion.p>
+        <motion.h2
+          variants={itemVariants}
+          className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6"
+        >
+          Sobre Mim
+        </motion.h2>
+        <motion.p
+          variants={itemVariants}
+          className="text-lg md:text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto px-4"
+        >
+          Engenheiro de Dados e Desenvolvedor de Software apaixonado por criar soluções inovadoras
+        </motion.p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -81,13 +81,13 @@ const About = () => {
           >
             <motion.h3
               variants={itemVariants}
-              className="text-3xl font-bold text-gray-900 mb-6"
+              className="text-3xl font-bold text-gray-900 dark:text-white mb-6"
             >
               Minha Jornada
             </motion.h3>
             <motion.div
               variants={itemVariants}
-              className="space-y-4 text-gray-600 leading-relaxed"
+              className="space-y-4 text-gray-700 dark:text-gray-200 leading-relaxed"
             >
               <p>
                 Sou um BackEnd Developer e Engenheiro de Dados com uma paixão por desenvolver soluções tecnológicas inovadoras. 
@@ -121,11 +121,11 @@ const About = () => {
                 className="card p-6 text-center"
                 whileHover={{ y: -5 }}
               >
-                <item.icon className="text-4xl text-primary-600 mx-auto mb-4" />
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                <item.icon className="text-4xl text-primary-600 dark:text-primary-400 mx-auto mb-4" />
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                   {item.title}
                 </h4>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-700 dark:text-gray-200">
                   {item.description}
                 </p>
               </motion.div>

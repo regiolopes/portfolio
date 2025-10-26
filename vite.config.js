@@ -15,8 +15,16 @@ export default defineConfig({
         manualChunks: {
           vendor: ['react', 'react-dom'],
           motion: ['framer-motion'],
-          icons: ['react-icons']
+          icons: ['react-icons/fa'],
+          pdf: ['jspdf']
         }
+      }
+    },
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+        pure_funcs: ['console.log']
       }
     }
   },

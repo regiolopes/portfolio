@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from 'react-icons/fa'
-import CVGenerator from './CVGenerator'
+import LazyCVGenerator from './LazyCVGenerator'
 
 const Hero = () => {
   const [isCVGeneratorOpen, setIsCVGeneratorOpen] = useState(false)
@@ -11,26 +11,26 @@ const Hero = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
+        staggerChildren: 0.15,
+        delayChildren: 0.2
       }
     }
   }
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.5,
         ease: "easeOut"
       }
     }
   }
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center section-padding pt-20">
+    <section id="hero" className="min-h-screen flex items-center justify-center section-padding pt-16 md:pt-20 px-4 md:px-6">
       <div className="container-max">
         <motion.div
           variants={containerVariants}
@@ -42,11 +42,13 @@ const Hero = () => {
             variants={itemVariants}
             className="mb-8"
           >
-            <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-2xl">
+            <div className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-4 md:mb-6 rounded-full overflow-hidden border-3 md:border-4 border-white shadow-2xl hover:shadow-3xl transition-shadow duration-300">
               <img 
                 src="/assets/profile.png" 
                 alt="Regio Lopes" 
                 className="w-full h-full object-cover"
+                loading="eager"
+                decoding="async"
                 onError={(e) => {
                   e.target.style.display = 'none'
                   e.target.nextSibling.style.display = 'flex'
@@ -60,7 +62,7 @@ const Hero = () => {
 
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl font-bold text-gray-900 mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6"
           >
             Olá, eu sou{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-800">
@@ -70,14 +72,14 @@ const Hero = () => {
 
           <motion.h2
             variants={itemVariants}
-            className="text-2xl md:text-3xl text-gray-600 mb-8 font-medium"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-800 dark:text-gray-100 mb-6 md:mb-8 font-medium px-4"
           >
             Supervisor de Dados e Desenvolvimento | Engenheiro de Dados | Desenvolvedor Back-End
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="text-base md:text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4"
           >
             Supervisor de Dados e Desenvolvimento com mais de 5 anos de experiência em desenvolvimento BackEnd e Engenharia de Dados. 
             Especialista em criar soluções tecnológicas inovadoras e implementar arquiteturas escaláveis para gerenciamento e análise de dados.
@@ -85,7 +87,7 @@ const Hero = () => {
 
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center px-4"
           >
             <motion.a
               href="#projects"
@@ -124,9 +126,9 @@ const Hero = () => {
               href="https://github.com/regiolopes"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-primary-600 transition-colors duration-200"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
+              className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 hover:scale-110"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
               <FaGithub size={24} />
             </motion.a>
@@ -134,17 +136,17 @@ const Hero = () => {
               href="https://www.linkedin.com/in/regiolopes/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-primary-600 transition-colors duration-200"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
+              className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 hover:scale-110"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
               <FaLinkedin size={24} />
             </motion.a>
             <motion.a
               href="mailto:regiolofilho@gmail.com"
-              className="text-gray-400 hover:text-primary-600 transition-colors duration-200"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
+              className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 hover:scale-110"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
               <FaEnvelope size={24} />
             </motion.a>
@@ -152,10 +154,10 @@ const Hero = () => {
         </motion.div>
       </div>
       
-      <CVGenerator 
-        isOpen={isCVGeneratorOpen} 
-        onClose={() => setIsCVGeneratorOpen(false)} 
-      />
+            <LazyCVGenerator 
+              isOpen={isCVGeneratorOpen} 
+              onClose={() => setIsCVGeneratorOpen(false)} 
+            />
     </section>
   )
 }

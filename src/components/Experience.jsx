@@ -85,7 +85,7 @@ const Experience = () => {
   ]
 
   return (
-    <section id="experience" className="section-padding bg-white">
+    <section id="experience" className="section-padding bg-white dark:bg-gray-900">
       <div className="container-max">
         <motion.div
           variants={containerVariants}
@@ -96,13 +96,13 @@ const Experience = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
           >
             Experiência Profissional
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            className="text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto"
           >
             Minha jornada profissional em tecnologia e dados
           </motion.p>
@@ -118,7 +118,7 @@ const Experience = () => {
           {/* Timeline line */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 to-primary-700 hidden md:block"></div>
 
-          <div className="space-y-12">
+          <div className="space-y-8 md:space-y-12">
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
@@ -132,7 +132,7 @@ const Experience = () => {
                   <div className="card p-8">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                       <div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                           {exp.title}
                         </h3>
                         <div className="flex items-center text-primary-600 font-semibold mb-2">
@@ -158,7 +158,7 @@ const Experience = () => {
                         {exp.description.map((item, itemIndex) => (
                           <li key={itemIndex} className="flex items-start">
                             <span className="text-primary-600 mr-2">•</span>
-                            <span className="text-gray-600">{item}</span>
+                            <span className="text-gray-700 dark:text-gray-200">{item}</span>
                           </li>
                         ))}
                       </ul>
