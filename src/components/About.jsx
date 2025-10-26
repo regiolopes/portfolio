@@ -72,7 +72,7 @@ const About = () => {
         </motion.p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
             variants={containerVariants}
             initial="hidden"
