@@ -62,7 +62,7 @@ const Hero = () => {
 
           <motion.h1
             variants={itemVariants}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 mb-4 md:mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6"
           >
             Olá, eu sou{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-800">
@@ -72,14 +72,14 @@ const Hero = () => {
 
           <motion.h2
             variants={itemVariants}
-            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-700 mb-6 md:mb-8 font-medium px-4"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-700 dark:text-gray-300 mb-6 md:mb-8 font-medium px-4"
           >
             Supervisor de Dados e Desenvolvimento | Engenheiro de Dados | Desenvolvedor Back-End
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-base md:text-lg lg:text-xl text-gray-600 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4"
+            className="text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-400 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4"
           >
             Supervisor de Dados e Desenvolvimento com mais de 5 anos de experiência em desenvolvimento BackEnd e Engenharia de Dados. 
             Especialista em criar soluções tecnológicas inovadoras e implementar arquiteturas escaláveis para gerenciamento e análise de dados.
