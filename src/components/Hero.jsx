@@ -126,9 +126,9 @@ const Hero = () => {
               href="https://github.com/regiolopes"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-primary-600 transition-colors duration-200"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
+              className="text-gray-400 hover:text-primary-600 transition-all duration-200 hover:scale-110"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
               <FaGithub size={24} />
             </motion.a>
@@ -136,17 +136,17 @@ const Hero = () => {
               href="https://www.linkedin.com/in/regiolopes/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-primary-600 transition-colors duration-200"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
+              className="text-gray-400 hover:text-primary-600 transition-all duration-200 hover:scale-110"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
               <FaLinkedin size={24} />
             </motion.a>
             <motion.a
               href="mailto:regiolofilho@gmail.com"
-              className="text-gray-400 hover:text-primary-600 transition-colors duration-200"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
+              className="text-gray-400 hover:text-primary-600 transition-all duration-200 hover:scale-110"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
               <FaEnvelope size={24} />
             </motion.a>

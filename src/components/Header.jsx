@@ -35,6 +35,7 @@ const Header = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
           ? 'bg-white/95 backdrop-blur-md shadow-lg' 
@@ -60,7 +61,7 @@ const Header = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 onClick={() => scrollToSection(item.href)}
-                className="text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200"
+                className="text-gray-700 hover:text-primary-600 font-medium transition-all duration-200 hover:scale-105"
               >
                 {item.name}
               </motion.button>
@@ -95,7 +96,7 @@ const Header = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="text-gray-700 hover:text-primary-600 font-medium text-left transition-colors duration-200"
+                  className="text-gray-700 hover:text-primary-600 font-medium text-left transition-all duration-200 hover:scale-105"
                 >
                   {item.name}
                 </button>
