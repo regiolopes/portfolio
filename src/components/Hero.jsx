@@ -42,7 +42,7 @@ const Hero = () => {
             variants={itemVariants}
             className="mb-8"
           >
-            <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-2xl">
+            <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-2xl hover:shadow-3xl transition-shadow duration-300">
               <img 
                 src="/assets/profile.png" 
                 alt="Regio Lopes" 
