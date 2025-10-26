@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from 'react-icons/fa'
-import CVGenerator from './CVGenerator'
+import LazyCVGenerator from './LazyCVGenerator'
 
 const Hero = () => {
   const [isCVGeneratorOpen, setIsCVGeneratorOpen] = useState(false)
@@ -154,10 +154,10 @@ const Hero = () => {
         </motion.div>
       </div>
       
-      <CVGenerator 
-        isOpen={isCVGeneratorOpen} 
-        onClose={() => setIsCVGeneratorOpen(false)} 
-      />
+            <LazyCVGenerator 
+              isOpen={isCVGeneratorOpen} 
+              onClose={() => setIsCVGeneratorOpen(false)} 
+            />
     </section>
   )
 }
