@@ -72,14 +72,14 @@ const Hero = () => {
 
           <motion.h2
             variants={itemVariants}
-            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 mb-6 md:mb-8 font-medium px-4"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-700 mb-6 md:mb-8 font-medium px-4"
           >
             Supervisor de Dados e Desenvolvimento | Engenheiro de Dados | Desenvolvedor Back-End
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-base md:text-lg lg:text-xl text-gray-500 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4"
+            className="text-base md:text-lg lg:text-xl text-gray-600 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4"
           >
             Supervisor de Dados e Desenvolvimento com mais de 5 anos de experiência em desenvolvimento BackEnd e Engenharia de Dados. 
             Especialista em criar soluções tecnológicas inovadoras e implementar arquiteturas escaláveis para gerenciamento e análise de dados.
@@ -126,7 +126,7 @@ const Hero = () => {
               href="https://github.com/regiolopes"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-primary-600 transition-all duration-200 hover:scale-110"
+              className="text-gray-500 hover:text-primary-600 transition-all duration-200 hover:scale-110"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -136,7 +136,7 @@ const Hero = () => {
               href="https://www.linkedin.com/in/regiolopes/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-primary-600 transition-all duration-200 hover:scale-110"
+              className="text-gray-500 hover:text-primary-600 transition-all duration-200 hover:scale-110"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -144,7 +144,7 @@ const Hero = () => {
             </motion.a>
             <motion.a
               href="mailto:regiolofilho@gmail.com"
-              className="text-gray-400 hover:text-primary-600 transition-all duration-200 hover:scale-110"
+              className="text-gray-500 hover:text-primary-600 transition-all duration-200 hover:scale-110"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
