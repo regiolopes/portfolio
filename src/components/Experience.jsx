@@ -85,7 +85,7 @@ const Experience = () => {
   ]
 
   return (
-    <section id="experience" className="section-padding bg-white">
+    <section id="experience" className="section-padding bg-white dark:bg-gray-900">
       <div className="container-max">
         <motion.div
           variants={containerVariants}

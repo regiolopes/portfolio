@@ -34,7 +34,7 @@ const Projects = () => {
       description: "Sistema completo de gerenciamento para academias de artes marciais, desenvolvido para automatizar processos administrativos e melhorar a experiência dos alunos e instrutores.",
       image: "/assets/dojoadmin.png",
       category: "software-development",
-      technologies: ["Python", "Flask", "HTML", "CSS", "JavaScript", "PostgreSQL", "Docker"],
+      technologies: ["Python", "Flask", "HTML", "CSS", "JavaScript", "PostgreSQL", "Poetry"],
       github: "https://github.com/regiolopes/dojo-admin",
       demo: "",
       features: [
@@ -47,19 +47,20 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "Sistema de Análise de Dados com Azure",
-      description: "Plataforma de análise de dados implementada na Azure, utilizando Data Factory e Databricks para processamento de grandes volumes de dados empresariais.",
+      title: "Data Visualization - OTRS (Solução de Gerenciamento de Serviços) com Metabase",
+      description: "Plataforma de visualização de dados implementada com Metabase, para monitorar e analisar o desempenho dos agentes de suporte do OTRS.",
       image: "/api/placeholder/600/400",
-      category: "data-engineering",
-      technologies: ["Azure Data Factory", "Databricks", "PySpark", "SQL", "Azure Cosmos DB"],
+      category: "data-visualization",
+      technologies: ["Metabase", "SQL", "PostgreSQL"],
       github: "https://github.com/regiolopes/azure-data-platform",
       demo: "",
       features: [
-        "Pipeline de dados automatizado com Azure Data Factory",
-        "Processamento distribuído com Databricks e PySpark",
-        "Armazenamento escalável com Azure Cosmos DB",
-        "Dashboards de monitoramento em tempo real",
-        "Integração com múltiplas fontes de dados"
+        "Visualização de dados dos agentes de suporte do OTRS",
+        "Monitoramento de desempenho dos agentes",
+        "Análise de tickets e chamados",
+        "Relatórios e dashboards personalizáveis",
+        "View Materializada no OTRS",
+        "Configuração do Metabase em ambiente on-premise"
       ]
     },
     {
@@ -146,7 +147,7 @@ const Projects = () => {
     : projects.filter(project => project.category === activeFilter)
 
   return (
-    <section id="projects" className="section-padding bg-gray-50">
+    <section id="projects" className="section-padding bg-gray-50 dark:bg-gray-800">
       <div className="container-max">
         <motion.div
           variants={containerVariants}

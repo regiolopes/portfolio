@@ -88,7 +88,7 @@ const Skills = () => {
   ]
 
   return (
-    <section id="skills" className="section-padding bg-gray-50">
+    <section id="skills" className="section-padding bg-gray-50 dark:bg-gray-800">
       <div className="container-max">
         <motion.div
           variants={containerVariants}
@@ -99,13 +99,13 @@ const Skills = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6"
           >
             Habilidades Técnicas
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4"
+            className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4"
           >
             Tecnologias e ferramentas que domino para criar soluções de dados robustas
           </motion.p>
@@ -124,21 +124,21 @@ const Skills = () => {
               variants={itemVariants}
               className="card p-6"
             >
-              <h3 className="text-xl font-semibold text-gray-900 mb-6">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
                 {category.title}
               </h3>
               <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skill.name}>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium text-gray-700">
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                         {skill.name}
                       </span>
-                      <span className="text-sm text-gray-500">
+                      <span className="text-sm text-gray-500 dark:text-gray-400">
                         {skill.level}%
                       </span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                       <motion.div
                         className="bg-gradient-to-r from-primary-500 to-primary-600 h-2 rounded-full"
                         initial={{ width: 0 }}
