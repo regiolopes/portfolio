@@ -129,6 +129,13 @@ npm install
 npm run build
 ```
 
+### Problema 1.1: Invalid vercel.json
+```bash
+# Erro: Invalid vercel.json file provided
+# Solução: Arquivo já corrigido no projeto
+# Se ocorrer novamente, verificar se não há comentários no JSON
+```
+
 ### Problema 2: Imagens Não Carregam
 - ✅ Verificar se arquivos estão em `public/assets/`
 - ✅ Usar caminhos relativos: `/assets/imagem.png`
