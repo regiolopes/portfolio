@@ -151,7 +151,7 @@ const Experience = () => {
                     </div>
 
                     <div className="mb-6">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-3">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
                         Principais Realizações:
                       </h4>
                       <ul className="space-y-2">
@@ -165,7 +165,7 @@ const Experience = () => {
                     </div>
 
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-900 mb-3">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
                         Tecnologias Utilizadas:
                       </h4>
                       <div className="flex flex-wrap gap-2">
