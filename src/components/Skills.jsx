@@ -28,61 +28,63 @@ const Skills = () => {
     {
       title: "Linguagens de Programação",
       skills: [
-        { name: "Python", level: 95 },
-        { name: "JavaScript", level: 90 },
-        { name: "SQL", level: 95 },
-        { name: "Transact-SQL", level: 85 },
-        { name: "PHP", level: 80 }
+        { name: "Python", level: 80 },
+        { name: "JavaScript", level: 65 },
+        { name: "SQL", level: 85 },
+        { name: "PHP", level: 60 }
       ]
     },
     {
-      title: "Cloud & Azure",
+      title: "Cloud",
       skills: [
-        { name: "Azure", level: 90 },
-        { name: "Azure Data Factory", level: 85 },
-        { name: "Azure Databricks", level: 90 },
-        { name: "Azure Functions", level: 80 },
-        { name: "Azure Cosmos DB", level: 85 }
+        { name: "Azure", level: 75 },
+        { name: "Google Cloud Platform", level: 60 },
+        { name: "AWS", level: 70 },
       ]
     },
     {
       title: "Big Data & Analytics",
       skills: [
-        { name: "Databricks", level: 90 },
-        { name: "PySpark", level: 85 },
-        { name: "Apache Airflow", level: 80 },
-        { name: "SQL Tuning", level: 85 },
-        { name: "Data Modeling", level: 90 }
+        { name: "Databricks", level: 75 },
+        { name: "PySpark", level: 70 },
+        { name: "Apache Airflow", level: 65 },
+        { name: "Azure Data Factory", level: 75 },
+        { name: "Azure Blob Storage", level: 70 },
+        { name: "Azure Data Lake", level: 75 },
+        { name: "AWS Glue", level: 70 },
+        { name: "AWS Athena", level: 75 },
+        { name: "AWS QuickSight", level: 70 }
+
       ]
     },
     {
       title: "Bancos de Dados",
       skills: [
-        { name: "PostgreSQL", level: 90 },
-        { name: "MySQL", level: 85 },
-        { name: "SQL Azure", level: 85 },
-        { name: "CosmosDB", level: 80 },
-        { name: "Database Administration", level: 90 }
+        { name: "PostgreSQL", level: 75 },
+        { name: "MySQL", level: 70 },
+        { name: "SQL Azure", level: 80 },
+        { name: "DuckDB", level: 70},
+        { name: "ClickHouse", level: 65}
       ]
     },
     {
       title: "Desenvolvimento Backend",
       skills: [
-        { name: "Node.js", level: 85 },
-        { name: "NestJS", level: 80 },
-        { name: "API Development", level: 90 },
-        { name: "System Integration", level: 85 },
-        { name: "Scrum", level: 80 }
+        { name: "Node.js", level: 70 },
+        { name: "NestJS", level: 65 },
+        { name: "API Development", level: 75 },
+        { name: "System Integration", level: 70 },
+        { name: "Scrum", level: 70 }
       ]
     },
     {
       title: "Ferramentas & Metodologias",
       skills: [
-        { name: "Microsoft Office", level: 90 },
-        { name: "Microsoft Excel", level: 85 },
-        { name: "Problem Solving", level: 95 },
-        { name: "IT Support", level: 85 },
-        { name: "English (C1)", level: 80 }
+        { name: "Microsoft Office", level: 80 },
+        { name: "Microsoft Excel", level: 75 },
+        { name: "Problem Solving", level: 80 },
+        { name: "IT Support", level: 75 },
+        { name: "English (C1)", level: 75 }
       ]
     }
   ]
@@ -107,7 +109,7 @@ const Skills = () => {
             variants={itemVariants}
             className="text-lg md:text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto px-4"
           >
-            Tecnologias e ferramentas que domino para criar soluções de dados robustas
+            Tecnologias e ferramentas que utilizo no dia a dia para desenvolver soluções de dados
           </motion.p>
         </motion.div>
 

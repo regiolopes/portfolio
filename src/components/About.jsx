@@ -64,12 +64,6 @@ const About = () => {
         >
           Sobre Mim
         </motion.h2>
-        <motion.p
-          variants={itemVariants}
-          className="text-lg md:text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto px-4"
-        >
-          Engenheiro de Dados e Desenvolvedor de Software apaixonado por criar soluções inovadoras
-        </motion.p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -90,19 +84,13 @@ const About = () => {
               className="space-y-4 text-gray-700 dark:text-gray-200 leading-relaxed"
             >
               <p>
-                Sou um BackEnd Developer e Engenheiro de Dados com uma paixão por desenvolver soluções tecnológicas inovadoras. 
-                Com mais de 5 anos de experiência no setor, tenho um histórico comprovado de sucesso na criação de aplicativos 
-                robustos e na implementação de arquiteturas escaláveis para gerenciamento e análise de dados.
+                Desde criança, sempre fui curioso sobre como as coisas funcionam. Hoje, canalizo essa curiosidade para o mundo digital como Back-End Developer e Engenheiro de Dados, transformando desafios complexos em soluções que fazem sentido.
               </p>
               <p>
-                Minha expertise inclui o desenvolvimento de APIs eficientes e seguras, utilizando linguagens como Python e JavaScript. 
-                Trabalho com tecnologias como Azure, Databricks, PySpark, Node.js, PostgreSQL e MySQL para garantir a eficiência 
-                e escalabilidade dos aplicativos.
+                <strong>💡 O que me move:</strong> Acredito que a tecnologia é uma ponte que conecta pessoas, ideias e oportunidades. Não busco apenas criar sistemas que funcionem, mas soluções com propósito que melhorem processos e contem histórias através dos dados.
               </p>
               <p>
-                Sou especialista em desenvolvimento e integração de sistemas, utilizando ferramentas como Azure Data Factory, 
-                Databricks e PySpark para processamento e análise de grandes volumes de dados. Tenho habilidades sólidas de 
-                resolução de problemas, pensamento analítico e capacidade de trabalhar em equipe.
+                <strong>🚀 Minha visão:</strong> Para mim, o bom código resolve problemas reais. Gosto de mergulhar fundo nos desafios, buscar padrões e desenhar soluções que unem lógica, clareza e impacto. Busco projetos que desafiem meu pensamento e me permitam transformar dados e tecnologia em valor real.
               </p>
             </motion.div>
           </motion.div>

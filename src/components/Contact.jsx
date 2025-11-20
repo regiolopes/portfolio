@@ -1,15 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaCheck } from 'react-icons/fa'
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  })
-  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -31,21 +24,6 @@ const Contact = () => {
         ease: "easeOut"
       }
     }
-  }
-
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Aqui você pode integrar com um serviço de email como EmailJS
-    console.log('Form submitted:', formData)
-    setIsSubmitted(true)
-    setTimeout(() => setIsSubmitted(false), 3000)
   }
 
   const contactInfo = [
@@ -105,7 +83,7 @@ const Contact = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="max-w-4xl mx-auto">
           {/* Contact Information */}
           <motion.div
             variants={containerVariants}
@@ -115,14 +93,14 @@ const Contact = () => {
           >
             <motion.h3
               variants={itemVariants}
-              className="text-3xl font-bold text-gray-900 dark:text-white mb-8"
+              className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center"
             >
               Informações de Contato
             </motion.h3>
             
             <motion.div
               variants={containerVariants}
-              className="space-y-6"
+              className="space-y-6 mb-12"
             >
               {contactInfo.map((info, index) => (
                 <motion.div
@@ -154,7 +132,7 @@ const Contact = () => {
 
             <motion.div
               variants={itemVariants}
-              className="mt-12 p-6 bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-xl border border-primary-200 dark:border-primary-700"
+              className="p-6 bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20 rounded-xl border border-primary-200 dark:border-primary-700"
             >
               <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                 Disponibilidade
@@ -167,106 +145,6 @@ const Contact = () => {
                 <FaCheck className="mr-2" />
                 <span className="font-medium">Disponível para novos projetos</span>
               </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Contact Form */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.div
-              variants={itemVariants}
-              className="card p-8"
-            >
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Envie uma Mensagem
-              </h3>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
-                      Nome *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                      placeholder="Seu nome completo"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                      placeholder="seu@email.com"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
-                    Assunto *
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
-                    placeholder="Qual é o assunto?"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
-                    Mensagem *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors resize-none bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
-                    placeholder="Conte-me sobre seu projeto ou ideia..."
-                  />
-                </div>
-
-                <motion.button
-                  type="submit"
-                  className="w-full btn-primary"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {isSubmitted ? (
-                    <span className="flex items-center justify-center gap-2">
-                      <FaCheck />
-                      Mensagem Enviada!
-                    </span>
-                  ) : (
-                    'Enviar Mensagem'
-                  )}
-                </motion.button>
-              </form>
             </motion.div>
           </motion.div>
         </div>
