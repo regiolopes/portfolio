@@ -15,13 +15,14 @@ const Contact = () => {
   }
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 40, opacity: 0, scale: 0.95 },
     visible: {
       y: 0,
       opacity: 1,
+      scale: 1,
       transition: {
-        duration: 0.6,
-        ease: "easeOut"
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1]
       }
     }
   }
@@ -79,7 +80,7 @@ const Contact = () => {
             variants={itemVariants}
             className="text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto"
           >
-            Interessado em trabalhar juntos? Entre em contato e vamos criar algo incrível!
+            Vamos transformar suas ideias em soluções tecnológicas de alto impacto? Entre em contato e descubra como posso agregar valor ao seu projeto ou empresa.
           </motion.p>
         </motion.div>
 
@@ -107,6 +108,8 @@ const Contact = () => {
                   key={index}
                   variants={itemVariants}
                   className="flex items-center space-x-4"
+                  whileHover={{ x: 5, scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
                   <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
                     <info.icon className="text-primary-600" />
@@ -138,8 +141,10 @@ const Contact = () => {
                 Disponibilidade
               </h4>
               <p className="text-gray-700 dark:text-gray-200 mb-4">
-                Estou sempre aberto a novas oportunidades e projetos interessantes. 
-                Se você tem uma ideia ou precisa de ajuda com dados, vamos conversar!
+                Estou disponível para <strong className="text-primary-600 dark:text-primary-400">projetos desafiadores</strong>, 
+                <strong className="text-primary-600 dark:text-primary-400"> oportunidades de colaboração</strong> e 
+                <strong className="text-primary-600 dark:text-primary-400"> consultorias técnicas</strong>. 
+                Se você precisa de soluções em dados, desenvolvimento Full Stack ou IA, vamos conversar sobre como posso ajudar a transformar sua visão em realidade!
               </p>
               <div className="flex items-center text-green-600 dark:text-green-400">
                 <FaCheck className="mr-2" />

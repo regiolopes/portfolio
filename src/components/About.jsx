@@ -14,13 +14,14 @@ const About = () => {
   }
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 40, opacity: 0, scale: 0.95 },
     visible: {
       y: 0,
       opacity: 1,
+      scale: 1,
       transition: {
-        duration: 0.6,
-        ease: "easeOut"
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1]
       }
     }
   }
@@ -29,22 +30,22 @@ const About = () => {
     {
       icon: FaDatabase,
       title: "Engenharia de Dados",
-      description: "Pipelines ETL/ELT, data lakes, warehouses e arquiteturas de dados escaláveis"
+      description: "Data Lakes (AWS, On-Premises), pipelines ETL/ELT com Apache Spark, arquiteturas medallion (Bronze/Silver/Gold) e otimização de custos"
     },
     {
       icon: FaCode,
-      title: "Desenvolvimento",
-      description: "Python, Javascript, PHP, SQL, APIs REST, microserviços e desenvolvimento full-stack"
+      title: "Desenvolvimento Full Stack",
+      description: "React.js, Node.js, Python, APIs REST, integração de sistemas e soluções end-to-end escaláveis"
     },
     {
       icon: FaChartLine,
-      title: "Análise de Dados",
-      description: "Machine Learning, estatística, visualização e business intelligence"
+      title: "Inteligência Artificial",
+      description: "ChatBots com LangChain, RAG (Retrieval-Augmented Generation), integração com LLMs e automação inteligente"
     },
     {
       icon: FaCloud,
-      title: "Cloud Computing",
-      description: "AWS, Azure, GCP, containers e infraestrutura como código"
+      title: "Cloud & Analytics",
+      description: "AWS (Glue, Athena, S3), Azure (Data Factory, Databricks), Metabase, QuickSight e visualização de dados"
     }
   ]
 
@@ -81,16 +82,26 @@ const About = () => {
             </motion.h3>
             <motion.div
               variants={itemVariants}
-              className="space-y-4 text-gray-700 dark:text-gray-200 leading-relaxed"
+              className="space-y-5 text-gray-700 dark:text-gray-200 leading-relaxed text-base md:text-lg"
             >
               <p>
-                Desde criança, sempre fui curioso sobre como as coisas funcionam. Hoje, canalizo essa curiosidade para o mundo digital como Back-End Developer e Engenheiro de Dados, transformando desafios complexos em soluções que fazem sentido.
+                Especialista em transformar <strong className="text-primary-600 dark:text-primary-400">dados em decisões estratégicas</strong> e 
+                <strong className="text-primary-600 dark:text-primary-400"> ideias em soluções tecnológicas escaláveis</strong>. 
+                Com mais de 5 anos de experiência, já desenvolvi sistemas que processam milhões de registros, 
+                implementei arquiteturas de Data Lake que reduziram custos em até 60% e criei aplicações Full Stack 
+                que automatizam processos críticos para empresas.
               </p>
               <p>
-                <strong>💡 O que me move:</strong> Acredito que a tecnologia é uma ponte que conecta pessoas, ideias e oportunidades. Não busco apenas criar sistemas que funcionem, mas soluções com propósito que melhorem processos e contem histórias através dos dados.
+                <strong className="text-primary-600 dark:text-primary-400">💡 O que me diferencia:</strong> Não apenas desenvolvo código, mas 
+                <strong> arquiteturas que crescem com o negócio</strong>. Trabalho com tecnologias de ponta como AWS, Azure, 
+                Apache Spark, React.js, Node.js e soluções de IA (RAG, ChatBots, LangChain), sempre priorizando 
+                <strong> performance, escalabilidade e custo-benefício</strong>.
               </p>
               <p>
-                <strong>🚀 Minha visão:</strong> Para mim, o bom código resolve problemas reais. Gosto de mergulhar fundo nos desafios, buscar padrões e desenhar soluções que unem lógica, clareza e impacto. Busco projetos que desafiem meu pensamento e me permitam transformar dados e tecnologia em valor real.
+                <strong className="text-primary-600 dark:text-primary-400">🚀 Meu compromisso:</strong> Entregar soluções que 
+                <strong> geram valor mensurável</strong> - seja reduzindo tempo de processamento, otimizando custos de infraestrutura 
+                ou criando experiências que encantam usuários. Cada projeto é uma oportunidade de impactar positivamente 
+                o negócio dos meus clientes e parceiros.
               </p>
             </motion.div>
           </motion.div>
@@ -107,7 +118,8 @@ const About = () => {
                 key={item.title}
                 variants={itemVariants}
                 className="card p-6 text-center"
-                whileHover={{ y: -5 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
                 <item.icon className="text-4xl text-primary-600 dark:text-primary-400 mx-auto mb-4" />
                 <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">

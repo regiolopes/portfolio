@@ -13,13 +13,14 @@ const Skills = () => {
   }
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 40, opacity: 0, scale: 0.95 },
     visible: {
       y: 0,
       opacity: 1,
+      scale: 1,
       transition: {
-        duration: 0.6,
-        ease: "easeOut"
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1]
       }
     }
   }
@@ -111,7 +112,7 @@ const Skills = () => {
             variants={itemVariants}
             className="text-lg md:text-xl text-gray-700 dark:text-gray-200 max-w-3xl mx-auto px-4"
           >
-            Tecnologias e ferramentas que utilizo no dia a dia para desenvolver soluções de dados
+            Domínio técnico em tecnologias modernas para criar soluções que impulsionam resultados de negócio
           </motion.p>
         </motion.div>
 
@@ -127,6 +128,8 @@ const Skills = () => {
               key={category.title}
               variants={itemVariants}
               className="card p-6"
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
                 {category.title}
@@ -142,15 +145,16 @@ const Skills = () => {
                         {(skill.level / 10).toFixed(1)}
                       </span>
                     </div>
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 overflow-hidden">
                       <motion.div
-                        className="bg-gradient-to-r from-primary-500 to-primary-600 h-2 rounded-full"
+                        className="bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 h-2.5 rounded-full shadow-lg"
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
                         viewport={{ once: true }}
                         transition={{ 
-                          duration: 1,
-                          delay: categoryIndex * 0.1 + skillIndex * 0.05
+                          duration: 1.2,
+                          delay: categoryIndex * 0.1 + skillIndex * 0.05,
+                          ease: [0.22, 1, 0.36, 1]
                         }}
                       />
                     </div>

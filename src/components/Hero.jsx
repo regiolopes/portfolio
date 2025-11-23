@@ -18,13 +18,14 @@ const Hero = () => {
   }
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 30, opacity: 0, scale: 0.95 },
     visible: {
       y: 0,
       opacity: 1,
+      scale: 1,
       transition: {
-        duration: 0.5,
-        ease: "easeOut"
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1]
       }
     }
   }
@@ -74,15 +75,17 @@ const Hero = () => {
             variants={itemVariants}
             className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-800 dark:text-gray-100 mb-6 md:mb-8 font-medium px-4"
           >
-            Supervisor de Dados e Desenvolvimento | Engenheiro de Dados | Desenvolvedor Back-End
+            Supervisor de Dados e Desenvolvimento | Engenheiro de Dados | Desenvolvedor Full Stack
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
             className="text-base md:text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4"
           >
-            Supervisor de Dados e Desenvolvimento com mais de 5 anos de experiência em desenvolvimento Full Stack e Engenharia de Dados. 
-            Especialista em criar soluções tecnológicas inovadoras e implementar arquiteturas escaláveis para gerenciamento e análise de dados.
+            Transformo dados em decisões estratégicas e ideias em soluções tecnológicas de alto impacto. 
+            Com mais de 5 anos de experiência, especializo-me em <strong className="text-primary-600 dark:text-primary-400">arquiteturas de dados escaláveis</strong>, 
+            <strong className="text-primary-600 dark:text-primary-400"> desenvolvimento Full Stack</strong> e 
+            <strong className="text-primary-600 dark:text-primary-400"> soluções de IA</strong> que impulsionam o crescimento dos negócios.
           </motion.p>
 
           <motion.div
@@ -92,8 +95,9 @@ const Hero = () => {
             <motion.a
               href="#projects"
               className="btn-primary inline-flex items-center gap-2"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               Ver Projetos
             </motion.a>
@@ -101,8 +105,9 @@ const Hero = () => {
             <motion.a
               href="#contact"
               className="btn-secondary inline-flex items-center gap-2"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               Entrar em Contato
             </motion.a>
@@ -126,9 +131,10 @@ const Hero = () => {
               href="https://github.com/regiolopes"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 hover:scale-110"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+              className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200"
+              whileHover={{ scale: 1.2, rotate: 5 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <FaGithub size={24} />
             </motion.a>
@@ -136,17 +142,19 @@ const Hero = () => {
               href="https://www.linkedin.com/in/regiolopes/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 hover:scale-110"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+              className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200"
+              whileHover={{ scale: 1.2, rotate: -5 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <FaLinkedin size={24} />
             </motion.a>
             <motion.a
               href="mailto:regiolofilho@gmail.com"
-              className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 hover:scale-110"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+              className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200"
+              whileHover={{ scale: 1.2, y: -3 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <FaEnvelope size={24} />
             </motion.a>
