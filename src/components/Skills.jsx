@@ -68,9 +68,10 @@ const Skills = () => {
       ]
     },
     {
-      title: "Desenvolvimento Backend",
+      title: "Desenvolvimento Full Stack",
       skills: [
         { name: "Node.js", level: 70 },
+        { name: "React.js", level: 70 },
         { name: "NestJS", level: 65 },
         { name: "API Development", level: 75 },
         { name: "System Integration", level: 70 },
@@ -78,13 +79,14 @@ const Skills = () => {
       ]
     },
     {
-      title: "Ferramentas & Metodologias",
+      title: "Inteligência Artificial",
       skills: [
-        { name: "Microsoft Office", level: 80 },
-        { name: "Microsoft Excel", level: 75 },
-        { name: "Problem Solving", level: 80 },
-        { name: "IT Support", level: 75 },
-        { name: "English (C1)", level: 75 }
+        { name: "Chat Bot", level: 75 },
+        { name: "RAG's (Retrieval-Augmented Generation)", level: 70 },
+        { name: "LangChain", level: 70 },
+        { name: "OpenAI API", level: 75 },
+        { name: "Prompt Engineering", level: 75 },
+        { name: "LLM Integration", level: 70 }
       ]
     }
   ]
@@ -137,7 +139,7 @@ const Skills = () => {
                         {skill.name}
                       </span>
                       <span className="text-sm text-gray-600 dark:text-gray-300">
-                        {skill.level}%
+                        {(skill.level / 10).toFixed(1)}
                       </span>
                     </div>
                     <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">

@@ -81,7 +81,7 @@ const Hero = () => {
             variants={itemVariants}
             className="text-base md:text-lg lg:text-xl text-gray-700 dark:text-gray-200 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4"
           >
-            Supervisor de Dados e Desenvolvimento com mais de 5 anos de experiência em desenvolvimento BackEnd e Engenharia de Dados. 
+            Supervisor de Dados e Desenvolvimento com mais de 5 anos de experiência em desenvolvimento Full Stack e Engenharia de Dados. 
             Especialista em criar soluções tecnológicas inovadoras e implementar arquiteturas escaláveis para gerenciamento e análise de dados.
           </motion.p>
 

@@ -55,12 +55,12 @@ const Experience = () => {
       technologies: ["Azure Data Factory", "Databricks", "PySpark", "SQL", "Azure Cosmos DB", "Transact-SQL"]
     },
     {
-      title: "Engenheiro de Dados | Desenvolvedor Backend",
+      title: "Engenheiro de Dados | Desenvolvedor Full Stack",
       company: "Grupo Fornecedora",
       location: "Fortaleza, CE",
       period: "Aug 2020 - Jun 2022",
       description: [
-        "Desenvolvimento de aplicações backend robustas",
+        "Desenvolvimento de aplicações full stack robustas",
         "Criação de APIs REST eficientes",
         "Integração de sistemas utilizando Azure e Node.js",
         "Implementação de soluções de engenharia de dados",

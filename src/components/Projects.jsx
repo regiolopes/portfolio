@@ -33,7 +33,7 @@ const Projects = () => {
       title: "Sistema de Artes Marciais - Dojo Admin",
       description: "Sistema completo de gerenciamento para academias de artes marciais, desenvolvido para automatizar processos administrativos e melhorar a experiência dos alunos e instrutores.",
       image: "/assets/dojoadmin.png",
-      category: "software-development",
+      categories: ["software-development"],
       technologies: ["Python", "Flask", "HTML", "CSS", "JavaScript", "PostgreSQL", "Poetry"],
       github: "https://github.com/regiolopes/dojo-admin",
       demo: "",
@@ -49,8 +49,8 @@ const Projects = () => {
       id: 2,
       title: "Data Visualization - OTRS (Solução de Gerenciamento de Serviços) com Metabase",
       description: "Plataforma de visualização de dados implementada com Metabase, para monitorar e analisar o desempenho dos agentes de suporte do OTRS.",
-      image: "/api/placeholder/600/400",
-      category: "data-visualization",
+      image: "/assets/meta_otrs.png",
+      categories: ["data-visualization", "data-engineering"],
       technologies: ["Metabase", "SQL", "PostgreSQL"],
       github: "https://github.com/regiolopes/azure-data-platform",
       demo: "",
@@ -61,6 +61,94 @@ const Projects = () => {
         "Relatórios e dashboards personalizáveis",
         "View Materializada no OTRS",
         "Configuração do Metabase em ambiente on-premise"
+      ]
+    },
+    {
+      id: 3,
+      title: "Fec Calendar",
+      description: "Feito para uso pessoal. App que sincroniza os jogos do Fortaleza EC (Meu time do Coração) com meu calendário pessoal do Google Calendar.",
+      image: "/assets/image.png",
+      categories: ["software-development"],
+      technologies: ["Python", "Google Calendar API", "API-Sports"],
+      github: "",
+      demo: "",
+      features: [
+        "Sincronização automática de jogos do Fortaleza EC",
+        "Integração com Google Calendar API",
+        "Consumo de dados da API-Sports",
+        "Atualização automática do calendário pessoal"
+      ]
+    },
+    {
+      id: 4,
+      title: "FornecedoraWEB",
+      description: "Sistema interno desenvolvido para o Grupo Fornecedora, projetado para otimizar e controlar processos internos da organização. A solução oferece funcionalidades personalizadas e complementares ao ERP, atendendo necessidades específicas que não são suportadas diretamente pelo sistema principal, garantindo maior eficiência operacional e integração entre departamentos.",
+      image: "/assets/fornecedoraweb.png",
+      categories: ["software-development"],
+      technologies: ["Node.js", "React.js", "PostgreSQL", "SQL Server", "HTML", "CSS", "JSON Web Token"],
+      github: "",
+      demo: "",
+      features: [
+        "Controle completo de processos internos",
+        "Funcionalidades personalizadas complementares ao ERP",
+        "Integração com sistemas existentes",
+        "Interface intuitiva para gestão operacional",
+        "Relatórios e dashboards personalizados",
+        "Automatização de workflows internos"
+      ]
+    },
+    {
+      id: 5,
+      title: "Data Lake - AWS",
+      description: "Solução completa de Data Lake implementada na AWS, projetada para armazenar, processar e analisar grandes volumes de dados de forma eficiente e econômica. A arquitetura utiliza serviços gerenciados da AWS para garantir baixo custo operacional, atualizações rápidas e consultas de alta performance através do formato Parquet, proporcionando uma infraestrutura de dados escalável e otimizada.",
+      image: "/assets/datalk_aws.png",
+      categories: ["data-engineering", "cloud"],
+      technologies: ["AWS Glue", "AWS Athena", "Amazon S3", "Parquet", "Amazon QuickSight", "Python"],
+      github: "",
+      demo: "",
+      features: [
+        "Orquestração e processamento de dados com AWS Glue",
+        "Consultas SQL rápidas e eficientes com AWS Athena",
+        "Armazenamento otimizado em formato Parquet no S3",
+        "Visualização de dados com Amazon QuickSight",
+        "Baixo custo de infraestrutura na nuvem",
+        "Atualizações e processamento de dados em tempo real"
+      ]
+    },
+    {
+      id: 6,
+      title: "Open Source / On Premises Data Lake",
+      description: "Solução completa de Data Lake funcional em qualquer ambiente On-Premises Linux utilizando exclusivamente ferramentas Open Source. A arquitetura implementa uma camada de dados moderna e escalável, seguindo o padrão medallion (Bronze, Silver, Gold), permitindo processamento eficiente de grandes volumes de dados sem dependência de serviços cloud gerenciados.",
+      image: "/api/placeholder/600/400",
+      categories: ["data-engineering", "data-visualization"],
+      technologies: ["Apache Airflow", "Delta Lake", "Parquet", "Apache Spark", "Metabase", "ClickHouse", "Python"],
+      github: "",
+      demo: "",
+      features: [
+        "Orquestração de workflows com Apache Airflow",
+        "Armazenamento em camadas Bronze e Silver (Delta Lake e Parquet)",
+        "ETL e processamento distribuído com Apache Spark",
+        "Visualização de dados com Metabase",
+        "Armazenamento Gold otimizado com ClickHouse",
+        "Solução 100% Open Source e On-Premises"
+      ]
+    },
+    {
+      id: 7,
+      title: "Manual da TIC + Chat Bot",
+      description: "Sistema integrado de documentação técnica e assistente virtual inteligente. O projeto combina um repositório de documentações em Markdown renderizado com Docsify para navegação web intuitiva, com um Chat Bot desenvolvido usando LangChain e Open Router, capaz de responder dúvidas e questionamentos baseando-se no conteúdo dos documentos Markdown, proporcionando uma experiência de suporte técnico automatizada e eficiente.",
+      image: "/api/placeholder/600/400",
+      categories: ["software-development"],
+      technologies: ["Markdown", "Docsify", "LangChain", "Open Router", "Python", "RAG"],
+      github: "",
+      demo: "",
+      features: [
+        "Repositório de documentações em Markdown",
+        "Renderização web com Docsify",
+        "Chat Bot inteligente com LangChain",
+        "Integração com Open Router para LLMs",
+        "RAG (Retrieval-Augmented Generation) para respostas baseadas em documentos",
+        "Suporte técnico automatizado e contextualizado"
       ]
     },
     // {
@@ -137,14 +225,13 @@ const Projects = () => {
     { id: 'all', name: 'Todos', icon: FaCogs },
     { id: 'software-development', name: 'Desenvolvimento de Software', icon: FaCode },
     { id: 'data-engineering', name: 'Engenharia de Dados', icon: FaDatabase },
-    { id: 'machine-learning', name: 'Machine Learning', icon: FaChartLine },
     { id: 'data-visualization', name: 'Visualização', icon: FaChartLine },
     { id: 'cloud', name: 'Cloud', icon: FaCogs }
   ]
 
   const filteredProjects = activeFilter === 'all' 
     ? projects 
-    : projects.filter(project => project.category === activeFilter)
+    : projects.filter(project => project.categories.includes(activeFilter))
 
   return (
     <section id="projects" className="section-padding bg-gray-50 dark:bg-gray-800">
@@ -205,12 +292,12 @@ const Projects = () => {
               className="card overflow-hidden group"
               whileHover={{ y: -5 }}
             >
-              <div className="h-48 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden">
-                {project.image && project.image.includes('dojoadmin.png') ? (
+              <div className="h-64 md:h-80 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden">
+                {project.image && (project.image.includes('dojoadmin.png') || project.image.includes('image.png') || project.image.includes('fornecedoraweb.png') || project.image.includes('datalk_aws.png') || project.image.includes('meta_otrs.png')) ? (
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 ) : (
                   <FaDatabase className="text-6xl text-primary-600" />
