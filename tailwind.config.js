@@ -8,6 +8,17 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Cores da Kihon
+        kihon: {
+          red: '#E53935', // Vermelho dojô - cor primária
+          dark: '#0F172A', // Azul escuro tecnológico - cor secundária
+          black: '#020617', // Cinza quase preto - background principal
+          gray: {
+            medium: '#64748B', // Cinza médio - textos secundários
+            light: '#E5E7EB', // Cinza claro - cards, divisórias
+          },
+          white: '#FFFFFF',
+        },
         primary: {
           50: '#eff6ff',
           100: '#dbeafe',
@@ -49,7 +60,8 @@ export default {
         }
       },
       fontFamily: {
-        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'sans': ['Inter', 'Roboto', 'system-ui', 'sans-serif'],
+        'display': ['Poppins', 'Montserrat', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',

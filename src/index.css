@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -41,5 +43,14 @@
   
   .container-max {
     @apply max-w-7xl mx-auto px-4 md:px-6 lg:px-8;
+  }
+  
+  /* Kihon specific styles */
+  .btn-kihon-primary {
+    @apply bg-kihon-red hover:bg-kihon-red/90 text-kihon-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-kihon-secondary {
+    @apply bg-transparent hover:bg-kihon-dark/50 text-kihon-gray-light border-2 border-kihon-gray-medium hover:border-kihon-red font-semibold py-3 px-6 rounded-lg transition-all duration-200;
   }
 }

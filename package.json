@@ -31,12 +31,14 @@
     "deploy:netlify": "netlify deploy --prod --dir=dist"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "framer-motion": "^10.16.16",
     "html2canvas": "^1.4.1",
     "jspdf": "^3.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.12.0"
+    "react-icons": "^4.12.0",
+    "react-router-dom": "^7.9.6"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

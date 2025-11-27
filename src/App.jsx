@@ -1,32 +1,24 @@
 import React from 'react'
-import { ThemeProvider } from './contexts/ThemeContext'
-import Header from './components/Header'
-import Hero from './components/Hero'
-import About from './components/About'
-import Skills from './components/Skills'
-import Experience from './components/Experience'
-import Certifications from './components/Certifications'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import KihonHome from './pages/KihonHome'
+import KihonSobre from './pages/KihonSobre'
+import KihonServicos from './pages/KihonServicos'
+import KihonCases from './pages/KihonCases'
+import KihonContato from './pages/KihonContato'
+import PortfolioPessoal from './pages/PortfolioPessoal'
 
 function App() {
   return (
-    <ThemeProvider>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-200">
-        <Header />
-        <main>
-          <Hero />
-          <About />
-          <Skills />
-          <Experience />
-          <Certifications />
-          <Projects />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
-    </ThemeProvider>
+    <Router>
+      <Routes>
+        <Route path="/" element={<KihonHome />} />
+        <Route path="/sobre" element={<KihonSobre />} />
+        <Route path="/servicos" element={<KihonServicos />} />
+        <Route path="/cases" element={<KihonCases />} />
+        <Route path="/contato" element={<KihonContato />} />
+        <Route path="/regiolopes" element={<PortfolioPessoal />} />
+      </Routes>
+    </Router>
   )
 }
 
