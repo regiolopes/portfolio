@@ -54,3 +54,45 @@
     @apply bg-transparent hover:bg-kihon-dark/50 text-kihon-gray-light border-2 border-kihon-gray-medium hover:border-kihon-red font-semibold py-3 px-6 rounded-lg transition-all duration-200;
   }
 }
+
+/* Carrosséis infinitos (Stacks) — keyframes próprios para não depender de classes Tailwind dinâmicas */
+@layer utilities {
+  @keyframes kihon-stack-marquee {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  .kihon-stack-marquee {
+    animation: kihon-stack-marquee 50s linear infinite;
+    will-change: transform;
+  }
+
+  .kihon-stack-marquee-rev {
+    animation: kihon-stack-marquee 50s linear infinite reverse;
+    will-change: transform;
+  }
+
+  .kihon-stack-marquee-slow {
+    animation: kihon-stack-marquee 65s linear infinite;
+    will-change: transform;
+  }
+
+  .kihon-stack-marquee-slow-rev {
+    animation: kihon-stack-marquee 65s linear infinite reverse;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .kihon-stack-marquee,
+    .kihon-stack-marquee-rev,
+    .kihon-stack-marquee-slow,
+    .kihon-stack-marquee-slow-rev {
+      animation: none;
+      will-change: auto;
+    }
+  }
+}
