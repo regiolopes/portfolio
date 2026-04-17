@@ -198,12 +198,12 @@ const KihonFooter = () => {
             <h4 className="font-semibold mb-4 text-lg">Legal</h4>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/privacidade/smart-nota"
                   className="text-kihon-gray-medium hover:text-kihon-red transition-colors duration-200 text-sm"
                 >
-                  Política de Privacidade
-                </a>
+                  Política de Privacidade — Smart Nota
+                </Link>
               </li>
               <li>
                 <a
@@ -235,12 +235,12 @@ const KihonFooter = () => {
               © {currentYear} Kihon. Todos os direitos reservados.
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <a
-                href="#"
+              <Link
+                to="/privacidade/smart-nota"
                 className="text-kihon-gray-medium hover:text-kihon-red transition-colors"
               >
-                Política de Privacidade
-              </a>
+                Política de Privacidade — Smart Nota
+              </Link>
               <span className="text-kihon-gray-medium">•</span>
               <a
                 href="#"

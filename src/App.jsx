@@ -5,6 +5,7 @@ import KihonSobre from './pages/KihonSobre'
 import KihonServicos from './pages/KihonServicos'
 import KihonCases from './pages/KihonCases'
 import KihonContato from './pages/KihonContato'
+import SmartNotaPrivacidade from './pages/SmartNotaPrivacidade'
 import PortfolioPessoal from './pages/PortfolioPessoal'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/servicos" element={<KihonServicos />} />
         <Route path="/cases" element={<KihonCases />} />
         <Route path="/contato" element={<KihonContato />} />
+        <Route path="/privacidade/smart-nota" element={<SmartNotaPrivacidade />} />
         <Route path="/regiolopes" element={<PortfolioPessoal />} />
       </Routes>
     </Router>
