@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import KihonHeader from '../components/kihon/KihonHeader'
 import KihonFooter from '../components/kihon/KihonFooter'
@@ -347,7 +348,18 @@ function SmartNotaPrivacidade() {
               </p>
               <p>
                 Você pode solicitar <strong>exclusão da conta</strong> pelos meios disponíveis no app ou pelo contato
-                indicado nesta política. Após a exclusão, poderemos <strong>manter determinados dados pelo tempo necessário</strong>{' '}
+                indicado nesta política. Para etapas detalhadas, prazos de resposta e lista do que é excluído ou mantido,
+                use a página dedicada:{' '}
+                <Link
+                  to="/privacidade/smart-nota/exclusao-de-conta"
+                  className="text-kihon-red hover:underline font-medium"
+                >
+                  Exclusão de conta e dados — Smart Nota
+                </Link>
+                .
+              </p>
+              <p>
+                Após a exclusão, poderemos <strong>manter determinados dados pelo tempo necessário</strong>{' '}
                 para <strong>cumprimento de obrigação legal</strong>, <strong>resolução de litígios</strong> ou{' '}
                 <strong>exercício regular de direitos</strong> (por exemplo, registros relacionados a notas fiscais e
                 obrigações aplicáveis). A extensão exata da retenção pode depender da natureza dos dados e da legislação
@@ -416,6 +428,17 @@ function SmartNotaPrivacidade() {
                 categorias e respostas nos formulários da Google (Data safety) e da Apple (Privacy Nutrition) devem ser{' '}
                 <strong>coerentes</strong> com o que aqui está descrito e com o comportamento real do app; atualize os
                 formulários sempre que o tratamento de dados mudar.
+              </p>
+              <p className="mt-3">
+                <strong>Google Play — URL para exclusão de contas:</strong>{' '}
+                <Link
+                  to="/privacidade/smart-nota/exclusao-de-conta"
+                  className="text-kihon-red hover:underline font-medium"
+                >
+                  /privacidade/smart-nota/exclusao-de-conta
+                </Link>{' '}
+                (na ficha da Play, o desenvolvedor é <strong>Regio Lopes</strong>; a página inclui identificação do app,
+                etapas para solicitar exclusão e descrição do que é apagado ou retido).
               </p>
             </div>
           </div>

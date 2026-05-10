@@ -206,6 +206,14 @@ const KihonFooter = () => {
                 </Link>
               </li>
               <li>
+                <Link
+                  to="/privacidade/smart-nota/exclusao-de-conta"
+                  className="text-kihon-gray-medium hover:text-kihon-red transition-colors duration-200 text-sm"
+                >
+                  Exclusão de conta e dados — Smart Nota
+                </Link>
+              </li>
+              <li>
                 <a
                   href="#"
                   className="text-kihon-gray-medium hover:text-kihon-red transition-colors duration-200 text-sm"
@@ -240,6 +248,13 @@ const KihonFooter = () => {
                 className="text-kihon-gray-medium hover:text-kihon-red transition-colors"
               >
                 Política de Privacidade — Smart Nota
+              </Link>
+              <span className="text-kihon-gray-medium">•</span>
+              <Link
+                to="/privacidade/smart-nota/exclusao-de-conta"
+                className="text-kihon-gray-medium hover:text-kihon-red transition-colors"
+              >
+                Exclusão de conta — Smart Nota
               </Link>
               <span className="text-kihon-gray-medium">•</span>
               <a
