@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { FaPlus, FaTrash, FaFilePdf, FaEye, FaEdit, FaCheckCircle, FaLock } from 'react-icons/fa'
+import { FaPlus, FaTrash, FaFilePdf, FaEye, FaEdit, FaCheckCircle, FaLock, FaPrint, FaSpinner } from 'react-icons/fa'
 import KihonLogo from '../components/kihon/KihonLogo'
 
 // ── Controle de acesso ──
@@ -13,6 +13,7 @@ const AUTH_KEY = 'orcamento_auth'
 // ── Parceria / Joint Venture (Workenge) ──
 const WORKENGE_LOGO = '/assets/workenge-logo.jpg'
 const WORKENGE_COVER = '/assets/workenge-cover.jpg'
+const WORKENGE_RESPONSAVEL = 'Atilla Andrade'
 const DESCRICAO_PARCERIA_PADRAO =
   'Proposta desenvolvida em parceria com a Workenge — Engenharia de Mercado. A Kihon conduz o desenvolvimento de tecnologia e software, enquanto a Workenge agrega expertise em viabilidade, análise e engenharia de mercado, entregando uma solução completa de ponta a ponta.'
 
@@ -112,7 +113,7 @@ export default function Orcamento() {
     observacoes: '',
     nomeContato: 'Regio Lopes',
     cargoContato: 'CEO & Fundador',
-    emailContato: 'contato@kihon.dev',
+    emailContato: 'regio.lopes@kihon.dev.br',
     telefoneContato: '(85) 99727-5766',
     // Parceria / Joint Venture
     propostaConjunta: false,
@@ -171,8 +172,136 @@ export default function Orcamento() {
     ? adicionarDias(form.dataEmissao, parseInt(form.validade))
     : ''
 
+  const [gerandoPDF, setGerandoPDF] = useState(false)
+
   const handlePrint = () => {
     window.print()
+  }
+
+  const handleExportPDF = async () => {
+    const el = previewRef.current
+    if (!el || gerandoPDF) return
+    if (el.offsetHeight === 0) {
+      alert('Abra a pré-visualização (aba "Preview") antes de exportar o PDF.')
+      return
+    }
+
+    setGerandoPDF(true)
+    try {
+      const [{ default: jsPDF }, { default: html2canvas }] = await Promise.all([
+        import('jspdf'),
+        import('html2canvas'),
+      ])
+
+      // Pontos de quebra "seguros" = topo de cada seção do documento (medidos no DOM),
+      // para que uma página nunca corte uma seção no meio.
+      const containerTop = el.getBoundingClientRect().top
+      const contentEl = el.querySelector('[data-pdf-content]')
+      const footerEl = el.querySelector('[data-pdf-footer]')
+
+      const breaksCss = [0]
+      if (contentEl) {
+        Array.from(contentEl.children).forEach((child) => {
+          breaksCss.push(child.getBoundingClientRect().top - containerTop)
+        })
+      }
+      const footerTopCss = footerEl
+        ? footerEl.getBoundingClientRect().top - containerTop
+        : el.scrollHeight
+      breaksCss.push(footerTopCss)
+
+      const canvas = await html2canvas(el, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#ffffff',
+        logging: false,
+        imageTimeout: 0,
+      })
+
+      const Wc = canvas.width
+      const Hc = canvas.height
+      const s = Hc / el.scrollHeight // px-canvas por px-css
+
+      const pdf = new jsPDF('p', 'mm', 'a4')
+      const pageWmm = pdf.internal.pageSize.getWidth()
+      const pageHmm = pdf.internal.pageSize.getHeight()
+
+      const cToMm = (c) => (c * pageWmm) / Wc
+      const mmToC = (mm) => (mm * Wc) / pageWmm
+      const pxPerPage = mmToC(pageHmm)
+
+      // Rodapé (fixado no fim de cada página, estilo papel timbrado)
+      const footerTopC = Math.round(footerTopCss * s)
+      const footerHc = Hc - footerTopC
+      const footerHmm = cToMm(footerHc)
+      const gapMm = 7
+      const gapC = mmToC(gapMm)
+      const availContentC = pxPerPage - footerHc - gapC
+
+      const bps = Array.from(
+        new Set(breaksCss.map((y) => Math.round(y * s)).filter((y) => y >= 0 && y <= footerTopC))
+      ).sort((a, b) => a - b)
+
+      // Desenha um trecho [startC, endC) do canvas em yMm da página atual
+      const drawSlice = (startC, endC, yMm) => {
+        const sliceH = Math.round(endC - startC)
+        if (sliceH <= 0) return
+        const tmp = document.createElement('canvas')
+        tmp.width = Wc
+        tmp.height = sliceH
+        const ctx = tmp.getContext('2d')
+        ctx.fillStyle = '#ffffff'
+        ctx.fillRect(0, 0, Wc, sliceH)
+        ctx.drawImage(canvas, 0, startC, Wc, sliceH, 0, 0, Wc, sliceH)
+        pdf.addImage(tmp.toDataURL('image/jpeg', 0.96), 'JPEG', 0, yMm, pageWmm, cToMm(sliceH))
+      }
+
+      // Paginação: conteúdo flui do topo; rodapé repetido no fim de cada página
+      let startC = 0
+      let pageIndex = 0
+      while (startC < footerTopC - 1) {
+        if (pageIndex > 0) pdf.addPage()
+
+        const naiveEnd = startC + availContentC
+        let cut
+        if (naiveEnd >= footerTopC) {
+          cut = footerTopC // última página: todo o restante cabe
+        } else {
+          cut = -1
+          for (const bp of bps) {
+            if (bp > startC && bp <= naiveEnd) cut = bp
+          }
+          if (cut <= startC) cut = Math.round(naiveEnd) // fallback: seção maior que a página
+        }
+
+        drawSlice(startC, cut, 0) // conteúdo no topo
+        if (footerHc > 0) drawSlice(footerTopC, Hc, pageHmm - footerHmm) // rodapé embaixo
+
+        startC = cut
+        pageIndex++
+      }
+
+      // Numeração discreta acima do rodapé (só se houver mais de uma página)
+      const totalPaginas = pdf.getNumberOfPages()
+      if (totalPaginas > 1) {
+        for (let i = 1; i <= totalPaginas; i++) {
+          pdf.setPage(i)
+          pdf.setFontSize(7)
+          pdf.setTextColor(148, 163, 184)
+          pdf.text(`Página ${i} de ${totalPaginas}`, pageWmm - 12, pageHmm - footerHmm - 4, {
+            align: 'right',
+          })
+        }
+      }
+
+      const nomeArquivo = `Proposta_${(form.numero || 'Kihon').replace(/[^\w-]/g, '_')}.pdf`
+      pdf.save(nomeArquivo)
+    } catch (err) {
+      console.error('Erro ao gerar PDF:', err)
+      alert('Não foi possível gerar o PDF. Tente novamente ou use a opção "Imprimir".')
+    } finally {
+      setGerandoPDF(false)
+    }
   }
 
   const entregaveisValidos = form.entregaveis.filter((e) => e.trim())
@@ -211,10 +340,19 @@ export default function Orcamento() {
 
             <button
               onClick={handlePrint}
-              className="flex items-center gap-2 bg-kihon-red hover:bg-kihon-red/90 text-white font-semibold py-2 px-4 rounded-lg text-sm transition-all shadow hover:shadow-lg"
+              className="hidden sm:flex items-center gap-2 bg-white/10 hover:bg-white/20 text-kihon-gray-light font-semibold py-2 px-4 rounded-lg text-sm transition-all"
             >
-              <FaFilePdf size={14} />
-              <span>Salvar PDF</span>
+              <FaPrint size={13} />
+              <span>Imprimir</span>
+            </button>
+
+            <button
+              onClick={handleExportPDF}
+              disabled={gerandoPDF}
+              className="flex items-center gap-2 bg-kihon-red hover:bg-kihon-red/90 disabled:opacity-60 disabled:cursor-wait text-white font-semibold py-2 px-4 rounded-lg text-sm transition-all shadow hover:shadow-lg"
+            >
+              {gerandoPDF ? <FaSpinner size={14} className="animate-spin" /> : <FaFilePdf size={14} />}
+              <span>{gerandoPDF ? 'Gerando...' : 'Baixar PDF'}</span>
             </button>
           </div>
         </div>
@@ -535,7 +673,7 @@ export default function Orcamento() {
               <span className="text-xs font-semibold text-kihon-gray-medium uppercase tracking-wider flex items-center gap-1.5">
                 <FaEye size={11} /> Pré-visualização
               </span>
-              <span className="text-xs text-kihon-gray-medium">Clique em "Salvar PDF" para exportar</span>
+              <span className="text-xs text-kihon-gray-medium">Clique em "Baixar PDF" para exportar</span>
             </div>
 
             {/* Documento */}
@@ -566,8 +704,8 @@ export default function Orcamento() {
                 />
                 <div className="relative z-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                   <div>
-                    <div className="flex items-center gap-3">
-                      <KihonLogo size="default" color="light" className="h-10 w-auto" />
+                    <div className="flex items-center gap-2">
+                      <KihonLogo size="default" color="light" className="h-10 w-auto -mr-7" />
                       {form.propostaConjunta && (
                         <>
                           <span className="text-kihon-gray-medium text-2xl font-light leading-none">×</span>
@@ -596,7 +734,7 @@ export default function Orcamento() {
               {/* Faixa vermelha */}
               <div className="h-1 bg-kihon-red" />
 
-              <div className="px-8 py-7 space-y-7">
+              <div className="px-8 py-7 space-y-6" data-pdf-content>
 
                 {/* Dados cliente + validade */}
                 <div className="grid sm:grid-cols-2 gap-6">
@@ -646,7 +784,7 @@ export default function Orcamento() {
                       {form.tiposServico.map((t) => (
                         <span
                           key={t}
-                          className="inline-block bg-kihon-red/10 text-kihon-red text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wide"
+                          className="inline-flex items-center bg-kihon-red/10 text-kihon-red text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wide leading-none"
                         >
                           {t}
                         </span>
@@ -679,25 +817,48 @@ export default function Orcamento() {
                 )}
 
                 {/* Investimento */}
-                <div className="bg-gray-50 rounded-xl p-5 border border-gray-200">
-                  <SectionTitle>Investimento</SectionTitle>
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <div className="space-y-2 flex-1">
-                      {form.formaPagamento && (
-                        <Row label="Forma de pagamento" value={form.formaPagamento} />
-                      )}
-                      {form.prazoExecucao && (
-                        <Row label="Prazo de execução" value={form.prazoExecucao} />
-                      )}
+                <div className="bg-kihon-dark rounded-xl p-6 relative overflow-hidden">
+                  <div
+                    className="absolute inset-0 opacity-[0.06]"
+                    style={{
+                      backgroundImage: `radial-gradient(circle, #E53935 1px, transparent 1px)`,
+                      backgroundSize: '16px 16px',
+                    }}
+                  />
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="w-3 h-3 bg-kihon-red rounded-sm flex-shrink-0" />
+                      <h3 className="text-xs font-bold text-white uppercase tracking-widest">Investimento</h3>
+                      <div className="flex-1 h-px bg-white/15" />
                     </div>
-                    <div className="text-right sm:text-right border-t sm:border-t-0 sm:border-l border-gray-200 sm:pl-6 pt-3 sm:pt-0">
-                      <p className="text-xs font-semibold text-kihon-gray-medium uppercase tracking-wide mb-1">Valor Total</p>
-                      {valorDisplay ? (
-                        <p className="text-3xl font-bold text-kihon-dark font-display">{valorDisplay}</p>
-                      ) : (
-                        <p className="text-3xl font-bold text-gray-300 font-display">R$ —</p>
-                      )}
-                    </div>
+
+                    {form.formaPagamento || form.prazoExecucao ? (
+                      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
+                        <div className="space-y-2 flex-1">
+                          {form.formaPagamento && (
+                            <RowDark label="Forma de pagamento" value={form.formaPagamento} />
+                          )}
+                          {form.prazoExecucao && (
+                            <RowDark label="Prazo de execução" value={form.prazoExecucao} />
+                          )}
+                        </div>
+                        <div className="text-left sm:text-right border-t sm:border-t-0 sm:border-l border-white/15 sm:pl-6 pt-4 sm:pt-0">
+                          <p className="text-[10px] font-semibold text-kihon-gray-medium uppercase tracking-widest mb-1">Valor Total</p>
+                          <p className="text-4xl font-bold text-white font-display leading-none">
+                            {valorDisplay || 'R$ —'}
+                          </p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="flex items-center justify-between gap-4">
+                        <p className="text-[10px] font-semibold text-kihon-gray-medium uppercase tracking-widest">
+                          Valor Total do Investimento
+                        </p>
+                        <p className="text-4xl font-bold text-white font-display leading-none">
+                          {valorDisplay || 'R$ —'}
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -722,8 +883,10 @@ export default function Orcamento() {
                     {form.propostaConjunta && (
                       <div>
                         <div className="border-b-2 border-kihon-dark/20 mb-3 h-12" />
-                        <p className="text-sm font-semibold text-kihon-dark">{form.parceiroNome || 'Workenge'}</p>
-                        <p className="text-xs text-kihon-gray-medium">{form.parceiroSegmento || 'Engenharia de Mercado'}</p>
+                        <p className="text-sm font-semibold text-kihon-dark">{WORKENGE_RESPONSAVEL}</p>
+                        <p className="text-xs text-kihon-gray-medium">
+                          {form.parceiroSegmento || 'Engenharia de Mercado'} — {form.parceiroNome || 'Workenge'}
+                        </p>
                       </div>
                     )}
                     <div>
@@ -738,7 +901,7 @@ export default function Orcamento() {
               </div>
 
               {/* Rodapé do documento */}
-              <div className="bg-kihon-dark px-8 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              <div className="bg-kihon-dark px-8 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2" data-pdf-footer>
                 <div className="flex items-center gap-4 text-xs text-kihon-gray-medium">
                   {form.emailContato && <span>{form.emailContato}</span>}
                   {form.telefoneContato && <span>{form.telefoneContato}</span>}
@@ -863,6 +1026,15 @@ function Row({ label, value, highlight }) {
     <div className="flex justify-between items-center gap-2">
       <span className="text-kihon-gray-medium text-xs">{label}</span>
       <span className={`text-sm font-semibold ${highlight ? 'text-kihon-red' : 'text-kihon-dark'}`}>{value}</span>
+    </div>
+  )
+}
+
+function RowDark({ label, value }) {
+  return (
+    <div className="flex justify-between items-center gap-3">
+      <span className="text-kihon-gray-medium text-xs">{label}</span>
+      <span className="text-sm font-semibold text-white text-right">{value}</span>
     </div>
   )
 }
