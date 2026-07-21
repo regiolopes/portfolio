@@ -65,7 +65,7 @@ const Footer = () => {
                 <FaLinkedin size={24} />
               </motion.a>
               <motion.a
-                href="mailto:regiolofilho@gmail.com"
+                href="mailto:regio.lopes@kihon.dev.br"
                 className="text-gray-400 hover:text-white transition-colors duration-200"
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}

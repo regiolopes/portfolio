@@ -1,90 +1,165 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Fontes carregadas em index.html (preconnect + display=swap) para não bloquear a renderização. */
+
 @layer base {
+  :root {
+    color-scheme: light;
+  }
+  .dark {
+    color-scheme: dark;
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
     text-rendering: optimizeLegibility;
-    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-200;
+    @apply bg-kihon-paper text-kihon-ink dark:bg-gray-900 dark:text-white transition-colors duration-200;
   }
-  
+
   * {
     -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Foco visível consistente para toda a navegação por teclado */
+  :focus-visible {
+    outline: 2px solid theme('colors.kihon.red');
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: theme('colors.kihon.red');
+    color: #fff;
+  }
+
+  /* Âncoras de heading não ficam escondidas sob o header fixo */
+  :where(h1, h2, h3, [id]) {
+    scroll-margin-top: 6rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
   }
 }
 
 @layer components {
-  .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl text-sm md:text-base transform hover:scale-105;
+  /* ───────────────────────── Layout ───────────────────────── */
+  .container-max {
+    @apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-8;
   }
-  
-  .btn-secondary {
-    @apply bg-transparent hover:bg-primary-50 dark:hover:bg-primary-900/20 text-primary-600 dark:text-primary-400 font-semibold py-3 px-6 rounded-lg transition-all duration-200 border border-primary-600 dark:border-primary-400 text-sm md:text-base transform hover:scale-105;
+  .container-kihon {
+    @apply max-w-6xl mx-auto px-5 sm:px-6 lg:px-8;
   }
-  
-  .card {
-    @apply bg-white dark:bg-gray-800 rounded-xl shadow-soft hover:shadow-medium transition-all duration-300 border border-gray-100 dark:border-gray-700 transform hover:scale-102;
-  }
-  
   .section-padding {
     @apply py-12 md:py-16 lg:py-24 px-4 sm:px-6 lg:px-8;
   }
-  
-  .container-max {
-    @apply max-w-7xl mx-auto px-4 md:px-6 lg:px-8;
+  .section-kihon {
+    @apply py-16 sm:py-20 lg:py-28;
   }
-  
-  /* Kihon specific styles */
+
+  /* ─────────────────────── Skip link (a11y) ─────────────────── */
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100]
+           focus:rounded-lg focus:bg-kihon-ink focus:px-4 focus:py-3 focus:text-sm
+           focus:font-semibold focus:text-kihon-paper focus:shadow-lift;
+  }
+
+  /* ─────────────────────── Eyebrow / rótulo ─────────────────── */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 font-mono text-xs font-medium uppercase tracking-eyebrow text-kihon-muted;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply inline-block h-2 w-2 rounded-sm bg-kihon-red;
+  }
+  .eyebrow-on-ink {
+    @apply text-kihon-chalk;
+  }
+
+  /* ───────────────────────── Botões ─────────────────────────── */
+  .btn-kihon {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-kihon-red px-6 py-3.5
+           font-sans text-sm font-semibold text-white shadow-red transition-[transform,background-color,box-shadow]
+           duration-200 hover:-translate-y-0.5 hover:bg-[#c62b28] active:translate-y-0
+           focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-kihon-red/35 md:text-base;
+    touch-action: manipulation;
+  }
+  .btn-kihon-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-kihon-ink/20 bg-transparent
+           px-6 py-3.5 font-sans text-sm font-semibold text-kihon-ink transition-colors duration-200
+           hover:border-kihon-ink/40 hover:bg-kihon-ink/[0.04]
+           focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-kihon-ink/20 md:text-base;
+    touch-action: manipulation;
+  }
+  .btn-kihon-on-ink {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-transparent
+           px-6 py-3.5 font-sans text-sm font-semibold text-kihon-paper transition-colors duration-200
+           hover:border-white/60 hover:bg-white/[0.06]
+           focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/25 md:text-base;
+    touch-action: manipulation;
+  }
+  .btn-kihon-light {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-kihon-paper px-6 py-3.5
+           font-sans text-sm font-semibold text-kihon-ink shadow-lg transition-[transform,box-shadow] duration-200
+           hover:-translate-y-0.5 hover:shadow-xl focus-visible:outline-none focus-visible:ring-4
+           focus-visible:ring-white/40 md:text-base;
+    touch-action: manipulation;
+  }
+
+  /* ─────────────────── Cartão base (dojo) ───────────────────── */
+  .card-kihon {
+    @apply rounded-2xl border border-kihon-line bg-white shadow-card transition-[transform,box-shadow,border-color]
+           duration-300 hover:-translate-y-1 hover:border-kihon-red/30 hover:shadow-medium;
+  }
+
+  /* Regra brush fina (divisor de seção) */
+  .rule-kihon {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-kihon-line to-transparent;
+  }
+
+  /* ───────────────── Legado (páginas não reconstruídas) ──────── */
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl text-sm md:text-base transform hover:scale-105;
+  }
+  .btn-secondary {
+    @apply bg-transparent hover:bg-primary-50 dark:hover:bg-primary-900/20 text-primary-600 dark:text-primary-400 font-semibold py-3 px-6 rounded-lg transition-all duration-200 border border-primary-600 dark:border-primary-400 text-sm md:text-base transform hover:scale-105;
+  }
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-soft hover:shadow-medium transition-all duration-300 border border-gray-100 dark:border-gray-700 transform hover:scale-102;
+  }
   .btn-kihon-primary {
     @apply bg-kihon-red hover:bg-kihon-red/90 text-kihon-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl;
   }
-  
   .btn-kihon-secondary {
     @apply bg-transparent hover:bg-kihon-dark/50 text-kihon-gray-light border-2 border-kihon-gray-medium hover:border-kihon-red font-semibold py-3 px-6 rounded-lg transition-all duration-200;
   }
 }
 
-/* Carrosséis infinitos (Stacks) — keyframes próprios para não depender de classes Tailwind dinâmicas */
+/* Carrosséis infinitos (Stacks) — keyframes próprios p/ não depender de classes Tailwind dinâmicas */
 @layer utilities {
   @keyframes kihon-stack-marquee {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-    100% {
-      transform: translate3d(-50%, 0, 0);
-    }
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
   }
-
-  .kihon-stack-marquee {
-    animation: kihon-stack-marquee 50s linear infinite;
-    will-change: transform;
-  }
-
-  .kihon-stack-marquee-rev {
-    animation: kihon-stack-marquee 50s linear infinite reverse;
-    will-change: transform;
-  }
-
-  .kihon-stack-marquee-slow {
-    animation: kihon-stack-marquee 65s linear infinite;
-    will-change: transform;
-  }
-
-  .kihon-stack-marquee-slow-rev {
-    animation: kihon-stack-marquee 65s linear infinite reverse;
-    will-change: transform;
-  }
+  .kihon-stack-marquee { animation: kihon-stack-marquee 50s linear infinite; will-change: transform; }
+  .kihon-stack-marquee-rev { animation: kihon-stack-marquee 50s linear infinite reverse; will-change: transform; }
+  .kihon-stack-marquee-slow { animation: kihon-stack-marquee 65s linear infinite; will-change: transform; }
+  .kihon-stack-marquee-slow-rev { animation: kihon-stack-marquee 65s linear infinite reverse; will-change: transform; }
 
   @media (prefers-reduced-motion: reduce) {
     .kihon-stack-marquee,
@@ -95,6 +170,28 @@
       will-change: auto;
     }
   }
+
+  /* esconde a scrollbar mantendo o scroll (carrosséis) */
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* traço de pincel (assinatura) — desenha o stroke */
+  .brush-path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: brushDraw 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.25s both;
+  }
+  @keyframes brushDraw {
+    to { stroke-dashoffset: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .brush-path { animation: none; stroke-dashoffset: 0; }
+  }
 }
 
 /* ── CSS de Impressão / Exportar PDF ── */
@@ -104,17 +201,8 @@
     print-color-adjust: exact !important;
     color-adjust: exact !important;
   }
-
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: white !important;
-  }
-
-  .no-print {
-    display: none !important;
-  }
-
+  html, body { margin: 0; padding: 0; background: white !important; }
+  .no-print { display: none !important; }
   #proposta-kihon {
     box-shadow: none !important;
     border-radius: 0 !important;
@@ -122,8 +210,5 @@
     margin: 0 !important;
     page-break-inside: avoid;
   }
-
-  .print-area {
-    display: block !important;
-  }
+  .print-area { display: block !important; }
 }

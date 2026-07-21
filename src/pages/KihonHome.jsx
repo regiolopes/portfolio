@@ -1,34 +1,27 @@
 import React from 'react'
-import KihonHeader from '../components/kihon/KihonHeader'
-import KihonFooter from '../components/kihon/KihonFooter'
+import KihonLayout from '../components/kihon/KihonLayout'
 import KihonHero from '../components/kihon/KihonHero'
+import TrustedBy from '../components/kihon/TrustedBy'
 import WhyKihon from '../components/kihon/WhyKihon'
 import ServicesHighlight from '../components/kihon/ServicesHighlight'
-import TrustedBy from '../components/kihon/TrustedBy'
-import Philosophy from '../components/kihon/Philosophy'
+import ResultsStrip from '../components/kihon/ResultsStrip'
+import Process from '../components/kihon/Process'
 import TechnologiesStack from '../components/kihon/TechnologiesStack'
-// import CasesHighlight from '../components/kihon/CasesHighlight' // TODO: melhorar seção Cases/Resultados e reativar
 import FinalCTA from '../components/kihon/FinalCTA'
 
 function KihonHome() {
   return (
-    <div className="min-h-screen bg-kihon-white">
-      <KihonHeader />
-      <main>
-        <KihonHero />
-        <TrustedBy />
-        <WhyKihon />
-        <ServicesHighlight />
-        <Philosophy />
-        <TechnologiesStack />
-        {/* Cases / Resultados — desativado temporariamente; reativar: import + <CasesHighlight /> */}
-        {/* <CasesHighlight /> */}
-        <FinalCTA />
-      </main>
-      <KihonFooter />
-    </div>
+    <KihonLayout padTop={false}>
+      <KihonHero />
+      <TrustedBy />
+      <WhyKihon />
+      <ServicesHighlight />
+      <ResultsStrip />
+      <Process />
+      <TechnologiesStack />
+      <FinalCTA />
+    </KihonLayout>
   )
 }
 
 export default KihonHome
-

@@ -1,80 +1,84 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
+import { HiArrowRight } from 'react-icons/hi'
+import BrushStroke from './BrushStroke'
 
 const KihonHero = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  }
-
-  const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1]
-      }
-    }
-  }
+  const reduce = useReducedMotion()
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-kihon-black relative overflow-hidden">
-      {/* Background Pattern - sutil */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}></div>
-      </div>
+    <section className="relative isolate overflow-hidden bg-kihon-ink">
+      {/* Kanji watermark — atmosfera 基本 (fundamentos) */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-6 top-1/2 hidden -translate-y-1/2 select-none font-display text-[34rem] font-bold leading-none text-white/[0.03] sm:block"
+        style={{ fontFamily: "'Yu Gothic', 'Hiragino Sans', 'Noto Sans JP', serif" }}
+      >
+        基
+      </span>
+      {/* Brilho vermelho sutil */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-40 top-0 h-[38rem] w-[38rem] rounded-full bg-kihon-red/10 blur-[120px]"
+      />
+      {/* Grade fina */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.4]"
+        style={{
+          backgroundImage:
+            'linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)',
+          backgroundSize: '64px 64px',
+          maskImage: 'radial-gradient(ellipse 80% 60% at 50% 40%, #000 40%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 80% 60% at 50% 40%, #000 40%, transparent 100%)',
+        }}
+      />
 
-      <div className="container-max relative z-10 text-center px-4 sm:px-6 lg:px-8">
+      <div className="container-max relative z-10 flex min-h-[calc(100svh-4rem)] flex-col justify-center py-24 md:min-h-[calc(100svh-5rem)]">
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="max-w-4xl mx-auto"
+          initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-3xl"
         >
-          <motion.h1
-            variants={itemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-kihon-white mb-6 leading-tight"
-          >
-            O básico bem feito.
-            <br />
-            <span className="text-kihon-red">Tecnologia com fundamentos sólidos.</span>
-          </motion.h1>
+          <span className="eyebrow eyebrow-on-ink mb-6">
+            基本 · Software · Dados · Automação
+          </span>
 
-          <motion.p
-            variants={itemVariants}
-            className="text-xl md:text-2xl text-kihon-gray-medium mb-10 max-w-3xl mx-auto leading-relaxed"
-          >
-            Desenvolvemos soluções digitais com foco em processos, performance e clareza – 
-            sem promessas vazias, só trabalho bem feito desde a base.
-          </motion.p>
+          <h1 className="text-balance font-display text-4xl font-bold leading-[1.05] tracking-tight text-kihon-paper sm:text-5xl lg:text-6xl xl:text-7xl">
+            O básico bem feito
+            <br className="hidden sm:block" />{' '}
+            vira{' '}
+            <span className="relative inline-block whitespace-nowrap text-kihon-red">
+              excelência
+              <BrushStroke className="absolute -bottom-1 left-0 h-3 w-full sm:h-4" />
+            </span>
+            .
+          </h1>
 
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
-            <Link
-              to="/contato"
-              className="bg-kihon-red hover:bg-kihon-red/90 text-kihon-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl text-lg transform hover:scale-105"
-            >
-              Fale com a Kihon
+          <p className="mt-7 max-w-2xl text-lg leading-relaxed text-kihon-chalk sm:text-xl">
+            Desenvolvemos software sob medida, engenharia de dados, BI e automação com processos
+            claros e performance real — sem modinha, sem promessa vazia. Só trabalho sólido, desde a
+            base.
+          </p>
+
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Link to="/contato" className="btn-kihon group px-7 py-4 text-base">
+              Começar um projeto
+              <HiArrowRight
+                className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                aria-hidden="true"
+              />
             </Link>
-            <Link
-              to="/servicos"
-              className="bg-transparent hover:bg-kihon-dark/50 text-kihon-gray-light border-2 border-kihon-gray-medium hover:border-kihon-red font-semibold py-4 px-8 rounded-lg transition-all duration-200 text-lg"
-            >
-              Veja nossos serviços
+            <Link to="/servicos" className="btn-kihon-on-ink px-7 py-4 text-base">
+              Ver serviços
             </Link>
-          </motion.div>
+          </div>
+
+          <p className="mt-10 font-mono text-xs uppercase tracking-eyebrow text-kihon-faint">
+            Clientes em educação · jurídico · contabilidade · varejo — Fortaleza-CE, todo o Brasil
+          </p>
         </motion.div>
       </div>
     </section>
@@ -82,4 +86,3 @@ const KihonHero = () => {
 }
 
 export default KihonHero
-

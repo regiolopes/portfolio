@@ -102,10 +102,10 @@ function SmartNotaExclusaoConta() {
                   <p className="mt-2 text-kihon-dark/90">
                     Se não houver opção no app ou se preferir o canal por escrito, envie mensagem para{' '}
                     <a
-                      href="mailto:contatokihon@gmail.com?subject=Smart%20Nota%20%E2%80%94%20Exclus%C3%A3o%20de%20conta%20e%20dados"
+                      href="mailto:regio.lopes@kihon.dev.br?subject=Smart%20Nota%20%E2%80%94%20Exclus%C3%A3o%20de%20conta%20e%20dados"
                       className="text-kihon-red hover:underline font-medium"
                     >
-                      contatokihon@gmail.com
+                      regio.lopes@kihon.dev.br
                     </a>{' '}
                     com o assunto sugerido: <strong>Smart Nota — Exclusão de conta e dados</strong>.
                   </p>
@@ -130,10 +130,10 @@ function SmartNotaExclusaoConta() {
               <p className="mt-6">
                 Dúvidas sobre privacidade ou encarregado (DPO):{' '}
                 <a
-                  href="mailto:regiolofilho@gmail.com"
+                  href="mailto:regio.lopes@kihon.dev.br"
                   className="text-kihon-red hover:underline font-medium"
                 >
-                  regiolofilho@gmail.com
+                  regio.lopes@kihon.dev.br
                 </a>{' '}
                 (Regio Lopes).
               </p>

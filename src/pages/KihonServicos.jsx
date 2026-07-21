@@ -1,258 +1,199 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { FaCode, FaDatabase, FaChartLine, FaCogs } from 'react-icons/fa'
-import KihonHeader from '../components/kihon/KihonHeader'
-import KihonFooter from '../components/kihon/KihonFooter'
+import { FaCode, FaDatabase, FaChartLine, FaGears } from 'react-icons/fa6'
+import { HiArrowRight, HiCheck } from 'react-icons/hi'
+import KihonLayout from '../components/kihon/KihonLayout'
+import PageHero from '../components/kihon/PageHero'
+import Reveal from '../components/kihon/Reveal'
+import FinalCTA from '../components/kihon/FinalCTA'
 
-function KihonServicos() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
-  }
+const services = [
+  {
+    id: 'full-stack',
+    icon: FaCode,
+    tag: 'Dev',
+    title: 'Desenvolvimento Full Stack',
+    description:
+      'Sistemas completos, do backend ao frontend, com arquitetura sólida e código limpo. Soluções sob medida que crescem com o seu negócio.',
+    idealFor: [
+      'Empresas que precisam de sistemas personalizados',
+      'Startups que buscam escalabilidade desde o início',
+      'Organizações que querem integrar processos digitais',
+    ],
+    howWeDo: [
+      'Análise de requisitos e arquitetura',
+      'Desenvolvimento ágil e iterativo',
+      'Testes e validação contínua',
+      'Deploy e monitoramento',
+    ],
+    deliverables: [
+      'Sistema completo e funcional',
+      'Documentação técnica',
+      'Código versionado e documentado',
+      'Treinamento e plano de manutenção',
+    ],
+  },
+  {
+    id: 'dados',
+    icon: FaDatabase,
+    tag: 'Dados',
+    title: 'Engenharia de Dados',
+    description:
+      'Data lakes, pipelines ETL e arquiteturas de dados escaláveis e eficientes. Organizamos seus dados para decisões estratégicas baseadas em informação real.',
+    idealFor: [
+      'Empresas com grandes volumes de dados',
+      'Organizações que integram fontes diversas',
+      'Negócios que buscam insight de dados históricos',
+    ],
+    howWeDo: [
+      'Mapeamento das fontes de dados',
+      'Arquitetura medallion (Bronze / Silver / Gold)',
+      'Implementação de pipelines ETL',
+      'Otimização de performance e monitoramento',
+    ],
+    deliverables: [
+      'Arquitetura de dados implementada',
+      'Pipelines ETL funcionais',
+      'Documentação da arquitetura',
+      'Dashboards de monitoramento',
+    ],
+  },
+  {
+    id: 'bi',
+    icon: FaChartLine,
+    tag: 'BI',
+    title: 'Business Intelligence',
+    description:
+      'Dashboards, relatórios automatizados e visualizações que transformam dados em insight acionável. Informação clara para a sua equipe decidir.',
+    idealFor: [
+      'Gestores que precisam de visibilidade sobre a operação',
+      'Equipes que lidam com múltiplas fontes de dados',
+      'Organizações que querem automatizar relatórios',
+    ],
+    howWeDo: [
+      'Levantamento das necessidades de informação',
+      'Modelagem de dados para BI',
+      'Desenvolvimento de dashboards',
+      'Automação de relatórios e treinamento',
+    ],
+    deliverables: [
+      'Dashboards interativos',
+      'Relatórios automatizados',
+      'Documentação de uso',
+      'Acessos e permissões configurados',
+    ],
+  },
+  {
+    id: 'automacao',
+    icon: FaGears,
+    tag: 'Automação',
+    title: 'Automação & Integração',
+    description:
+      'Integração de sistemas, automação de processos e otimização de workflows. Processos mais rápidos, com menos erro e mais produtividade.',
+    idealFor: [
+      'Empresas com processos manuais repetitivos',
+      'Organizações que usam múltiplos sistemas',
+      'Negócios que buscam eficiência operacional',
+    ],
+    howWeDo: [
+      'Mapeamento dos processos atuais',
+      'Identificação de oportunidades de automação',
+      'Desenvolvimento das integrações',
+      'Testes, deploy e monitoramento',
+    ],
+    deliverables: [
+      'Sistemas integrados',
+      'Processos automatizados',
+      'Documentação técnica',
+      'Monitoramento e plano de manutenção',
+    ],
+  },
+]
 
-  const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1]
-      }
-    }
-  }
-
-  const services = [
-    {
-      id: 1,
-      icon: FaCode,
-      title: 'Desenvolvimento Full Stack',
-      description: 'Sistemas completos, do backend ao frontend, com arquitetura sólida e código limpo. Desenvolvemos soluções personalizadas que crescem com seu negócio.',
-      idealFor: [
-        'Empresas que precisam de sistemas personalizados',
-        'Startups que buscam escalabilidade desde o início',
-        'Organizações que querem integrar processos digitais'
-      ],
-      howWeDo: [
-        'Análise de requisitos e arquitetura',
-        'Desenvolvimento ágil e iterativo',
-        'Testes e validação contínua',
-        'Deploy e monitoramento',
-        'Suporte e evolução contínua'
-      ],
-      deliverables: [
-        'Sistema completo funcional',
-        'Documentação técnica',
-        'Código versionado e documentado',
-        'Treinamento da equipe',
-        'Plano de manutenção'
-      ],
-      tag: 'Dev'
-    },
-    {
-      id: 2,
-      icon: FaDatabase,
-      title: 'Engenharia de Dados',
-      description: 'Data Lakes, pipelines ETL, arquiteturas de dados escaláveis e eficientes. Organizamos seus dados para que você tome decisões estratégicas baseadas em informação real.',
-      idealFor: [
-        'Empresas com grandes volumes de dados',
-        'Organizações que precisam de integração de fontes diversas',
-        'Negócios que buscam insights de dados históricos'
-      ],
-      howWeDo: [
-        'Mapeamento de fontes de dados',
-        'Design da arquitetura (Bronze/Silver/Gold)',
-        'Implementação de pipelines ETL',
-        'Otimização de performance',
-        'Monitoramento e manutenção'
-      ],
-      deliverables: [
-        'Arquitetura de dados implementada',
-        'Pipelines ETL funcionais',
-        'Documentação da arquitetura',
-        'Dashboards de monitoramento',
-        'Plano de evolução'
-      ],
-      tag: 'Dados'
-    },
-    {
-      id: 3,
-      icon: FaChartLine,
-      title: 'Business Intelligence',
-      description: 'Dashboards, relatórios automatizados e visualizações que transformam dados em insights acionáveis. Informação clara e objetiva para sua equipe tomar decisões.',
-      idealFor: [
-        'Gestores que precisam de visibilidade sobre operações',
-        'Equipes que trabalham com múltiplas fontes de dados',
-        'Organizações que querem automatizar relatórios'
-      ],
-      howWeDo: [
-        'Levantamento de necessidades de informação',
-        'Modelagem de dados para BI',
-        'Desenvolvimento de dashboards',
-        'Automação de relatórios',
-        'Treinamento e suporte'
-      ],
-      deliverables: [
-        'Dashboards interativos',
-        'Relatórios automatizados',
-        'Documentação de uso',
-        'Treinamento da equipe',
-        'Acesso e permissões configuradas'
-      ],
-      tag: 'BI'
-    },
-    {
-      id: 4,
-      icon: FaCogs,
-      title: 'Automação e Integração',
-      description: 'Integração de sistemas, automação de processos e otimização de workflows. Processos mais rápidos, menos erros, mais produtividade.',
-      idealFor: [
-        'Empresas com processos manuais repetitivos',
-        'Organizações que usam múltiplos sistemas',
-        'Negócios que buscam eficiência operacional'
-      ],
-      howWeDo: [
-        'Mapeamento de processos atuais',
-        'Identificação de oportunidades de automação',
-        'Desenvolvimento de integrações',
-        'Testes e validação',
-        'Deploy e monitoramento'
-      ],
-      deliverables: [
-        'Sistemas integrados',
-        'Processos automatizados',
-        'Documentação técnica',
-        'Monitoramento configurado',
-        'Plano de manutenção'
-      ],
-      tag: 'Automação'
-    }
-  ]
-
+const Column = ({ title, items, ordered }) => {
+  const List = ordered ? 'ol' : 'ul'
   return (
-    <div className="min-h-screen bg-kihon-white">
-      <KihonHeader />
-      <main className="pt-24">
-        {/* Hero Section */}
-        <section className="section-padding bg-kihon-dark text-kihon-white">
-          <div className="container-max">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="max-w-4xl mx-auto text-center"
-            >
-              <motion.h1
-                variants={itemVariants}
-                className="text-4xl md:text-5xl font-display font-bold mb-6"
-              >
-                Serviços
-              </motion.h1>
-              <motion.p
-                variants={itemVariants}
-                className="text-xl text-kihon-gray-medium leading-relaxed"
-              >
-                Não vendemos pacotes genéricos. Em cada serviço, o básico bem feito vem antes de qualquer modinha.
-              </motion.p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Services List */}
-        <section className="section-padding bg-kihon-white">
-          <div className="container-max">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-16"
-            >
-              {services.map((service) => (
-                <motion.div
-                  key={service.id}
-                  variants={itemVariants}
-                  className="bg-kihon-gray-light rounded-xl p-8 md:p-10"
-                >
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="text-kihon-red">
-                      <service.icon size={40} />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-4 mb-3">
-                        <h2 className="text-2xl md:text-3xl font-display font-bold text-kihon-dark">
-                          {service.title}
-                        </h2>
-                        <span className="px-3 py-1 bg-kihon-red text-kihon-white text-xs font-semibold rounded">
-                          {service.tag}
-                        </span>
-                      </div>
-                      <p className="text-lg text-kihon-dark leading-relaxed">
-                        {service.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-3 gap-6 mt-8">
-                    <div>
-                      <h3 className="font-semibold text-kihon-dark mb-3">Ideal para quem…</h3>
-                      <ul className="space-y-2">
-                        {service.idealFor.map((item, index) => (
-                          <li key={index} className="text-sm text-kihon-dark/80 flex items-start">
-                            <span className="text-kihon-red mr-2">•</span>
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-kihon-dark mb-3">Como fazemos</h3>
-                      <ol className="space-y-2">
-                        {service.howWeDo.map((item, index) => (
-                          <li key={index} className="text-sm text-kihon-dark/80 flex items-start">
-                            <span className="text-kihon-red mr-2">{index + 1}.</span>
-                            {item}
-                          </li>
-                        ))}
-                      </ol>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-kihon-dark mb-3">Entregáveis típicos</h3>
-                      <ul className="space-y-2">
-                        {service.deliverables.map((item, index) => (
-                          <li key={index} className="text-sm text-kihon-dark/80 flex items-start">
-                            <span className="text-kihon-red mr-2">•</span>
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="mt-8 pt-6 border-t border-kihon-gray-medium/30">
-                    <Link
-                      to="/contato"
-                      className="bg-kihon-red hover:bg-kihon-red/90 text-kihon-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl inline-block"
-                    >
-                      Quero conversar sobre esse serviço
-                    </Link>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-      </main>
-      <KihonFooter />
+    <div>
+      <h3 className="font-mono text-xs font-medium uppercase tracking-eyebrow text-kihon-muted">
+        {title}
+      </h3>
+      <List className="mt-4 space-y-2.5">
+        {items.map((item, i) => (
+          <li key={item} className="flex items-start gap-2.5 text-sm leading-relaxed text-kihon-muted">
+            {ordered ? (
+              <span className="mt-0.5 font-mono text-xs font-semibold text-kihon-red tabular-nums">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+            ) : (
+              <HiCheck className="mt-0.5 h-4 w-4 shrink-0 text-kihon-red" aria-hidden="true" />
+            )}
+            <span className="min-w-0">{item}</span>
+          </li>
+        ))}
+      </List>
     </div>
   )
 }
 
-export default KihonServicos
+function KihonServicos() {
+  return (
+    <KihonLayout>
+      <PageHero
+        eyebrow="Serviços"
+        title="Nada de pacote genérico. O básico bem feito vem primeiro."
+        lead="Em cada frente, os fundamentos vêm antes de qualquer camada nova — é o que faz a solução durar."
+      />
 
+      <section className="section-kihon bg-kihon-paper">
+        <div className="container-max space-y-8 lg:space-y-10">
+          {services.map((service) => (
+            <Reveal key={service.id} className="scroll-mt-28" >
+              <article
+                id={service.id}
+                className="overflow-hidden rounded-3xl border border-kihon-line bg-white shadow-card"
+              >
+                <div className="border-b border-kihon-line p-7 sm:p-9">
+                  <div className="flex items-start gap-4">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-kihon-red-tint text-kihon-red-ink">
+                      <service.icon className="h-6 w-6" aria-hidden="true" />
+                    </span>
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-center gap-3">
+                        <h2 className="font-display text-2xl font-bold text-kihon-ink sm:text-3xl">
+                          {service.title}
+                        </h2>
+                        <span className="rounded-md bg-kihon-ink px-2.5 py-1 font-mono text-[0.7rem] font-medium uppercase tracking-wide text-kihon-paper">
+                          {service.tag}
+                        </span>
+                      </div>
+                      <p className="mt-3 max-w-prose-kihon text-base leading-relaxed text-kihon-muted">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid gap-8 p-7 sm:p-9 md:grid-cols-3">
+                  <Column title="Ideal para quem…" items={service.idealFor} />
+                  <Column title="Como fazemos" items={service.howWeDo} ordered />
+                  <Column title="Entregáveis típicos" items={service.deliverables} />
+                </div>
+
+                <div className="border-t border-kihon-line bg-kihon-surface px-7 py-5 sm:px-9">
+                  <Link to="/contato" className="group inline-flex items-center gap-1.5 font-sans text-sm font-semibold text-kihon-red-ink">
+                    Conversar sobre {service.tag === 'Dev' ? 'desenvolvimento' : service.title.toLowerCase()}
+                    <HiArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </Link>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <FinalCTA />
+    </KihonLayout>
+  )
+}
+
+export default KihonServicos

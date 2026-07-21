@@ -150,7 +150,7 @@ const Hero = () => {
               <FaLinkedin size={24} />
             </motion.a>
             <motion.a
-              href="mailto:regiolofilho@gmail.com"
+              href="mailto:regio.lopes@kihon.dev.br"
               className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200"
               whileHover={{ scale: 1.2, y: -3 }}
               whileTap={{ scale: 0.9 }}

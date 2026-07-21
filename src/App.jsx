@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { MotionConfig } from 'framer-motion'
 import KihonHome from './pages/KihonHome'
 import KihonSobre from './pages/KihonSobre'
 import KihonServicos from './pages/KihonServicos'
@@ -12,8 +13,9 @@ import Orcamento from './pages/Orcamento'
 
 function App() {
   return (
-    <Router>
-      <Routes>
+    <MotionConfig reducedMotion="user">
+      <Router>
+        <Routes>
         <Route path="/" element={<KihonHome />} />
         <Route path="/sobre" element={<KihonSobre />} />
         <Route path="/servicos" element={<KihonServicos />} />
@@ -24,7 +26,8 @@ function App() {
         <Route path="/regiolopes" element={<PortfolioPessoal />} />
         <Route path="/orcamento" element={<Orcamento />} />
       </Routes>
-    </Router>
+      </Router>
+    </MotionConfig>
   )
 }
 

@@ -62,7 +62,7 @@ VITE_EMAILJS_PUBLIC_KEY=sua_public_key_aqui
 1. Execute `npm run dev`
 2. Preencha o formulário de contato
 3. Envie uma mensagem de teste
-4. Verifique se o email chegou em `regiolofilho@gmail.com`
+4. Verifique se o email chegou em `regio.lopes@kihon.dev.br`
 
 ## Nota de Segurança
 

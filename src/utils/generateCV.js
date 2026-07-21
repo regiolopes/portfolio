@@ -71,7 +71,7 @@ export const generateCV = async () => {
   // Informações de contato elegantes (sem símbolos problemáticos)
   doc.setTextColor(255, 255, 255)
   doc.setFontSize(8)
-  doc.text('Email: regiolofilho@gmail.com', 150, 16)
+  doc.text('Email: regio.lopes@kihon.dev.br', 150, 16)
   doc.text('WhatsApp: +55 (85) 99727-5766', 150, 21)
   doc.text('LinkedIn: linkedin.com/in/regiolopes', 150, 26)
   doc.text('GitHub: github.com/regiolopes', 150, 31)
@@ -463,7 +463,7 @@ Minha expertise inclui o desenvolvimento de APIs eficientes e seguras, utilizand
     // Informações de contato no rodapé (sem símbolos problemáticos)
     doc.setFontSize(7)
     doc.setTextColor(secondaryColor)
-    doc.text('Email: regiolofilho@gmail.com | WhatsApp: +55 (85) 99727-5766 | LinkedIn: linkedin.com/in/regiolopes', 105, 288, { align: 'center' })
+    doc.text('Email: regio.lopes@kihon.dev.br | WhatsApp: +55 (85) 99727-5766 | LinkedIn: linkedin.com/in/regiolopes', 105, 288, { align: 'center' })
     
     // Número da página
     doc.setTextColor(150, 150, 150)

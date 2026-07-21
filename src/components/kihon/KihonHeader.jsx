@@ -1,112 +1,114 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { HiMenuAlt4, HiX } from 'react-icons/hi'
 import { useScroll } from '../../hooks/useScroll'
 import KihonLogo from './KihonLogo'
 
-const KihonHeader = () => {
-  const isScrolled = useScroll(50)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const location = useLocation()
+const navItems = [
+  { name: 'Início', href: '/' },
+  { name: 'Sobre', href: '/sobre' },
+  { name: 'Serviços', href: '/servicos' },
+  { name: 'Cases', href: '/cases' },
+  { name: 'Contato', href: '/contato' },
+]
 
-  const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Sobre', href: '/sobre' },
-    { name: 'Serviços', href: '/servicos' },
-    { name: 'Cases', href: '/cases' },
-    { name: 'Contato', href: '/contato' },
-  ]
+const KihonHeader = () => {
+  const isScrolled = useScroll(24)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const location = useLocation()
+  const reduce = useReducedMotion()
 
   const isActive = (path) => location.pathname === path
 
+  // Trava o scroll do fundo enquanto o menu mobile está aberto
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isMenuOpen])
+
   return (
     <motion.header
-      initial={{ y: -100, opacity: 0 }}
+      initial={reduce ? false : { y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-kihon-dark/95 backdrop-blur-md shadow-lg' 
-          : 'bg-kihon-dark'
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,border-color] duration-300 ${
+        isScrolled || isMenuOpen
+          ? 'border-b border-white/10 bg-kihon-ink/95 shadow-lg backdrop-blur-md'
+          : 'border-b border-transparent bg-kihon-ink'
       }`}
     >
-      <nav className="container-max py-4 md:py-5 px-4 md:px-6">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center hover:opacity-90 transition-opacity">
-            <KihonLogo size="default" color="light" className="h-8 md:h-10 w-auto" />
+      <nav aria-label="Principal" className="container-max flex h-16 items-center justify-between md:h-20">
+        <Link
+          to="/"
+          className="flex items-center rounded-md transition-opacity hover:opacity-90"
+          aria-label="Kihon — página inicial"
+        >
+          <KihonLogo size="default" color="light" className="h-7 w-auto md:h-8" />
+        </Link>
+
+        {/* Navegação desktop */}
+        <div className="hidden items-center gap-1 md:flex">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              to={item.href}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+              className={`relative rounded-md px-3 py-2 font-sans text-sm font-medium transition-colors duration-200 ${
+                isActive(item.href)
+                  ? 'text-white'
+                  : 'text-kihon-chalk hover:text-white'
+              }`}
+            >
+              {item.name}
+              {isActive(item.href) && (
+                <span className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-kihon-red" aria-hidden="true" />
+              )}
+            </Link>
+          ))}
+          <Link to="/contato" className="btn-kihon ml-3 px-5 py-2.5 text-sm">
+            Falar com a Kihon
           </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, index) => (
-              <motion.div
-                key={item.name}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <Link
-                  to={item.href}
-                  className={`font-medium transition-all duration-200 ${
-                    isActive(item.href)
-                      ? 'text-kihon-red'
-                      : 'text-kihon-gray-light hover:text-kihon-red'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              </motion.div>
-            ))}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: navItems.length * 0.1 }}
-            >
-              <Link
-                to="/contato"
-                className="bg-kihon-red hover:bg-kihon-red/90 text-kihon-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
-              >
-                Fale com a gente
-              </Link>
-            </motion.div>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button
-              className="text-kihon-gray-light"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {isMobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
+        {/* Botão do menu mobile */}
+        <button
+          type="button"
+          className="inline-flex items-center justify-center rounded-lg p-2 text-kihon-chalk transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kihon-red md:hidden"
+          onClick={() => setIsMenuOpen((v) => !v)}
+          aria-expanded={isMenuOpen}
+          aria-controls="menu-mobile"
+          aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+        >
+          {isMenuOpen ? <HiX className="h-6 w-6" /> : <HiMenuAlt4 className="h-6 w-6" />}
+        </button>
+      </nav>
+
+      {/* Navegação mobile */}
+      <AnimatePresence>
+        {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0, y: -20 }}
-            animate={{ opacity: 1, height: 'auto', y: 0 }}
-            exit={{ opacity: 0, height: 0, y: -20 }}
+            id="menu-mobile"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden mt-4 pb-4 border-t border-kihon-gray-medium/30"
+            className="overflow-hidden border-t border-white/10 bg-kihon-ink md:hidden"
+            style={{ overscrollBehavior: 'contain' }}
           >
-            <div className="flex flex-col space-y-4 pt-4">
+            <div className="container-max flex flex-col gap-1 py-4">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`font-medium text-left transition-all duration-200 ${
+                  onClick={() => setIsMenuOpen(false)}
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  className={`rounded-lg px-3 py-3 font-sans text-base font-medium transition-colors ${
                     isActive(item.href)
-                      ? 'text-kihon-red'
-                      : 'text-kihon-gray-light hover:text-kihon-red'
+                      ? 'bg-white/5 text-white'
+                      : 'text-kihon-chalk hover:bg-white/5 hover:text-white'
                   }`}
                 >
                   {item.name}
@@ -114,18 +116,17 @@ const KihonHeader = () => {
               ))}
               <Link
                 to="/contato"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="bg-kihon-red hover:bg-kihon-red/90 text-kihon-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 text-center mt-2"
+                onClick={() => setIsMenuOpen(false)}
+                className="btn-kihon mt-3 w-full"
               >
-                Fale com a gente
+                Falar com a Kihon
               </Link>
             </div>
           </motion.div>
         )}
-      </nav>
+      </AnimatePresence>
     </motion.header>
   )
 }
 
 export default KihonHeader
-

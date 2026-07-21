@@ -92,10 +92,10 @@ function SmartNotaPrivacidade() {
               <p>
                 <strong>Encarregado de Proteção de Dados (DPO):</strong> Regio Lopes —{' '}
                 <a
-                  href="mailto:regiolofilho@gmail.com"
+                  href="mailto:regio.lopes@kihon.dev.br"
                   className="text-kihon-red hover:underline font-medium"
                 >
-                  regiolofilho@gmail.com
+                  regio.lopes@kihon.dev.br
                 </a>
               </p>
             </Section>
@@ -321,10 +321,10 @@ function SmartNotaPrivacidade() {
               <p className="mt-4">
                 Para exercer seus direitos ou esclarecer dúvidas sobre privacidade, utilize o e-mail{' '}
                 <a
-                  href="mailto:contatokihon@gmail.com"
+                  href="mailto:regio.lopes@kihon.dev.br"
                   className="text-kihon-red hover:underline font-medium"
                 >
-                  contatokihon@gmail.com
+                  regio.lopes@kihon.dev.br
                 </a>
                 . Responderemos em <strong>prazo razoável</strong>, em regra <strong>até 15 (quinze) dias</strong>, podendo
                 ser prorrogado por mais <strong>15 (quinze) dias</strong>, com justificativa, nos termos da LGPD, quando
@@ -391,19 +391,19 @@ function SmartNotaPrivacidade() {
                 <li>
                   <strong>E-mail para privacidade e direitos do titular:</strong>{' '}
                   <a
-                    href="mailto:contatokihon@gmail.com"
+                    href="mailto:regio.lopes@kihon.dev.br"
                     className="text-kihon-red hover:underline font-medium"
                   >
-                    contatokihon@gmail.com
+                    regio.lopes@kihon.dev.br
                   </a>
                 </li>
                 <li>
                   <strong>Encarregado (DPO):</strong> Regio Lopes —{' '}
                   <a
-                    href="mailto:regiolofilho@gmail.com"
+                    href="mailto:regio.lopes@kihon.dev.br"
                     className="text-kihon-red hover:underline font-medium"
                   >
-                    regiolofilho@gmail.com
+                    regio.lopes@kihon.dev.br
                   </a>
                 </li>
                 <li>

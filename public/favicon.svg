@@ -1,4 +1,5 @@
-<svg width="32" height="32" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Kanji 基本 sem círculo -->
-  <text x="25" y="32" font-family="serif, 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif" font-size="28" fill="#0F172A" text-anchor="middle" dominant-baseline="middle" font-weight="500">基本</text>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="56" height="56" rx="15" fill="#E53935"/>
+  <rect x="4.75" y="4.75" width="54.5" height="54.5" rx="14.25" stroke="#000" stroke-opacity="0.08" stroke-width="1.5"/>
+  <text x="32" y="35" font-family="'Yu Gothic', 'Hiragino Sans', 'Noto Sans JP', serif" font-size="36" fill="#FFFFFF" text-anchor="middle" dominant-baseline="central" font-weight="700">基</text>
 </svg>

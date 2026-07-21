@@ -1,398 +1,321 @@
-import React, { useState } from 'react'
-import { motion } from 'framer-motion'
-import { FaEnvelope, FaLinkedin, FaGithub, FaWhatsapp } from 'react-icons/fa'
+import React, { useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
-import KihonHeader from '../components/kihon/KihonHeader'
-import KihonFooter from '../components/kihon/KihonFooter'
+import { FaWhatsapp, FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa'
+import { HiCheckCircle, HiExclamationCircle } from 'react-icons/hi2'
+import KihonLayout from '../components/kihon/KihonLayout'
+import PageHero from '../components/kihon/PageHero'
+import Reveal from '../components/kihon/Reveal'
+import { WHATSAPP_URL } from '../components/kihon/WhatsAppFloat'
+
+const CONTACT_EMAIL = 'regio.lopes@kihon.dev.br'
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+const inputBase =
+  'w-full rounded-xl border bg-white px-4 py-3 font-sans text-base text-kihon-ink placeholder:text-kihon-faint transition-colors focus:outline-none focus:ring-2 focus:ring-kihon-red focus:border-transparent'
+
+const nextSteps = [
+  'Retorno o seu contato pessoalmente.',
+  'Entendemos juntos o desafio e o contexto.',
+  'Você recebe uma proposta clara, sem enrolação.',
+]
 
 function KihonContato() {
-  const [formData, setFormData] = useState({
+  const [form, setForm] = useState({
     nome: '',
     email: '',
-    empresa: '',
     telefone: '',
-    cargo: '',
-    orcamento: '',
-    prazo: '',
+    empresa: '',
     assunto: '',
     mensagem: '',
-    newsletter: false
   })
-
+  const [errors, setErrors] = useState({})
+  const [status, setStatus] = useState(null) // 'success' | 'error' | null
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState(null)
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
+  const refs = {
+    nome: useRef(null),
+    email: useRef(null),
+    mensagem: useRef(null),
+  }
+
+  const setField = (name, value) => {
+    setForm((prev) => ({ ...prev, [name]: value }))
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: undefined }))
+  }
+
+  const validate = () => {
+    const e = {}
+    if (!form.nome.trim()) e.nome = 'Informe o seu nome.'
+    if (!form.email.trim()) e.email = 'Informe o seu e-mail.'
+    else if (!EMAIL_RE.test(form.email.trim())) e.email = 'E-mail inválido. Verifique e tente novamente.'
+    if (!form.mensagem.trim()) e.mensagem = 'Conte, mesmo que em uma linha, qual é o desafio.'
+    return e
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    setStatus(null)
+
+    const e = validate()
+    if (Object.keys(e).length > 0) {
+      setErrors(e)
+      const firstInvalid = ['nome', 'email', 'mensagem'].find((k) => e[k])
+      refs[firstInvalid]?.current?.focus()
+      return
     }
-  }
 
-  const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1]
-      }
-    }
-  }
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }))
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
     setIsSubmitting(true)
-    setSubmitStatus(null)
-
     try {
-      // Configuração do EmailJS
-      // Você precisará criar uma conta em https://www.emailjs.com/
-      // e configurar as variáveis de ambiente ou usar as chaves diretamente
       const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID'
       const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID'
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
 
-      // Template parameters para o EmailJS
-      const templateParams = {
-        from_name: formData.nome,
-        from_email: formData.email,
-        empresa: formData.empresa || 'Não informado',
-        telefone: formData.telefone || 'Não informado',
-        cargo: formData.cargo || 'Não informado',
-        orcamento: formData.orcamento || 'Não informado',
-        prazo: formData.prazo || 'Não informado',
-        assunto: formData.assunto || 'Não especificado',
-        message: formData.mensagem,
-        newsletter: formData.newsletter ? 'Sim' : 'Não',
-        to_email: 'regiolofilho@gmail.com'
-      }
-
-      // Enviar email via EmailJS
-      await emailjs.send(serviceID, templateID, templateParams, publicKey)
-
+      await emailjs.send(
+        serviceID,
+        templateID,
+        {
+          from_name: form.nome,
+          from_email: form.email,
+          telefone: form.telefone || 'Não informado',
+          empresa: form.empresa || 'Não informado',
+          assunto: form.assunto || 'Não especificado',
+          message: form.mensagem,
+          cargo: 'Não informado',
+          orcamento: 'Não informado',
+          prazo: 'Não informado',
+          newsletter: 'Não',
+          to_email: CONTACT_EMAIL,
+        },
+        publicKey
+      )
+      setStatus('success')
+      setForm({ nome: '', email: '', telefone: '', empresa: '', assunto: '', mensagem: '' })
+    } catch (err) {
+      console.error('Erro ao enviar mensagem:', err)
+      setStatus('error')
+    } finally {
       setIsSubmitting(false)
-      setSubmitStatus('success')
-      setFormData({
-        nome: '',
-        email: '',
-        empresa: '',
-        telefone: '',
-        cargo: '',
-        orcamento: '',
-        prazo: '',
-        assunto: '',
-        mensagem: '',
-        newsletter: false
-      })
-    } catch (error) {
-      console.error('Erro ao enviar email:', error)
-      setIsSubmitting(false)
-      setSubmitStatus('error')
     }
   }
 
+  const FieldError = ({ id, children }) =>
+    children ? (
+      <p id={id} className="mt-1.5 flex items-center gap-1.5 text-sm text-kihon-red-ink">
+        <HiExclamationCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
+        {children}
+      </p>
+    ) : null
+
   return (
-    <div className="min-h-screen bg-kihon-white">
-      <KihonHeader />
-      <main className="pt-24">
-        {/* Hero Section */}
-        <section className="section-padding bg-kihon-dark text-kihon-white">
-          <div className="container-max">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="max-w-4xl mx-auto text-center"
-            >
-              <motion.h1
-                variants={itemVariants}
-                className="text-4xl md:text-5xl font-display font-bold mb-6"
-              >
-                Contato
-              </motion.h1>
-              <motion.p
-                variants={itemVariants}
-                className="text-xl text-kihon-gray-medium leading-relaxed"
-              >
-                Conte pra gente qual é o seu desafio. A gente começa arrumando a base.
-              </motion.p>
-            </motion.div>
-          </div>
-        </section>
+    <KihonLayout>
+      <PageHero
+        eyebrow="Contato"
+        title="Conte qual é o seu desafio. A gente começa pela base."
+        lead="Sem formulário quilométrico: nome, e-mail e uma linha sobre o que você precisa já bastam para começarmos."
+      />
 
-        {/* Contact Form */}
-        <section className="section-padding bg-kihon-white">
-          <div className="container-max">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="max-w-3xl mx-auto"
-            >
-              <motion.div
-                variants={itemVariants}
-                className="bg-kihon-gray-light rounded-xl p-6 sm:p-8 md:p-10"
-              >
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="nome" className="block text-sm font-semibold text-kihon-dark mb-2">
-                        Nome *
-                      </label>
-                      <input
-                        type="text"
-                        id="nome"
-                        name="nome"
-                        required
-                        value={formData.nome}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-kihon-gray-medium/30 bg-kihon-white text-kihon-dark focus:outline-none focus:ring-2 focus:ring-kihon-red focus:border-transparent"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-semibold text-kihon-dark mb-2">
-                        E-mail *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-kihon-gray-medium/30 bg-kihon-white text-kihon-dark focus:outline-none focus:ring-2 focus:ring-kihon-red focus:border-transparent"
-                      />
-                    </div>
-                  </div>
+      <section className="section-kihon bg-kihon-paper">
+        <div className="container-max grid gap-10 lg:grid-cols-12 lg:gap-12">
+          {/* Formulário */}
+          <Reveal className="lg:col-span-7">
+            <form onSubmit={handleSubmit} noValidate className="rounded-3xl border border-kihon-line bg-white p-6 shadow-card sm:p-8">
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div className="sm:col-span-1">
+                  <label htmlFor="nome" className="mb-2 block text-sm font-semibold text-kihon-ink">
+                    Nome <span className="text-kihon-red">*</span>
+                  </label>
+                  <input
+                    ref={refs.nome}
+                    id="nome"
+                    name="nome"
+                    type="text"
+                    autoComplete="name"
+                    required
+                    value={form.nome}
+                    onChange={(ev) => setField('nome', ev.target.value)}
+                    aria-invalid={!!errors.nome}
+                    aria-describedby={errors.nome ? 'erro-nome' : undefined}
+                    className={`${inputBase} ${errors.nome ? 'border-kihon-red' : 'border-kihon-line'}`}
+                  />
+                  <FieldError id="erro-nome">{errors.nome}</FieldError>
+                </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="empresa" className="block text-sm font-semibold text-kihon-dark mb-2">
-                        Empresa
-                      </label>
-                      <input
-                        type="text"
-                        id="empresa"
-                        name="empresa"
-                        value={formData.empresa}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-kihon-gray-medium/30 bg-kihon-white text-kihon-dark focus:outline-none focus:ring-2 focus:ring-kihon-red focus:border-transparent"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="cargo" className="block text-sm font-semibold text-kihon-dark mb-2">
-                        Cargo / Função
-                      </label>
-                      <input
-                        type="text"
-                        id="cargo"
-                        name="cargo"
-                        value={formData.cargo}
-                        onChange={handleChange}
-                        placeholder="Ex: Gerente de TI, CEO, etc."
-                        className="w-full px-4 py-3 rounded-lg border border-kihon-gray-medium/30 bg-kihon-white text-kihon-dark focus:outline-none focus:ring-2 focus:ring-kihon-red focus:border-transparent"
-                      />
-                    </div>
-                  </div>
+                <div className="sm:col-span-1">
+                  <label htmlFor="email" className="mb-2 block text-sm font-semibold text-kihon-ink">
+                    E-mail <span className="text-kihon-red">*</span>
+                  </label>
+                  <input
+                    ref={refs.email}
+                    id="email"
+                    name="email"
+                    type="email"
+                    inputMode="email"
+                    autoComplete="email"
+                    spellCheck={false}
+                    required
+                    placeholder="voce@empresa.com.br"
+                    value={form.email}
+                    onChange={(ev) => setField('email', ev.target.value)}
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? 'erro-email' : undefined}
+                    className={`${inputBase} ${errors.email ? 'border-kihon-red' : 'border-kihon-line'}`}
+                  />
+                  <FieldError id="erro-email">{errors.email}</FieldError>
+                </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="telefone" className="block text-sm font-semibold text-kihon-dark mb-2">
-                        Telefone / WhatsApp
-                      </label>
-                      <input
-                        type="tel"
-                        id="telefone"
-                        name="telefone"
-                        value={formData.telefone}
-                        onChange={handleChange}
-                        placeholder="(85) 99999-9999"
-                        className="w-full px-4 py-3 rounded-lg border border-kihon-gray-medium/30 bg-kihon-white text-kihon-dark focus:outline-none focus:ring-2 focus:ring-kihon-red focus:border-transparent"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="orcamento" className="block text-sm font-semibold text-kihon-dark mb-2">
-                        Orçamento Estimado
-                      </label>
-                      <select
-                        id="orcamento"
-                        name="orcamento"
-                        value={formData.orcamento}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-kihon-gray-medium/30 bg-kihon-white text-kihon-dark focus:outline-none focus:ring-2 focus:ring-kihon-red focus:border-transparent"
-                      >
-                        <option value="">Selecione uma faixa</option>
-                        <option value="ate-10k">Até R$ 10.000</option>
-                        <option value="10k-50k">R$ 10.000 - R$ 50.000</option>
-                        <option value="50k-100k">R$ 50.000 - R$ 100.000</option>
-                        <option value="acima-100k">Acima de R$ 100.000</option>
-                        <option value="a-definir">A definir</option>
-                      </select>
-                    </div>
-                  </div>
+                <div className="sm:col-span-1">
+                  <label htmlFor="telefone" className="mb-2 block text-sm font-semibold text-kihon-ink">
+                    WhatsApp <span className="font-normal text-kihon-faint">(opcional)</span>
+                  </label>
+                  <input
+                    id="telefone"
+                    name="telefone"
+                    type="tel"
+                    inputMode="tel"
+                    autoComplete="tel"
+                    placeholder="(85) 99999-9999"
+                    value={form.telefone}
+                    onChange={(ev) => setField('telefone', ev.target.value)}
+                    className={`${inputBase} border-kihon-line`}
+                  />
+                </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="prazo" className="block text-sm font-semibold text-kihon-dark mb-2">
-                        Prazo Desejado
-                      </label>
-                      <select
-                        id="prazo"
-                        name="prazo"
-                        value={formData.prazo}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-kihon-gray-medium/30 bg-kihon-white text-kihon-dark focus:outline-none focus:ring-2 focus:ring-kihon-red focus:border-transparent"
-                      >
-                        <option value="">Selecione um prazo</option>
-                        <option value="urgente">Urgente (até 1 mês)</option>
-                        <option value="curto">Curto prazo (1-3 meses)</option>
-                        <option value="medio">Médio prazo (3-6 meses)</option>
-                        <option value="longo">Longo prazo (6+ meses)</option>
-                        <option value="flexivel">Flexível</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="assunto" className="block text-sm font-semibold text-kihon-dark mb-2">
-                        Assunto
-                      </label>
-                      <select
-                        id="assunto"
-                        name="assunto"
-                        value={formData.assunto}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-kihon-gray-medium/30 bg-kihon-white text-kihon-dark focus:outline-none focus:ring-2 focus:ring-kihon-red focus:border-transparent"
-                      >
-                        <option value="">Selecione um assunto</option>
-                        <option value="novo-projeto">Novo projeto</option>
-                        <option value="consultoria">Consultoria</option>
-                        <option value="parceria">Parceria</option>
-                        <option value="suporte">Suporte técnico</option>
-                        <option value="orcamento">Orçamento</option>
-                        <option value="duvida">Dúvida</option>
-                        <option value="outro">Outro</option>
-                      </select>
-                    </div>
-                  </div>
+                <div className="sm:col-span-1">
+                  <label htmlFor="empresa" className="mb-2 block text-sm font-semibold text-kihon-ink">
+                    Empresa <span className="font-normal text-kihon-faint">(opcional)</span>
+                  </label>
+                  <input
+                    id="empresa"
+                    name="empresa"
+                    type="text"
+                    autoComplete="organization"
+                    value={form.empresa}
+                    onChange={(ev) => setField('empresa', ev.target.value)}
+                    className={`${inputBase} border-kihon-line`}
+                  />
+                </div>
 
-
-                  <div>
-                    <label htmlFor="mensagem" className="block text-sm font-semibold text-kihon-dark mb-2">
-                      Mensagem *
-                    </label>
-                    <textarea
-                      id="mensagem"
-                      name="mensagem"
-                      required
-                      rows={6}
-                      value={formData.mensagem}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-kihon-gray-medium/30 bg-kihon-white text-kihon-dark focus:outline-none focus:ring-2 focus:ring-kihon-red focus:border-transparent resize-none"
-                    />
-                  </div>
-
-                  <div className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id="newsletter"
-                      name="newsletter"
-                      checked={formData.newsletter}
-                      onChange={handleChange}
-                      className="w-4 h-4 text-kihon-red border-kihon-gray-medium/30 rounded focus:ring-kihon-red"
-                    />
-                    <label htmlFor="newsletter" className="ml-2 text-sm text-kihon-dark">
-                      Quero receber conteúdos da Kihon
-                    </label>
-                  </div>
-
-                  {submitStatus === 'success' && (
-                    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg">
-                      Mensagem enviada com sucesso! Entraremos em contato em breve.
-                    </div>
-                  )}
-
-                  {submitStatus === 'error' && (
-                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
-                      Erro ao enviar mensagem. Por favor, tente novamente ou entre em contato diretamente pelo WhatsApp ou email.
-                    </div>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-kihon-red hover:bg-kihon-red/90 text-kihon-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                <div className="sm:col-span-2">
+                  <label htmlFor="assunto" className="mb-2 block text-sm font-semibold text-kihon-ink">
+                    Assunto <span className="font-normal text-kihon-faint">(opcional)</span>
+                  </label>
+                  <select
+                    id="assunto"
+                    name="assunto"
+                    value={form.assunto}
+                    onChange={(ev) => setField('assunto', ev.target.value)}
+                    className={`${inputBase} appearance-none border-kihon-line bg-[length:1.25rem] bg-[right_0.85rem_center] bg-no-repeat pr-10`}
+                    style={{
+                      backgroundImage:
+                        "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236E6459' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M6 9l6 6 6-6'/%3E%3C/svg%3E\")",
+                    }}
                   >
-                    {isSubmitting ? 'Enviando...' : 'Enviar mensagem'}
-                  </button>
-                </form>
-              </motion.div>
+                    <option value="">Selecione (se quiser)</option>
+                    <option value="Novo projeto">Novo projeto</option>
+                    <option value="Engenharia de dados / BI">Engenharia de dados / BI</option>
+                    <option value="Automação / integração">Automação / integração</option>
+                    <option value="Consultoria">Consultoria</option>
+                    <option value="Parceria">Parceria</option>
+                    <option value="Outro">Outro</option>
+                  </select>
+                </div>
 
-              {/* Contact Info */}
-              <motion.div
-                variants={itemVariants}
-                className="mt-12 text-center"
-              >
-                <h3 className="text-2xl font-display font-bold text-kihon-dark mb-6">
-                  Outras formas de contato
-                </h3>
-                <div className="flex flex-col md:flex-row justify-center items-center gap-6 flex-wrap">
-                  <a
-                    href="https://wa.me/5585997275766"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl font-semibold"
-                  >
-                    <FaWhatsapp size={24} />
-                    <span>(85) 99727-5766</span>
+                <div className="sm:col-span-2">
+                  <label htmlFor="mensagem" className="mb-2 block text-sm font-semibold text-kihon-ink">
+                    Mensagem <span className="text-kihon-red">*</span>
+                  </label>
+                  <textarea
+                    ref={refs.mensagem}
+                    id="mensagem"
+                    name="mensagem"
+                    rows={5}
+                    required
+                    placeholder="Qual é o desafio? Pode ser em uma linha…"
+                    value={form.mensagem}
+                    onChange={(ev) => setField('mensagem', ev.target.value)}
+                    aria-invalid={!!errors.mensagem}
+                    aria-describedby={errors.mensagem ? 'erro-mensagem' : undefined}
+                    className={`${inputBase} resize-y ${errors.mensagem ? 'border-kihon-red' : 'border-kihon-line'}`}
+                  />
+                  <FieldError id="erro-mensagem">{errors.mensagem}</FieldError>
+                </div>
+              </div>
+
+              <div aria-live="polite">
+                {status === 'success' && (
+                  <div role="status" className="mt-5 flex items-start gap-2.5 rounded-xl border border-green-600/30 bg-green-50 px-4 py-3 text-sm text-green-800">
+                    <HiCheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-green-600" aria-hidden="true" />
+                    Mensagem enviada. Retorno o seu contato em breve — normalmente no mesmo dia útil.
+                  </div>
+                )}
+                {status === 'error' && (
+                  <div role="alert" className="mt-5 flex items-start gap-2.5 rounded-xl border border-kihon-red/30 bg-kihon-red-tint px-4 py-3 text-sm text-kihon-red-ink">
+                    <HiExclamationCircle className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
+                    Não consegui enviar agora. Tente novamente ou fale direto pelo WhatsApp.
+                  </div>
+                )}
+              </div>
+
+              <button type="submit" disabled={isSubmitting} className="btn-kihon mt-6 w-full py-4 text-base disabled:cursor-not-allowed disabled:opacity-60">
+                {isSubmitting ? 'Enviando…' : 'Enviar mensagem'}
+              </button>
+            </form>
+          </Reveal>
+
+          {/* Sidebar */}
+          <Reveal delay={0.1} className="lg:col-span-5">
+            <div className="space-y-6">
+              <div className="rounded-3xl border border-kihon-line bg-white p-6 shadow-card sm:p-7">
+                <h2 className="font-display text-xl font-bold text-kihon-ink">Prefere conversar direto?</h2>
+                <p className="mt-2 text-sm leading-relaxed text-kihon-muted">
+                  O WhatsApp é o caminho mais rápido — respondo pessoalmente.
+                </p>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#25D366] px-6 py-3.5 font-sans text-sm font-semibold text-white transition-colors hover:bg-[#1ebe5b] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/40"
+                >
+                  <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
+                  (85) 99727-5766
+                </a>
+                <div className="mt-5 space-y-3 border-t border-kihon-line pt-5 text-sm">
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-3 break-words text-kihon-muted transition-colors hover:text-kihon-red-ink">
+                    <FaEnvelope className="h-4 w-4 shrink-0 text-kihon-red" aria-hidden="true" />
+                    {CONTACT_EMAIL}
                   </a>
-                  <a
-                    href="mailto:regiolofilho@gmail.com"
-                    className="flex items-center gap-3 text-kihon-dark hover:text-kihon-red transition-colors"
-                  >
-                    <FaEnvelope size={24} />
-                    <span>regiolofilho@gmail.com</span>
+                  <a href="https://www.linkedin.com/in/regiolopes/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-kihon-muted transition-colors hover:text-kihon-red-ink">
+                    <FaLinkedin className="h-4 w-4 shrink-0 text-kihon-red" aria-hidden="true" />
+                    LinkedIn
                   </a>
-                  <a
-                    href="https://www.linkedin.com/in/regiolopes/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-kihon-dark hover:text-kihon-red transition-colors"
-                  >
-                    <FaLinkedin size={24} />
-                    <span>LinkedIn</span>
-                  </a>
-                  <a
-                    href="https://github.com/regiolopes"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-kihon-dark hover:text-kihon-red transition-colors"
-                  >
-                    <FaGithub size={24} />
-                    <span>GitHub</span>
+                  <a href="https://github.com/regiolopes" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-kihon-muted transition-colors hover:text-kihon-red-ink">
+                    <FaGithub className="h-4 w-4 shrink-0 text-kihon-red" aria-hidden="true" />
+                    GitHub
                   </a>
                 </div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-      </main>
-      <KihonFooter />
-    </div>
+              </div>
+
+              <div className="rounded-3xl border border-kihon-line bg-kihon-surface p-6 sm:p-7">
+                <h2 className="font-mono text-xs font-medium uppercase tracking-eyebrow text-kihon-muted">
+                  O que acontece depois
+                </h2>
+                <ol className="mt-4 space-y-3">
+                  {nextSteps.map((step, i) => (
+                    <li key={step} className="flex items-start gap-3 text-sm text-kihon-ink">
+                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-kihon-red font-mono text-xs font-semibold text-white tabular-nums">
+                        {i + 1}
+                      </span>
+                      {step}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </KihonLayout>
   )
 }
 
 export default KihonContato
-
