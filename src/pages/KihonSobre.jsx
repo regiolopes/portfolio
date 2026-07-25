@@ -7,6 +7,7 @@ import PageHero from '../components/kihon/PageHero'
 import SectionHeading from '../components/kihon/SectionHeading'
 import Reveal from '../components/kihon/Reveal'
 import Process from '../components/kihon/Process'
+import JointVenture from '../components/kihon/JointVenture'
 import FinalCTA from '../components/kihon/FinalCTA'
 
 const valores = [
@@ -135,6 +136,9 @@ function KihonSobre() {
           </Reveal>
         </div>
       </section>
+
+      {/* Joint venture Kihon × Workenge */}
+      <JointVenture />
 
       <FinalCTA />
     </KihonLayout>
