@@ -5,7 +5,7 @@ import { HiArrowRight } from 'react-icons/hi'
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
 
-export const services = [
+const services = [
   {
     icon: FaCode,
     title: 'Desenvolvimento Full Stack',

@@ -113,7 +113,7 @@ const About = () => {
             viewport={{ once: true }}
             className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6"
           >
-            {expertise.map((item, index) => (
+            {expertise.map((item) => (
               <motion.div
                 key={item.title}
                 variants={itemVariants}

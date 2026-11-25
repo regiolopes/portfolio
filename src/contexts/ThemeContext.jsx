@@ -1,14 +1,5 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
-
-const ThemeContext = createContext()
-
-export const useTheme = () => {
-  const context = useContext(ThemeContext)
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider')
-  }
-  return context
-}
+import React, { useEffect, useState } from 'react'
+import { ThemeContext } from './theme-context'
 
 export const ThemeProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(() => {
@@ -23,7 +14,7 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     // Salvar preferência no localStorage
     localStorage.setItem('theme', isDark ? 'dark' : 'light')
-    
+
     // Aplicar classe ao documento
     if (isDark) {
       document.documentElement.classList.add('dark')
