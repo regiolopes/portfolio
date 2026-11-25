@@ -54,13 +54,38 @@ export default {
       fontFamily: {
         // Corpo/UI — engenharia, precisão, legibilidade
         'sans': ['"IBM Plex Sans"', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
-        // Display — títulos com caráter editorial e confiança
-        'display': ['"Bricolage Grotesque"', '"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+        // Display — geométrica, mesma construção da marca (bojo circular,
+        // terminação reta). Jost é um revival de Futura.
+        'display': ['"Jost"', '"IBM Plex Sans"', 'system-ui', 'sans-serif'],
         // Utilitário — eyebrows, numerais, rótulos técnicos (contagem do kihon)
         'mono': ['"IBM Plex Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       letterSpacing: {
         'eyebrow': '0.18em',
+      },
+      fontSize: {
+        // Escala de display, calibrada para a Jost.
+        //
+        // A Jost tem ascendente e descendente longos (1,02 e 0,25 do corpo,
+        // medidos no navegador). Os tamanhos grandes do Tailwind vêm com
+        // line-height 1, o que encavala as linhas — e, por virem de uma
+        // utilitária com prefixo de breakpoint, venciam qualquer `leading-`
+        // sem prefixo. Aqui entrelinha e entreletra viajam junto com o
+        // tamanho, então não há como esquecer uma delas.
+        'display-xs':  ['1.5rem',   { lineHeight: '1.3',  letterSpacing: '-0.01em' }],
+        'display-sm':  ['1.875rem', { lineHeight: '1.25', letterSpacing: '-0.015em' }],
+        'display-md':  ['2.25rem',  { lineHeight: '1.22', letterSpacing: '-0.02em' }],
+        'display-ml':  ['2.75rem',  { lineHeight: '1.2',  letterSpacing: '-0.02em' }],
+        'display-lg':  ['3rem',     { lineHeight: '1.2',  letterSpacing: '-0.022em' }],
+        'display-xl':  ['3.75rem',  { lineHeight: '1.2',  letterSpacing: '-0.025em' }],
+        'display-2xl': ['4.5rem',   { lineHeight: '1.2',  letterSpacing: '-0.028em' }],
+      },
+      borderRadius: {
+        // A marca só conhece duas formas: retângulo e círculo. Tudo que é
+        // retangular no site Kihon usa este raio único; `rounded-full` fica
+        // reservado ao que é genuinamente circular (pontos, avatares, orbes).
+        // O portfólio legado /regiolopes mantém a escala padrão do Tailwind.
+        'kihon': '3px',
       },
       maxWidth: {
         'prose-kihon': '68ch',
@@ -72,7 +97,6 @@ export default {
         'strong': '0 10px 40px -10px rgba(23,19,15,0.15), 0 2px 10px -2px rgba(23,19,15,0.05)',
         'card': '0 1px 2px rgba(23,19,15,0.04), 0 8px 24px -12px rgba(23,19,15,0.12)',
         'lift': '0 20px 50px -20px rgba(23,19,15,0.28)',
-        'red': '0 12px 30px -10px rgba(229,57,53,0.45)',
         '3xl': '0 35px 60px -12px rgba(23,19,15,0.25)',
       },
       animation: {

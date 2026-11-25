@@ -39,11 +39,11 @@ const techs = [
 
 const TechCard = ({ name, category, icon: Icon, color }) => (
   <li className="w-[10.5rem] shrink-0 snap-start sm:w-[12rem]">
-    <div className="group flex h-full flex-col items-center rounded-xl border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-sm transition-colors duration-300 hover:border-kihon-red/40">
+    <div className="group flex h-full flex-col items-center rounded-kihon border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-sm transition-colors duration-300 hover:border-kihon-red/40">
       <span className={`text-3xl transition-transform duration-300 group-hover:scale-110 ${color}`}>
         <Icon aria-hidden="true" />
       </span>
-      <h3 className="mt-3 font-display text-base font-semibold leading-tight text-kihon-paper">
+      <h3 className="mt-3 font-display text-base font-semibold leading-snug text-kihon-paper">
         {name}
       </h3>
       <p className="mt-1 font-mono text-[0.6rem] uppercase tracking-wide text-kihon-faint">

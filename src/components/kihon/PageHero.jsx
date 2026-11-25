@@ -29,7 +29,7 @@ const PageHero = ({ eyebrow, title, lead, children }) => {
           className="max-w-3xl"
         >
           {eyebrow && <span className="eyebrow eyebrow-on-ink mb-5">{eyebrow}</span>}
-          <h1 className="text-balance font-display text-4xl font-bold leading-[1.05] tracking-tight text-kihon-paper sm:text-5xl lg:text-6xl">
+          <h1 className="text-balance font-display text-display-md font-bold text-kihon-paper sm:text-display-lg lg:text-display-xl">
             {title}
           </h1>
           {lead && (

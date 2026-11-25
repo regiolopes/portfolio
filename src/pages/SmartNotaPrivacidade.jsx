@@ -421,7 +421,7 @@ function SmartNotaPrivacidade() {
               </p>
             </Section>
 
-            <div className="rounded-xl border border-kihon-gray-medium/25 bg-kihon-gray-light/50 p-6 text-sm text-kihon-dark">
+            <div className="rounded-kihon border border-kihon-gray-medium/25 bg-kihon-gray-light/50 p-6 text-sm text-kihon-dark">
               <h2 className="font-display font-bold text-base mb-2">Observação para lojas de aplicativo (Google Play / Apple)</h2>
               <p>
                 Este documento serve como <strong>URL pública</strong> de referência sobre práticas de privacidade. As

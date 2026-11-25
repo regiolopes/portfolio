@@ -103,6 +103,55 @@ nessa faixa: nem texto, nem borda, nem outra marca.
 
 ---
 
+## O sistema visual do site
+
+A marca é geométrica estrita. O site precisa falar a mesma língua, senão o
+logotipo parece colado por cima de um projeto de outra pessoa.
+
+### Tipografia
+
+| Papel | Família | Por quê |
+| --- | --- | --- |
+| Display | **Jost** | Revival de Futura: mesmo esqueleto da marca — bojo circular, terminação reta, construção de compasso |
+| Corpo | IBM Plex Sans | Geométrica em texto corrido cansa a leitura; o Plex sustenta o tom técnico |
+| Rótulos e números | IBM Plex Mono | Eyebrows, métricas, legendas |
+
+**Use sempre a escala `text-display-*` nos títulos**, nunca `text-3xl` e afins.
+A Jost tem ascendente e descendente longos (1,02 e 0,25 do corpo, medidos no
+navegador) e os tamanhos grandes do Tailwind vêm com `line-height: 1`, o que
+encavala as linhas. Pior: como esses utilitários aparecem com prefixo de
+breakpoint (`lg:text-6xl`), eles venciam qualquer `leading-` sem prefixo — o
+bug ficava invisível até alguém abrir o site num monitor grande.
+
+Na escala `display`, entrelinha e entreletra viajam junto com o tamanho:
+
+```
+text-display-xs   1.5rem    text-display-lg   3rem
+text-display-sm   1.875rem  text-display-xl   3.75rem
+text-display-md   2.25rem   text-display-2xl  4.5rem
+text-display-ml   2.75rem
+```
+
+Não adicione `leading-` nem `tracking-` por cima delas.
+
+### Formas
+
+A marca só conhece **retângulo e círculo**. Nada de retângulo-arredondado no
+meio do caminho.
+
+- Tudo retangular usa `rounded-kihon` (3px): botões, campos, cartões, painéis.
+- `rounded-full` fica para o que é genuinamente circular: pontos, avatares,
+  selos numerados, orbes de desfoque, botões de ícone.
+- **Sem halo e sem salto.** O botão primário não tem sombra colorida, e nada
+  sobe no hover. Estado se comunica por cor de fundo e de borda. Uma marca de
+  aresta dura não combina com brilho difuso.
+
+O portfólio legado em `/regiolopes` não segue nada disso — mantém a escala
+padrão do Tailwind e a paleta azul antiga. É intencional: é outro projeto
+dentro do mesmo repositório.
+
+---
+
 ## Kanji
 
 Os contornos de 基本 vêm do **Noto Sans JP Bold**, sob SIL Open Font License 1.1.

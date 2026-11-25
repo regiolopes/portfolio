@@ -43,7 +43,7 @@ const KihonHeader = () => {
       <nav aria-label="Principal" className="container-max flex h-16 items-center justify-between md:h-20">
         <Link
           to="/"
-          className="flex items-center rounded-md transition-opacity hover:opacity-90"
+          className="flex items-center rounded-kihon transition-opacity hover:opacity-90"
           aria-label="Kihon — página inicial"
         >
           <KihonLogo size="default" color="light" className="h-7 w-auto md:h-8" />
@@ -56,7 +56,7 @@ const KihonHeader = () => {
               key={item.name}
               to={item.href}
               aria-current={isActive(item.href) ? 'page' : undefined}
-              className={`relative rounded-md px-3 py-2 font-sans text-sm font-medium transition-colors duration-200 ${
+              className={`relative rounded-kihon px-3 py-2 font-sans text-sm font-medium transition-colors duration-200 ${
                 isActive(item.href)
                   ? 'text-white'
                   : 'text-kihon-chalk hover:text-white'
@@ -76,7 +76,7 @@ const KihonHeader = () => {
         {/* Botão do menu mobile */}
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-lg p-2 text-kihon-chalk transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kihon-red md:hidden"
+          className="inline-flex items-center justify-center rounded-kihon p-2 text-kihon-chalk transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kihon-red md:hidden"
           onClick={() => setIsMenuOpen((v) => !v)}
           aria-expanded={isMenuOpen}
           aria-controls="menu-mobile"
@@ -105,7 +105,7 @@ const KihonHeader = () => {
                   to={item.href}
                   onClick={() => setIsMenuOpen(false)}
                   aria-current={isActive(item.href) ? 'page' : undefined}
-                  className={`rounded-lg px-3 py-3 font-sans text-base font-medium transition-colors ${
+                  className={`rounded-kihon px-3 py-3 font-sans text-base font-medium transition-colors ${
                     isActive(item.href)
                       ? 'bg-white/5 text-white'
                       : 'text-kihon-chalk hover:bg-white/5 hover:text-white'

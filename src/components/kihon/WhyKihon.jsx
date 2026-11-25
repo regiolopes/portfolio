@@ -27,7 +27,7 @@ const WhyKihon = () => (
       <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
         {/* Painel do kanji */}
         <Reveal className="lg:col-span-5">
-          <div className="relative overflow-hidden rounded-3xl bg-kihon-ink p-10 shadow-lift sm:p-12">
+          <div className="relative overflow-hidden rounded-kihon bg-kihon-ink p-10 shadow-lift sm:p-12">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 opacity-[0.06]"
@@ -57,7 +57,7 @@ const WhyKihon = () => (
         <div className="lg:col-span-7">
           <Reveal>
             <span className="eyebrow mb-4">Por que Kihon</span>
-            <h2 className="text-balance font-display text-3xl font-bold leading-[1.1] tracking-tight text-kihon-ink sm:text-4xl">
+            <h2 className="text-balance font-display text-display-sm font-bold text-kihon-ink sm:text-display-md">
               A disciplina do dojô, aplicada à tecnologia
             </h2>
           </Reveal>

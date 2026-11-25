@@ -32,7 +32,7 @@ const JointVenture = () => (
         <div className="lg:col-span-6">
           <Reveal>
             <span className="eyebrow mb-4">Aliança estratégica</span>
-            <h2 className="text-balance font-display text-3xl font-bold leading-[1.1] tracking-tight text-kihon-ink sm:text-4xl lg:text-[2.75rem]">
+            <h2 className="text-balance font-display text-display-sm font-bold text-kihon-ink sm:text-display-md lg:text-display-ml">
               Uma joint venture para entregar de ponta a ponta
             </h2>
           </Reveal>
@@ -49,9 +49,9 @@ const JointVenture = () => (
             {roles.map((r) => (
               <div
                 key={r.brand}
-                className="rounded-2xl border border-kihon-line bg-white p-5 shadow-card"
+                className="rounded-kihon border border-kihon-line bg-white p-5 shadow-card"
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-kihon-red-tint text-kihon-red-ink">
+                <span className="flex h-11 w-11 items-center justify-center rounded-kihon bg-kihon-red-tint text-kihon-red-ink">
                   <r.icon className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <h3 className="mt-4 font-display text-base font-semibold text-kihon-ink">
@@ -78,7 +78,7 @@ const JointVenture = () => (
 
         {/* Lockup das marcas */}
         <Reveal delay={0.12} className="lg:col-span-6">
-          <div className="relative overflow-hidden rounded-3xl border border-kihon-line bg-white p-8 shadow-lift sm:p-12">
+          <div className="relative overflow-hidden rounded-kihon border border-kihon-line bg-white p-8 shadow-lift sm:p-12">
             <div
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 opacity-[0.05]"

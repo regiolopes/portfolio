@@ -44,13 +44,13 @@ const KihonHero = () => {
             基本 · Software · Dados · Automação
           </span>
 
-          <h1 className="text-balance font-display text-4xl font-bold leading-[1.05] tracking-tight text-kihon-paper sm:text-5xl lg:text-6xl xl:text-7xl">
+          <h1 className="text-balance font-display text-display-md font-bold text-kihon-paper sm:text-display-lg lg:text-display-xl xl:text-display-2xl">
             O básico bem feito
             <br className="hidden sm:block" />{' '}
             vira{' '}
             <span className="relative inline-block whitespace-nowrap text-kihon-red">
               excelência
-              <KihonRule className="absolute bottom-[0.1em] left-0 h-[0.09em] w-full" />
+              <KihonRule className="absolute bottom-[0.03em] left-0 h-[0.085em] w-full" />
             </span>
             .
           </h1>

@@ -20,7 +20,7 @@ const FinalCTA = () => (
     />
     <div className="container-max relative z-10 py-20 lg:py-28">
       <Reveal className="mx-auto max-w-2xl text-center">
-        <h2 className="text-balance font-display text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl">
+        <h2 className="text-balance font-display text-display-sm font-bold text-white sm:text-display-md lg:text-display-lg">
           Vamos começar pelo básico?
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/90 sm:text-xl">

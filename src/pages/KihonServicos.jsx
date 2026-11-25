@@ -150,19 +150,19 @@ function KihonServicos() {
             <Reveal key={service.id} className="scroll-mt-28" >
               <article
                 id={service.id}
-                className="overflow-hidden rounded-3xl border border-kihon-line bg-white shadow-card"
+                className="overflow-hidden rounded-kihon border border-kihon-line bg-white shadow-card"
               >
                 <div className="border-b border-kihon-line p-7 sm:p-9">
                   <div className="flex items-start gap-4">
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-kihon-red-tint text-kihon-red-ink">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-kihon bg-kihon-red-tint text-kihon-red-ink">
                       <service.icon className="h-6 w-6" aria-hidden="true" />
                     </span>
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-3">
-                        <h2 className="font-display text-2xl font-bold text-kihon-ink sm:text-3xl">
+                        <h2 className="font-display text-display-xs font-bold text-kihon-ink sm:text-display-sm">
                           {service.title}
                         </h2>
-                        <span className="rounded-md bg-kihon-ink px-2.5 py-1 font-mono text-[0.7rem] font-medium uppercase tracking-wide text-kihon-paper">
+                        <span className="rounded-kihon bg-kihon-ink px-2.5 py-1 font-mono text-[0.7rem] font-medium uppercase tracking-wide text-kihon-paper">
                           {service.tag}
                         </span>
                       </div>

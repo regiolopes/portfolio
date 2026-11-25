@@ -31,11 +31,29 @@ export const COLORS = {
 }
 
 export const FONTS = {
-  display: '"Bricolage Grotesque", "IBM Plex Sans", system-ui, sans-serif',
+  // Display — Jost, um revival de Futura. Mesma construcao da marca: bojo
+  // circular, terminacao reta, esqueleto de compasso.
+  display: '"Jost", "IBM Plex Sans", system-ui, sans-serif',
+  // Corpo — Plex Sans. Geometrica em texto corrido cansa a leitura, e o Plex
+  // sustenta o tom tecnico do site.
   sans: '"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
   mono: '"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace',
   // Pilha segura para cliente de e-mail: nenhuma webfont carrega la dentro
   email: 'Helvetica Neue, Helvetica, Arial, sans-serif',
+}
+
+/**
+ * A marca so conhece duas formas: retangulo e circulo. Nada de
+ * retangulo-arredondado no meio do caminho.
+ *
+ * Tudo que e retangular no site Kihon usa RADIUS.shape; `rounded-full` fica
+ * reservado ao que e genuinamente circular (pontos, avatares, selos
+ * numerados, orbes de desfoque). O portfolio legado /regiolopes mantem a
+ * escala padrao do Tailwind e nao segue esta regra.
+ */
+export const RADIUS = {
+  shape: '3px',
+  circle: '9999px',
 }
 
 /** Endereco publico do site — usado nas URLs absolutas da assinatura de e-mail. */

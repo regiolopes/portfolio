@@ -11,7 +11,7 @@ const CONTACT_EMAIL = 'regio.lopes@kihon.dev.br'
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 const inputBase =
-  'w-full rounded-xl border bg-white px-4 py-3 font-sans text-base text-kihon-ink placeholder:text-kihon-faint transition-colors focus:outline-none focus:ring-2 focus:ring-kihon-red focus:border-transparent'
+  'w-full rounded-kihon border bg-white px-4 py-3 font-sans text-base text-kihon-ink placeholder:text-kihon-faint transition-colors focus:outline-none focus:ring-2 focus:ring-kihon-red focus:border-transparent'
 
 const nextSteps = [
   'Retorno o seu contato pessoalmente.',
@@ -118,7 +118,7 @@ function KihonContato() {
         <div className="container-max grid gap-10 lg:grid-cols-12 lg:gap-12">
           {/* Formulário */}
           <Reveal className="lg:col-span-7">
-            <form onSubmit={handleSubmit} noValidate className="rounded-3xl border border-kihon-line bg-white p-6 shadow-card sm:p-8">
+            <form onSubmit={handleSubmit} noValidate className="rounded-kihon border border-kihon-line bg-white p-6 shadow-card sm:p-8">
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="sm:col-span-1">
                   <label htmlFor="nome" className="mb-2 block text-sm font-semibold text-kihon-ink">
@@ -243,13 +243,13 @@ function KihonContato() {
 
               <div aria-live="polite">
                 {status === 'success' && (
-                  <div role="status" className="mt-5 flex items-start gap-2.5 rounded-xl border border-green-600/30 bg-green-50 px-4 py-3 text-sm text-green-800">
+                  <div role="status" className="mt-5 flex items-start gap-2.5 rounded-kihon border border-green-600/30 bg-green-50 px-4 py-3 text-sm text-green-800">
                     <HiCheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-green-600" aria-hidden="true" />
                     Mensagem enviada. Retorno o seu contato em breve — normalmente no mesmo dia útil.
                   </div>
                 )}
                 {status === 'error' && (
-                  <div role="alert" className="mt-5 flex items-start gap-2.5 rounded-xl border border-kihon-red/30 bg-kihon-red-tint px-4 py-3 text-sm text-kihon-red-ink">
+                  <div role="alert" className="mt-5 flex items-start gap-2.5 rounded-kihon border border-kihon-red/30 bg-kihon-red-tint px-4 py-3 text-sm text-kihon-red-ink">
                     <HiExclamationCircle className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
                     Não consegui enviar agora. Tente novamente ou fale direto pelo WhatsApp.
                   </div>
@@ -265,7 +265,7 @@ function KihonContato() {
           {/* Sidebar */}
           <Reveal delay={0.1} className="lg:col-span-5">
             <div className="space-y-6">
-              <div className="rounded-3xl border border-kihon-line bg-white p-6 shadow-card sm:p-7">
+              <div className="rounded-kihon border border-kihon-line bg-white p-6 shadow-card sm:p-7">
                 <h2 className="font-display text-xl font-bold text-kihon-ink">Prefere conversar direto?</h2>
                 <p className="mt-2 text-sm leading-relaxed text-kihon-muted">
                   O WhatsApp é o caminho mais rápido — respondo pessoalmente.
@@ -274,7 +274,7 @@ function KihonContato() {
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#25D366] px-6 py-3.5 font-sans text-sm font-semibold text-white transition-colors hover:bg-[#1ebe5b] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/40"
+                  className="mt-4 flex w-full items-center justify-center gap-2.5 rounded-kihon bg-[#25D366] px-6 py-3.5 font-sans text-sm font-semibold text-white transition-colors hover:bg-[#1ebe5b] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/40"
                 >
                   <FaWhatsapp className="h-5 w-5" aria-hidden="true" />
                   (85) 99727-5766
@@ -295,7 +295,7 @@ function KihonContato() {
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-kihon-line bg-kihon-surface p-6 sm:p-7">
+              <div className="rounded-kihon border border-kihon-line bg-kihon-surface p-6 sm:p-7">
                 <h2 className="font-mono text-xs font-medium uppercase tracking-eyebrow text-kihon-muted">
                   O que acontece depois
                 </h2>

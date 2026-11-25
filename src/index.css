@@ -75,7 +75,7 @@
   /* ─────────────────────── Skip link (a11y) ─────────────────── */
   .skip-link {
     @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100]
-           focus:rounded-lg focus:bg-kihon-ink focus:px-4 focus:py-3 focus:text-sm
+           focus:rounded-kihon focus:bg-kihon-ink focus:px-4 focus:py-3 focus:text-sm
            focus:font-semibold focus:text-kihon-paper focus:shadow-lift;
   }
 
@@ -85,7 +85,7 @@
   }
   .eyebrow::before {
     content: '';
-    @apply inline-block h-2 w-2 rounded-sm bg-kihon-red;
+    @apply inline-block h-2 w-2 rounded-kihon bg-kihon-red;
   }
   .eyebrow-on-ink {
     @apply text-kihon-chalk;
@@ -93,38 +93,38 @@
 
   /* ───────────────────────── Botões ─────────────────────────── */
   .btn-kihon {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-kihon-red px-6 py-3.5
-           font-sans text-sm font-semibold text-white shadow-red transition-[transform,background-color,box-shadow]
-           duration-200 hover:-translate-y-0.5 hover:bg-[#c62b28] active:translate-y-0
-           focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-kihon-red/35 md:text-base;
+    @apply inline-flex items-center justify-center gap-2 rounded-kihon bg-kihon-red px-6 py-3.5
+           font-sans text-sm font-semibold text-white transition-colors duration-200
+           hover:bg-[#c62b28] focus-visible:outline-none focus-visible:ring-2
+           focus-visible:ring-kihon-red/60 md:text-base;
     touch-action: manipulation;
   }
   .btn-kihon-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-kihon-ink/20 bg-transparent
+    @apply inline-flex items-center justify-center gap-2 rounded-kihon border border-kihon-ink/25 bg-transparent
            px-6 py-3.5 font-sans text-sm font-semibold text-kihon-ink transition-colors duration-200
-           hover:border-kihon-ink/40 hover:bg-kihon-ink/[0.04]
-           focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-kihon-ink/20 md:text-base;
+           hover:border-kihon-ink hover:bg-kihon-ink/[0.04]
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kihon-ink/40 md:text-base;
     touch-action: manipulation;
   }
   .btn-kihon-on-ink {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-transparent
+    @apply inline-flex items-center justify-center gap-2 rounded-kihon border border-white/30 bg-transparent
            px-6 py-3.5 font-sans text-sm font-semibold text-kihon-paper transition-colors duration-200
-           hover:border-white/60 hover:bg-white/[0.06]
-           focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/25 md:text-base;
+           hover:border-white hover:bg-white/[0.06]
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 md:text-base;
     touch-action: manipulation;
   }
   .btn-kihon-light {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-kihon-paper px-6 py-3.5
-           font-sans text-sm font-semibold text-kihon-ink shadow-lg transition-[transform,box-shadow] duration-200
-           hover:-translate-y-0.5 hover:shadow-xl focus-visible:outline-none focus-visible:ring-4
-           focus-visible:ring-white/40 md:text-base;
+    @apply inline-flex items-center justify-center gap-2 rounded-kihon bg-kihon-paper px-6 py-3.5
+           font-sans text-sm font-semibold text-kihon-ink transition-colors duration-200
+           hover:bg-white focus-visible:outline-none focus-visible:ring-2
+           focus-visible:ring-white/60 md:text-base;
     touch-action: manipulation;
   }
 
   /* ─────────────────── Cartão base (dojo) ───────────────────── */
   .card-kihon {
-    @apply rounded-2xl border border-kihon-line bg-white shadow-card transition-[transform,box-shadow,border-color]
-           duration-300 hover:-translate-y-1 hover:border-kihon-red/30 hover:shadow-medium;
+    @apply rounded-kihon border border-kihon-line bg-white transition-colors duration-200
+           hover:border-kihon-ink/35;
   }
 
   /* Regra brush fina (divisor de seção) */
@@ -134,19 +134,19 @@
 
   /* ───────────────── Legado (páginas não reconstruídas) ──────── */
   .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl text-sm md:text-base transform hover:scale-105;
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-kihon transition-all duration-200 shadow-lg hover:shadow-xl text-sm md:text-base transform hover:scale-105;
   }
   .btn-secondary {
-    @apply bg-transparent hover:bg-primary-50 dark:hover:bg-primary-900/20 text-primary-600 dark:text-primary-400 font-semibold py-3 px-6 rounded-lg transition-all duration-200 border border-primary-600 dark:border-primary-400 text-sm md:text-base transform hover:scale-105;
+    @apply bg-transparent hover:bg-primary-50 dark:hover:bg-primary-900/20 text-primary-600 dark:text-primary-400 font-semibold py-3 px-6 rounded-kihon transition-all duration-200 border border-primary-600 dark:border-primary-400 text-sm md:text-base transform hover:scale-105;
   }
   .card {
-    @apply bg-white dark:bg-gray-800 rounded-xl shadow-soft hover:shadow-medium transition-all duration-300 border border-gray-100 dark:border-gray-700 transform hover:scale-102;
+    @apply bg-white dark:bg-gray-800 rounded-kihon shadow-soft hover:shadow-medium transition-all duration-300 border border-gray-100 dark:border-gray-700 transform hover:scale-102;
   }
   .btn-kihon-primary {
-    @apply bg-kihon-red hover:bg-kihon-red/90 text-kihon-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl;
+    @apply bg-kihon-red hover:bg-kihon-red/90 text-kihon-white font-semibold py-3 px-6 rounded-kihon transition-all duration-200 shadow-lg hover:shadow-xl;
   }
   .btn-kihon-secondary {
-    @apply bg-transparent hover:bg-kihon-dark/50 text-kihon-gray-light border-2 border-kihon-gray-medium hover:border-kihon-red font-semibold py-3 px-6 rounded-lg transition-all duration-200;
+    @apply bg-transparent hover:bg-kihon-dark/50 text-kihon-gray-light border-2 border-kihon-gray-medium hover:border-kihon-red font-semibold py-3 px-6 rounded-kihon transition-all duration-200;
   }
 }
 

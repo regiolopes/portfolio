@@ -121,7 +121,7 @@ const categoryIcon = {
 function CaseCard({ item }) {
   const Icon = categoryIcon[item.category] || FaGears
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-kihon-line bg-white shadow-card transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-medium">
+    <article className="flex h-full flex-col overflow-hidden rounded-kihon border border-kihon-line bg-white shadow-card transition-colors duration-200 hover:border-kihon-ink/35">
       <div className="relative flex h-44 items-center justify-center overflow-hidden bg-kihon-ink">
         <div
           aria-hidden="true"
@@ -151,7 +151,7 @@ function CaseCard({ item }) {
           {item.categoryName}
         </span>
         <p className="mt-3 flex items-baseline gap-2">
-          <span className="font-display text-3xl font-bold tracking-tight text-kihon-ink tabular-nums">
+          <span className="font-display text-display-sm font-bold text-kihon-ink tabular-nums">
             {item.metric}
           </span>
           <span className="text-sm font-medium leading-snug text-kihon-ink">{item.title}</span>
@@ -168,7 +168,7 @@ function CaseCard({ item }) {
         <ul className="mt-4 space-y-1.5 border-t border-kihon-line pt-4">
           {item.results.map((r) => (
             <li key={r} className="flex items-start gap-2 text-sm text-kihon-muted">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-sm bg-kihon-red" aria-hidden="true" />
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-kihon bg-kihon-red" aria-hidden="true" />
               {r}
             </li>
           ))}
@@ -220,9 +220,9 @@ function KihonCases() {
                   type="button"
                   onClick={() => setActiveFilter(cat.id)}
                   aria-pressed={active}
-                  className={`rounded-full px-5 py-2.5 font-sans text-sm font-semibold transition-colors duration-200 ${
+                  className={`rounded-kihon px-5 py-2.5 font-sans text-sm font-semibold transition-colors duration-200 ${
                     active
-                      ? 'bg-kihon-red text-white shadow-red'
+                      ? 'bg-kihon-red text-white'
                       : 'border border-kihon-line bg-white text-kihon-ink hover:border-kihon-red/40 hover:text-kihon-red-ink'
                   }`}
                 >

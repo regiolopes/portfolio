@@ -45,7 +45,7 @@ const ServicesHighlight = () => (
         {services.map((service, i) => (
           <Reveal key={service.title} delay={i * 0.08} className="h-full">
             <article className="card-kihon flex h-full flex-col p-6">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-kihon-red-tint text-kihon-red-ink">
+              <span className="flex h-12 w-12 items-center justify-center rounded-kihon bg-kihon-red-tint text-kihon-red-ink">
                 <service.icon className="h-6 w-6" aria-hidden="true" />
               </span>
               <h3 className="mt-5 font-display text-lg font-semibold text-kihon-ink">

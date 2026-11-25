@@ -30,7 +30,7 @@ const WhatsAppFloat = () => {
           transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
           whileHover={reduce ? undefined : { scale: 1.05 }}
           whileTap={reduce ? undefined : { scale: 0.95 }}
-          className="group fixed bottom-5 right-5 z-40 flex items-center gap-2.5 rounded-full bg-[#25D366] px-4 py-3.5
+          className="group fixed bottom-5 right-5 z-40 flex items-center gap-2.5 rounded-kihon bg-[#25D366] px-4 py-3.5
                      font-sans text-sm font-semibold text-white shadow-lift transition-colors hover:bg-[#1ebe5b]
                      focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/40
                      sm:bottom-7 sm:right-7"

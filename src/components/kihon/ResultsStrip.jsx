@@ -21,11 +21,11 @@ const ResultsStrip = () => (
         lead="Projetos reais, com ganhos que aparecem no dia a dia de quem usa."
       />
 
-      <div className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 lg:grid-cols-4">
+      <div className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-kihon border border-white/10 bg-white/10 lg:grid-cols-4">
         {metrics.map((m, i) => (
           <Reveal key={m.label} delay={i * 0.08} className="bg-kihon-ink">
             <div className="flex h-full flex-col p-6 sm:p-8">
-              <span className="font-display text-5xl font-bold tracking-tight text-kihon-red tabular-nums sm:text-6xl">
+              <span className="font-display text-display-lg font-bold text-kihon-red tabular-nums sm:text-display-xl">
                 {m.value}
               </span>
               <p className="mt-3 flex-1 text-sm leading-relaxed text-kihon-chalk sm:text-base">

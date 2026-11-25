@@ -7,7 +7,7 @@ import Reveal from '../components/kihon/Reveal'
 import { DEFAULTS, buildPlainText, buildSignature } from '../brand/emailSignature'
 
 const inputBase =
-  'w-full rounded-xl border border-kihon-line bg-white px-4 py-3 font-sans text-base text-kihon-ink placeholder:text-kihon-faint transition-colors focus:border-transparent focus:outline-none focus:ring-2 focus:ring-kihon-red'
+  'w-full rounded-kihon border border-kihon-line bg-white px-4 py-3 font-sans text-base text-kihon-ink placeholder:text-kihon-faint transition-colors focus:border-transparent focus:outline-none focus:ring-2 focus:ring-kihon-red'
 
 const FIELDS = [
   { id: 'nome', label: 'Nome', placeholder: 'Régio Lopes', autoComplete: 'name' },
@@ -159,7 +159,7 @@ function AssinaturaEmail() {
                     ].map((option) => (
                       <label
                         key={option.value}
-                        className={`cursor-pointer rounded-xl border px-4 py-2.5 font-sans text-sm transition-colors ${
+                        className={`cursor-pointer rounded-kihon border px-4 py-2.5 font-sans text-sm transition-colors ${
                           form.tema === option.value
                             ? 'border-kihon-ink bg-kihon-ink text-kihon-paper'
                             : 'border-kihon-line bg-white text-kihon-muted hover:border-kihon-ink/40'
@@ -202,7 +202,7 @@ function AssinaturaEmail() {
                     Prévia
                   </p>
                   <div
-                    className={`overflow-x-auto rounded-xl border p-6 sm:p-8 ${
+                    className={`overflow-x-auto rounded-kihon border p-6 sm:p-8 ${
                       dark ? 'border-kihon-ink bg-kihon-ink' : 'border-kihon-line bg-white'
                     }`}
                   >
@@ -235,7 +235,7 @@ function AssinaturaEmail() {
                   <button
                     type="button"
                     onClick={handleCopyHtml}
-                    className="rounded-xl border border-kihon-line bg-white px-6 py-3 font-sans text-sm font-medium text-kihon-ink transition-colors hover:border-kihon-ink/40"
+                    className="rounded-kihon border border-kihon-line bg-white px-6 py-3 font-sans text-sm font-medium text-kihon-ink transition-colors hover:border-kihon-ink/40"
                   >
                     {copied === 'html' ? 'HTML copiado' : 'Copiar código HTML'}
                   </button>
@@ -259,7 +259,7 @@ function AssinaturaEmail() {
                   )}
                 </p>
 
-                <div className="rounded-xl border border-kihon-line bg-kihon-surface p-6">
+                <div className="rounded-kihon border border-kihon-line bg-kihon-surface p-6">
                   <p className="font-display text-base font-bold text-kihon-ink">Onde colar</p>
                   <dl className="mt-4 flex flex-col gap-3">
                     {INSTRUCTIONS.map((item) => (

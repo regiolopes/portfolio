@@ -80,7 +80,7 @@ const KihonFooter = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn da Kihon"
-                className="rounded-lg border border-white/10 p-2.5 text-kihon-chalk transition-colors hover:border-kihon-red hover:text-white"
+                className="rounded-kihon border border-white/10 p-2.5 text-kihon-chalk transition-colors hover:border-kihon-red hover:text-white"
               >
                 <FaLinkedin className="h-5 w-5" aria-hidden="true" />
               </a>
@@ -89,7 +89,7 @@ const KihonFooter = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub da Kihon"
-                className="rounded-lg border border-white/10 p-2.5 text-kihon-chalk transition-colors hover:border-kihon-red hover:text-white"
+                className="rounded-kihon border border-white/10 p-2.5 text-kihon-chalk transition-colors hover:border-kihon-red hover:text-white"
               >
                 <FaGithub className="h-5 w-5" aria-hidden="true" />
               </a>

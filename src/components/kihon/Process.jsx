@@ -37,7 +37,7 @@ const Process = () => (
       <ol className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {processSteps.map((step, i) => (
           <Reveal key={step.n} delay={i * 0.08} as="li" className="h-full">
-            <div className="flex h-full flex-col rounded-2xl border border-kihon-line bg-white p-6 shadow-card">
+            <div className="flex h-full flex-col rounded-kihon border border-kihon-line bg-white p-6 shadow-card">
               <div className="flex items-center gap-3">
                 <span className="font-mono text-2xl font-semibold text-kihon-red tabular-nums">
                   {step.n}

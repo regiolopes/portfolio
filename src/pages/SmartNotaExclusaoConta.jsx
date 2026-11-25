@@ -74,7 +74,7 @@ function SmartNotaExclusaoConta() {
 
         <article className="section-padding bg-kihon-white">
           <div className="container-max max-w-3xl mx-auto text-kihon-dark space-y-10 text-base leading-relaxed">
-            <p className="text-kihon-gray-medium text-sm border border-kihon-gray-medium/25 rounded-xl p-4 bg-kihon-gray-light/40">
+            <p className="text-kihon-gray-medium text-sm border border-kihon-gray-medium/25 rounded-kihon p-4 bg-kihon-gray-light/40">
               Esta página atende ao requisito da Google Play de <strong>URL para exclusão de contas</strong>. Para a
               política completa de privacidade, consulte a{' '}
               <Link

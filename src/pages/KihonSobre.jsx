@@ -33,7 +33,7 @@ function KihonSobre() {
           <div className="lg:col-span-4">
             <Reveal>
               <span className="eyebrow mb-4">Nossa história</span>
-              <h2 className="font-display text-3xl font-bold leading-[1.1] tracking-tight text-kihon-ink sm:text-4xl">
+              <h2 className="font-display text-display-sm font-bold text-kihon-ink sm:text-display-md">
                 Tecnologia não precisa ser complicada para ser poderosa
               </h2>
             </Reveal>
@@ -74,7 +74,7 @@ function KihonSobre() {
             { t: 'Valores', list: valores },
           ].map((card, i) => (
             <Reveal key={card.t} delay={i * 0.08} className="h-full">
-              <div className="flex h-full flex-col rounded-2xl border border-kihon-line bg-white p-7 shadow-card">
+              <div className="flex h-full flex-col rounded-kihon border border-kihon-line bg-white p-7 shadow-card">
                 <h3 className="font-display text-xl font-bold text-kihon-ink">{card.t}</h3>
                 {card.d && (
                   <p className="mt-3 text-base leading-relaxed text-kihon-muted">{card.d}</p>
@@ -83,7 +83,7 @@ function KihonSobre() {
                   <ul className="mt-3 space-y-2">
                     {card.list.map((v) => (
                       <li key={v} className="flex items-start gap-2.5 text-base text-kihon-muted">
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-sm bg-kihon-red" aria-hidden="true" />
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-kihon bg-kihon-red" aria-hidden="true" />
                         {v}
                       </li>
                     ))}
@@ -107,7 +107,7 @@ function KihonSobre() {
             lead="A Kihon é conduzida por quem coloca a mão no código e responde pelo resultado."
           />
           <Reveal delay={0.08} className="mx-auto mt-10 max-w-2xl">
-            <div className="rounded-2xl border border-kihon-line bg-white p-7 shadow-card sm:p-9">
+            <div className="rounded-kihon border border-kihon-line bg-white p-7 shadow-card sm:p-9">
               <p className="font-display text-xl font-semibold text-kihon-ink">Regio Lopes</p>
               <p className="mt-1 font-mono text-xs uppercase tracking-eyebrow text-kihon-muted">
                 Engenheiro de dados & desenvolvedor

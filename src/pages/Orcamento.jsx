@@ -81,7 +81,7 @@ const adicionarDias = (dateStr, dias) => {
 const hoje = () => new Date().toISOString().split('T')[0]
 
 const inputClass =
-  'w-full px-4 py-2.5 rounded-lg border border-kihon-gray-medium/30 bg-white text-kihon-dark text-sm focus:outline-none focus:ring-2 focus:ring-kihon-red focus:border-transparent transition-all'
+  'w-full px-4 py-2.5 rounded-kihon border border-kihon-gray-medium/30 bg-white text-kihon-dark text-sm focus:outline-none focus:ring-2 focus:ring-kihon-red focus:border-transparent transition-all'
 
 const labelClass = 'block text-xs font-semibold text-kihon-dark/70 mb-1 uppercase tracking-wide'
 
@@ -323,16 +323,16 @@ export default function Orcamento() {
 
           <div className="flex items-center gap-2">
             {/* Toggle view - mobile */}
-            <div className="flex bg-kihon-dark/60 rounded-lg p-1 gap-1 sm:hidden">
+            <div className="flex bg-kihon-dark/60 rounded-kihon p-1 gap-1 sm:hidden">
               <button
                 onClick={() => setView('form')}
-                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${view === 'form' ? 'bg-kihon-red text-white' : 'text-kihon-gray-medium'}`}
+                className={`px-3 py-1.5 rounded-kihon text-xs font-semibold transition-all ${view === 'form' ? 'bg-kihon-red text-white' : 'text-kihon-gray-medium'}`}
               >
                 <FaEdit className="inline mr-1" />Editar
               </button>
               <button
                 onClick={() => setView('preview')}
-                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${view === 'preview' ? 'bg-kihon-red text-white' : 'text-kihon-gray-medium'}`}
+                className={`px-3 py-1.5 rounded-kihon text-xs font-semibold transition-all ${view === 'preview' ? 'bg-kihon-red text-white' : 'text-kihon-gray-medium'}`}
               >
                 <FaEye className="inline mr-1" />Preview
               </button>
@@ -340,7 +340,7 @@ export default function Orcamento() {
 
             <button
               onClick={handlePrint}
-              className="hidden sm:flex items-center gap-2 bg-white/10 hover:bg-white/20 text-kihon-gray-light font-semibold py-2 px-4 rounded-lg text-sm transition-all"
+              className="hidden sm:flex items-center gap-2 bg-white/10 hover:bg-white/20 text-kihon-gray-light font-semibold py-2 px-4 rounded-kihon text-sm transition-all"
             >
               <FaPrint size={13} />
               <span>Imprimir</span>
@@ -349,7 +349,7 @@ export default function Orcamento() {
             <button
               onClick={handleExportPDF}
               disabled={gerandoPDF}
-              className="flex items-center gap-2 bg-kihon-red hover:bg-kihon-red/90 disabled:opacity-60 disabled:cursor-wait text-white font-semibold py-2 px-4 rounded-lg text-sm transition-all shadow hover:shadow-lg"
+              className="flex items-center gap-2 bg-kihon-red hover:bg-kihon-red/90 disabled:opacity-60 disabled:cursor-wait text-white font-semibold py-2 px-4 rounded-kihon text-sm transition-all shadow hover:shadow-lg"
             >
               {gerandoPDF ? <FaSpinner size={14} className="animate-spin" /> : <FaFilePdf size={14} />}
               <span>{gerandoPDF ? 'Gerando...' : 'Baixar PDF'}</span>
@@ -417,7 +417,7 @@ export default function Orcamento() {
                     <img
                       src={WORKENGE_LOGO}
                       alt="Workenge"
-                      className="h-10 w-10 rounded-md border border-gray-200 object-contain bg-white"
+                      className="h-10 w-10 rounded-kihon border border-gray-200 object-contain bg-white"
                     />
                     <p className="text-xs text-kihon-gray-medium">
                       A logomarca e a identidade da parceira serão exibidas na proposta.
@@ -493,7 +493,7 @@ export default function Orcamento() {
                         key={t}
                         type="button"
                         onClick={() => toggleServico(t)}
-                        className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-all ${
+                        className={`px-3 py-1.5 rounded-kihon text-xs font-semibold border transition-all ${
                           active
                             ? 'bg-kihon-red text-white border-kihon-red shadow-sm'
                             : 'bg-white text-kihon-dark/70 border-kihon-gray-medium/30 hover:border-kihon-red hover:text-kihon-red'
@@ -511,7 +511,7 @@ export default function Orcamento() {
                     {servicosCustom.map((t) => (
                       <span
                         key={t}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-kihon-dark text-white"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-kihon text-xs font-semibold bg-kihon-dark text-white"
                       >
                         {t}
                         <button
@@ -544,7 +544,7 @@ export default function Orcamento() {
                   <button
                     type="button"
                     onClick={addServicoCustom}
-                    className="flex items-center gap-1.5 bg-kihon-dark/5 hover:bg-kihon-red hover:text-white text-kihon-dark font-semibold px-3 rounded-lg text-xs transition-all border border-kihon-gray-medium/30"
+                    className="flex items-center gap-1.5 bg-kihon-dark/5 hover:bg-kihon-red hover:text-white text-kihon-dark font-semibold px-3 rounded-kihon text-xs transition-all border border-kihon-gray-medium/30"
                   >
                     <FaPlus size={10} /> Adicionar
                   </button>
@@ -680,7 +680,7 @@ export default function Orcamento() {
             <div
               id="proposta-kihon"
               ref={previewRef}
-              className="bg-white shadow-strong rounded-xl overflow-hidden print-area"
+              className="bg-white shadow-strong rounded-kihon overflow-hidden print-area"
               style={{ fontFamily: "'Inter', 'Roboto', system-ui, sans-serif" }}
             >
 
@@ -712,7 +712,7 @@ export default function Orcamento() {
                           <img
                             src={WORKENGE_LOGO}
                             alt={form.parceiroNome}
-                            className="h-11 w-11 rounded-md bg-white p-1 object-contain"
+                            className="h-11 w-11 rounded-kihon bg-white p-1 object-contain"
                           />
                         </>
                       )}
@@ -759,11 +759,11 @@ export default function Orcamento() {
 
                 {/* Parceria / Joint Venture */}
                 {form.propostaConjunta && form.descricaoParceria && (
-                  <div className="bg-kihon-red/5 border border-kihon-red/20 rounded-xl p-5 flex flex-col sm:flex-row gap-4 items-start">
+                  <div className="bg-kihon-red/5 border border-kihon-red/20 rounded-kihon p-5 flex flex-col sm:flex-row gap-4 items-start">
                     <img
                       src={WORKENGE_LOGO}
                       alt={form.parceiroNome}
-                      className="h-14 w-14 rounded-lg border border-gray-200 flex-shrink-0 object-contain bg-white"
+                      className="h-14 w-14 rounded-kihon border border-gray-200 flex-shrink-0 object-contain bg-white"
                     />
                     <div>
                       <p className="text-xs font-bold text-kihon-red uppercase tracking-widest mb-1.5">
@@ -784,7 +784,7 @@ export default function Orcamento() {
                       {form.tiposServico.map((t) => (
                         <span
                           key={t}
-                          className="inline-flex items-center bg-kihon-red/10 text-kihon-red text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wide leading-none"
+                          className="inline-flex items-center bg-kihon-red/10 text-kihon-red text-xs font-semibold px-3 py-1.5 rounded-kihon uppercase tracking-wide leading-none"
                         >
                           {t}
                         </span>
@@ -817,7 +817,7 @@ export default function Orcamento() {
                 )}
 
                 {/* Investimento */}
-                <div className="bg-kihon-dark rounded-xl p-6 relative overflow-hidden">
+                <div className="bg-kihon-dark rounded-kihon p-6 relative overflow-hidden">
                   <div
                     className="absolute inset-0 opacity-[0.06]"
                     style={{
@@ -827,7 +827,7 @@ export default function Orcamento() {
                   />
                   <div className="relative z-10">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-3 h-3 bg-kihon-red rounded-sm flex-shrink-0" />
+                      <div className="w-3 h-3 bg-kihon-red rounded-kihon flex-shrink-0" />
                       <h3 className="text-xs font-bold text-white uppercase tracking-widest">Investimento</h3>
                       <div className="flex-1 h-px bg-white/15" />
                     </div>
@@ -950,7 +950,7 @@ function TelaSenha({ onSuccess }) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="relative z-10 w-full max-w-sm bg-white rounded-2xl shadow-strong p-8 space-y-5"
+        className="relative z-10 w-full max-w-sm bg-white rounded-kihon shadow-strong p-8 space-y-5"
       >
         <div className="flex flex-col items-center text-center gap-3">
           <KihonLogo size="default" color="dark" className="h-9 w-auto" />
@@ -982,7 +982,7 @@ function TelaSenha({ onSuccess }) {
 
         <button
           type="submit"
-          className="w-full bg-kihon-red hover:bg-kihon-red/90 text-white font-semibold py-2.5 rounded-lg transition-all shadow hover:shadow-lg"
+          className="w-full bg-kihon-red hover:bg-kihon-red/90 text-white font-semibold py-2.5 rounded-kihon transition-all shadow hover:shadow-lg"
         >
           Entrar
         </button>
@@ -993,7 +993,7 @@ function TelaSenha({ onSuccess }) {
 
 function Section({ title, children }) {
   return (
-    <div className="bg-white rounded-xl shadow-soft border border-gray-100 overflow-hidden">
+    <div className="bg-white rounded-kihon shadow-soft border border-gray-100 overflow-hidden">
       <div className="bg-kihon-dark/5 border-b border-gray-100 px-4 py-2.5">
         <h3 className="text-xs font-bold text-kihon-dark uppercase tracking-wider">{title}</h3>
       </div>
@@ -1005,7 +1005,7 @@ function Section({ title, children }) {
 function SectionTitle({ children }) {
   return (
     <div className="flex items-center gap-2 mb-3">
-      <div className="w-3 h-3 bg-kihon-red rounded-sm flex-shrink-0" />
+      <div className="w-3 h-3 bg-kihon-red rounded-kihon flex-shrink-0" />
       <h3 className="text-xs font-bold text-kihon-dark uppercase tracking-widest">{children}</h3>
       <div className="flex-1 h-px bg-gray-200" />
     </div>
@@ -1014,7 +1014,7 @@ function SectionTitle({ children }) {
 
 function InfoBox({ label, children }) {
   return (
-    <div className="bg-gray-50 rounded-lg p-4 border border-gray-100">
+    <div className="bg-gray-50 rounded-kihon p-4 border border-gray-100">
       <p className="text-xs font-bold text-kihon-gray-medium uppercase tracking-widest mb-2">{label}</p>
       <div className="space-y-0.5 text-sm">{children}</div>
     </div>

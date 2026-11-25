@@ -24,7 +24,7 @@ const SectionHeading = ({
       )}
       <h2
         id={titleId}
-        className={`text-balance font-display text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl lg:text-[2.75rem] ${
+        className={`text-balance font-display text-display-sm font-bold sm:text-display-md lg:text-display-ml ${
           onInk ? 'text-kihon-paper' : 'text-kihon-ink'
         }`}
       >

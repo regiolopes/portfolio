@@ -25,7 +25,7 @@ function LogoItem({ name, logo, ariaHidden = false }) {
       aria-hidden={ariaHidden || undefined}
       className="mx-2.5 flex w-[150px] shrink-0 items-center justify-center sm:mx-3 sm:w-[172px]"
     >
-      <div className="flex h-24 w-full items-center justify-center rounded-2xl border border-kihon-line bg-white p-5 shadow-card">
+      <div className="flex h-24 w-full items-center justify-center rounded-kihon border border-kihon-line bg-white p-5 shadow-card">
         {logo ? (
           <img
             src={logo}
