@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
 
@@ -7,13 +7,19 @@ export const trustedClients = [
   { name: 'Grupo Fornecedora', logo: 'https://www.grupofornecedora.com.br/wp-content/uploads/2021/07/cropped-Logo_grupo-fornecedora-1.png' },
   { name: 'Fornecedora Engelog', logo: 'https://fornecedoraengelog.com.br/wp-content/uploads/2021/07/LOGO-ISO.png' },
   { name: 'Heian Dojo', logo: '/clients/heiandojo.png' },
-  { name: 'Pires & Lima Advogados', logo: 'https://rppires-lima-production.up.railway.app/_next/image?url=%2Flogo-pires-lima.png&w=256&q=75' },
-  { name: 'Mendonça e Pires Advogados', logo: 'https://mendonca-pires-inss-production.up.railway.app/_next/image?url=%2Flogo-mendonca-pires.png&w=256&q=75' },
+  { name: 'Pires & Lima Advogados', logo: '/clients/pires-lima.png' },
+  { name: 'Mendonça e Pires Advogados', logo: '/clients/mendonca-pires.png' },
   { name: 'Contabilidade DiPonta', logo: 'https://contabilidadediponta.com.br/_next/image?url=%2Flogo.png&w=640&q=75' },
   { name: 'CE Prof.ª Rosimar', logo: '/clients/cepr.jpg' },
 ]
 
 function LogoItem({ name, logo, ariaHidden = false }) {
+  // Se a logo não carregar (404, hotlink bloqueado, etc.), o item some da faixa
+  // em vez de deixar um ícone de imagem quebrada.
+  const [failed, setFailed] = useState(false)
+
+  if (failed) return null
+
   return (
     <li
       aria-hidden={ariaHidden || undefined}
@@ -28,6 +34,7 @@ function LogoItem({ name, logo, ariaHidden = false }) {
             height={72}
             loading="lazy"
             decoding="async"
+            onError={() => setFailed(true)}
             className="max-h-[60px] max-w-full object-contain opacity-70 grayscale transition-[opacity,filter] duration-500 group-hover:opacity-100 group-hover:grayscale-0"
           />
         ) : (
