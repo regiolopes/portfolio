@@ -88,21 +88,34 @@ const KihonLogo = ({
 
       {shapes.map((s, i) => {
         const fill = paint(s.role)
+        // `key` fica fora do spread de propósito: passar key por spread é
+        // descontinuado no React 19, e o react/jsx-key nem enxerga ali.
         const common = {
-          key: i,
           transform: s.transform,
           opacity: s.role === 'rule' ? 0.34 : undefined,
         }
 
         if (s.kind === 'ring') {
-          return <circle {...common} cx={s.cx} cy={s.cy} r={s.r} fill="none" stroke={fill} strokeWidth={STROKE} />
+          return (
+            <circle
+              key={i}
+              {...common}
+              cx={s.cx}
+              cy={s.cy}
+              r={s.r}
+              fill="none"
+              stroke={fill}
+              strokeWidth={STROKE}
+            />
+          )
         }
         if (s.kind === 'disc') {
-          return <circle {...common} cx={s.cx} cy={s.cy} r={s.r} fill={fill} />
+          return <circle key={i} {...common} cx={s.cx} cy={s.cy} r={s.r} fill={fill} />
         }
         if (s.kind === 'stroke') {
           return (
             <path
+              key={i}
               {...common}
               d={s.d}
               fill="none"
@@ -114,7 +127,7 @@ const KihonLogo = ({
             />
           )
         }
-        return <path {...common} d={s.d} fill={fill} />
+        return <path key={i} {...common} d={s.d} fill={fill} />
       })}
     </svg>
   )
