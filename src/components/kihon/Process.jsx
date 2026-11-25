@@ -2,7 +2,7 @@ import React from 'react'
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
 
-export const processSteps = [
+const processSteps = [
   {
     n: '01',
     title: 'Entender a base',

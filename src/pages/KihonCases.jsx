@@ -4,7 +4,6 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { FaDatabase, FaCode, FaChartLine, FaGears } from 'react-icons/fa6'
 import KihonLayout from '../components/kihon/KihonLayout'
 import PageHero from '../components/kihon/PageHero'
-import Reveal from '../components/kihon/Reveal'
 import FinalCTA from '../components/kihon/FinalCTA'
 
 const cases = [

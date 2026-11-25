@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { FaSun, FaMoon } from 'react-icons/fa'
-import { useTheme } from '../contexts/ThemeContext'
+import { useTheme } from '../contexts/theme-context'
 
 const ThemeToggle = () => {
   const { isDark, toggleTheme } = useTheme()

@@ -3,7 +3,7 @@ import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
 
 /** Clientes: `logo` pode ser `/clients/...` (public/) ou URL absoluta. */
-export const trustedClients = [
+const trustedClients = [
   { name: 'Grupo Fornecedora', logo: 'https://www.grupofornecedora.com.br/wp-content/uploads/2021/07/cropped-Logo_grupo-fornecedora-1.png' },
   { name: 'Fornecedora Engelog', logo: 'https://fornecedoraengelog.com.br/wp-content/uploads/2021/07/LOGO-ISO.png' },
   { name: 'Heian Dojo', logo: '/clients/heiandojo.png' },

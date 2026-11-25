@@ -673,7 +673,7 @@ export default function Orcamento() {
               <span className="text-xs font-semibold text-kihon-gray-medium uppercase tracking-wider flex items-center gap-1.5">
                 <FaEye size={11} /> Pré-visualização
               </span>
-              <span className="text-xs text-kihon-gray-medium">Clique em "Baixar PDF" para exportar</span>
+              <span className="text-xs text-kihon-gray-medium">Clique em &quot;Baixar PDF&quot; para exportar</span>
             </div>
 
             {/* Documento */}
