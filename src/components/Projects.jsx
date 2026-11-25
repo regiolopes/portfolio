@@ -4,6 +4,7 @@ import { FaGithub, FaExternalLinkAlt, FaDatabase, FaChartLine, FaCogs, FaCode } 
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all')
+  const [failedImages, setFailedImages] = useState({})
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -69,7 +70,7 @@ const Projects = () => {
       id: 3,
       title: "Fec Calendar",
       description: "Feito para uso pessoal. App que sincroniza os jogos do Fortaleza EC (Meu time do Coração) com meu calendário pessoal do Google Calendar.",
-      image: "/assets/image.png",
+      image: "/assets/fec_calendar.png",
       categories: ["software-development"],
       technologies: ["Python", "Google Calendar API", "API-Sports"],
       github: "",
@@ -121,7 +122,7 @@ const Projects = () => {
       id: 6,
       title: "Open Source / On Premises Data Lake",
       description: "Data Lake 100% Open Source para ambientes On-Premises que elimina custos de licenciamento e fornece controle total sobre os dados. Implementando arquitetura medallion (Bronze/Silver/Gold) com Apache Spark, Airflow e ClickHouse, a solução processa petabytes de dados com performance equivalente a soluções cloud, mas com custo zero de infraestrutura gerenciada.",
-      image: "/api/placeholder/600/400",
+      image: "",
       categories: ["data-engineering", "data-visualization"],
       technologies: ["Apache Airflow", "Delta Lake", "Parquet", "Apache Spark", "Metabase", "ClickHouse", "Python"],
       github: "",
@@ -139,7 +140,7 @@ const Projects = () => {
       id: 7,
       title: "Manual da TIC + Chat Bot",
       description: "Solução inovadora que combina documentação técnica interativa (Docsify) com Chat Bot inteligente baseado em RAG (Retrieval-Augmented Generation). Usando LangChain e Open Router, o sistema responde automaticamente 85% das dúvidas técnicas, reduzindo carga de trabalho do suporte em 60% e melhorando tempo de resposta de horas para segundos.",
-      image: "/api/placeholder/600/400",
+      image: "",
       categories: ["software-development"],
       technologies: ["Markdown", "Docsify", "LangChain", "Open Router", "Python", "RAG"],
       github: "",
@@ -296,10 +297,13 @@ const Projects = () => {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <div className="h-64 md:h-80 bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden">
-                {project.image && (project.image.includes('dojoadmin.png') || project.image.includes('image.png') || project.image.includes('fornecedoraweb.png') || project.image.includes('datalk_aws.png') || project.image.includes('meta_otrs.png')) ? (
-                  <img 
-                    src={project.image} 
+                {project.image && !failedImages[project.id] ? (
+                  <img
+                    src={project.image}
                     alt={project.title}
+                    loading="lazy"
+                    decoding="async"
+                    onError={() => setFailedImages((prev) => ({ ...prev, [project.id]: true }))}
                     className="w-full h-full object-contain"
                   />
                 ) : (
