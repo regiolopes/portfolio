@@ -705,7 +705,7 @@ export default function Orcamento() {
                 <div className="relative z-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-2">
-                      <KihonLogo size="default" color="light" className="h-10 w-auto -mr-7" />
+                      <KihonLogo size="default" color="light" className="h-10 w-auto" />
                       {form.propostaConjunta && (
                         <>
                           <span className="text-kihon-gray-medium text-2xl font-light leading-none">×</span>

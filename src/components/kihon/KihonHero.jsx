@@ -2,21 +2,19 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { HiArrowRight } from 'react-icons/hi'
-import BrushStroke from './BrushStroke'
+import KihonKanji from '../../brand/KihonKanji'
+import KihonRule from '../../brand/KihonRule'
 
 const KihonHero = () => {
   const reduce = useReducedMotion()
 
   return (
     <section className="relative isolate overflow-hidden bg-kihon-ink">
-      {/* Kanji watermark — atmosfera 基本 (fundamentos) */}
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-6 top-1/2 hidden -translate-y-1/2 select-none font-display text-[34rem] font-bold leading-none text-white/[0.03] sm:block"
-        style={{ fontFamily: "'Yu Gothic', 'Hiragino Sans', 'Noto Sans JP', serif" }}
-      >
-        基
-      </span>
+      {/* Marca d'água 基 — mesmo contorno da marca, em vetor */}
+      <KihonKanji
+        chars="基"
+        className="pointer-events-none absolute -right-16 top-1/2 hidden h-[34rem] w-auto -translate-y-1/2 select-none text-white/[0.03] sm:block"
+      />
       {/* Brilho vermelho sutil */}
       <div
         aria-hidden="true"
@@ -52,7 +50,7 @@ const KihonHero = () => {
             vira{' '}
             <span className="relative inline-block whitespace-nowrap text-kihon-red">
               excelência
-              <BrushStroke className="absolute -bottom-1 left-0 h-3 w-full sm:h-4" />
+              <KihonRule className="absolute bottom-[0.1em] left-0 h-[0.09em] w-full" />
             </span>
             .
           </h1>

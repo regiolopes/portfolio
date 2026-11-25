@@ -79,7 +79,7 @@ export default {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.5s ease-out',
         'fade-up': 'fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both',
-        'brush': 'brushDraw 0.9s cubic-bezier(0.65,0,0.35,1) 0.25s both',
+        'rule': 'ruleDraw 0.9s cubic-bezier(0.65,0,0.35,1) 0.25s both',
         'bounce-slow': 'bounce 2s infinite',
         'marquee': 'marquee 50s linear infinite',
         'marquee-rev': 'marquee 50s linear infinite reverse',
@@ -97,7 +97,7 @@ export default {
           '0%': { transform: 'translateY(24px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
-        brushDraw: {
+        ruleDraw: {
           '0%': { 'stroke-dashoffset': '1' },
           '100%': { 'stroke-dashoffset': '0' },
         },

@@ -181,16 +181,16 @@
   }
 
   /* traço de pincel (assinatura) — desenha o stroke */
-  .brush-path {
+  .kihon-rule-draw {
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
-    animation: brushDraw 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.25s both;
+    animation: ruleDraw 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.25s both;
   }
-  @keyframes brushDraw {
+  @keyframes ruleDraw {
     to { stroke-dashoffset: 0; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .brush-path { animation: none; stroke-dashoffset: 0; }
+    .kihon-rule-draw { animation: none; stroke-dashoffset: 0; }
   }
 }
 

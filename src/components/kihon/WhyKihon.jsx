@@ -1,4 +1,5 @@
 import React from 'react'
+import KihonKanji from '../../brand/KihonKanji'
 import { FaRegGem, FaBullseye, FaArrowsRotate } from 'react-icons/fa6'
 import Reveal from './Reveal'
 
@@ -36,12 +37,11 @@ const WhyKihon = () => (
               }}
             />
             <div className="relative">
-              <p
-                className="font-display text-[9rem] font-bold leading-none text-kihon-red sm:text-[11rem]"
-                style={{ fontFamily: "'Yu Gothic', 'Hiragino Sans', 'Noto Sans JP', serif" }}
-              >
-                基本
-              </p>
+              <KihonKanji
+                chars="基本"
+                title="基本"
+                className="h-[7.5rem] w-auto text-kihon-red sm:h-[9rem]"
+              />
               <p className="mt-4 font-mono text-sm uppercase tracking-eyebrow text-kihon-chalk">
                 ki·hon — /基本/
               </p>

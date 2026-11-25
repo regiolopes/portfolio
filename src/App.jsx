@@ -10,6 +10,7 @@ import SmartNotaPrivacidade from './pages/SmartNotaPrivacidade'
 import SmartNotaExclusaoConta from './pages/SmartNotaExclusaoConta'
 import PortfolioPessoal from './pages/PortfolioPessoal'
 import Orcamento from './pages/Orcamento'
+import AssinaturaEmail from './pages/AssinaturaEmail'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/privacidade/smart-nota/exclusao-de-conta" element={<SmartNotaExclusaoConta />} />
         <Route path="/regiolopes" element={<PortfolioPessoal />} />
         <Route path="/orcamento" element={<Orcamento />} />
+        <Route path="/assinatura" element={<AssinaturaEmail />} />
       </Routes>
       </Router>
     </MotionConfig>
