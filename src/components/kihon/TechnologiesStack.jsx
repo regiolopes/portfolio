@@ -13,37 +13,37 @@ import SectionHeading from './SectionHeading'
 
 // Um único carrossel controlável (setas + trackpad/toque/teclado).
 const techs = [
-  { name: 'OpenAI & LLMs', category: 'IA generativa', icon: SiOpenai, color: 'text-emerald-400' },
-  { name: 'PyTorch', category: 'Deep learning', icon: SiPytorch, color: 'text-orange-500' },
-  { name: 'TensorFlow', category: 'Deep learning', icon: SiTensorflow, color: 'text-orange-400' },
-  { name: 'Scikit-learn', category: 'Machine learning', icon: SiScikitlearn, color: 'text-sky-400' },
-  { name: 'AWS', category: 'Cloud', icon: SiAmazon, color: 'text-orange-400' },
-  { name: 'Microsoft Azure', category: 'Cloud', icon: TbBrandAzure, color: 'text-sky-400' },
-  { name: 'Apache Spark', category: 'Big data', icon: SiApachespark, color: 'text-amber-400' },
-  { name: 'Apache Kafka', category: 'Streaming', icon: SiApachekafka, color: 'text-zinc-300' },
-  { name: 'Apache Airflow', category: 'Orquestração', icon: SiApacheairflow, color: 'text-red-400' },
-  { name: 'Snowflake', category: 'Data warehouse', icon: SiSnowflake, color: 'text-cyan-400' },
-  { name: 'Python', category: 'Linguagem', icon: FaPython, color: 'text-blue-400' },
-  { name: 'JavaScript', category: 'Linguagem', icon: SiJavascript, color: 'text-yellow-400' },
-  { name: 'TypeScript', category: 'Linguagem', icon: SiTypescript, color: 'text-blue-500' },
-  { name: 'Flutter', category: 'Mobile / UI', icon: SiFlutter, color: 'text-cyan-400' },
-  { name: 'React', category: 'Frontend', icon: FaReact, color: 'text-cyan-300' },
-  { name: 'Node.js', category: 'Backend', icon: FaNode, color: 'text-green-500' },
-  { name: 'Docker', category: 'Containers', icon: SiDocker, color: 'text-blue-500' },
-  { name: 'Kubernetes', category: 'Orquestração', icon: SiKubernetes, color: 'text-blue-400' },
-  { name: 'Terraform', category: 'IaC', icon: SiTerraform, color: 'text-purple-400' },
-  { name: 'Databricks', category: 'Lakehouse', icon: SiDatabricks, color: 'text-orange-400' },
-  { name: 'Metabase', category: 'BI', icon: SiMetabase, color: 'text-violet-400' },
-  { name: 'PostgreSQL', category: 'Database', icon: SiPostgresql, color: 'text-blue-500' },
+  { name: 'OpenAI & LLMs', category: 'IA generativa', icon: SiOpenai, color: 'text-emerald-600' },
+  { name: 'PyTorch', category: 'Deep learning', icon: SiPytorch, color: 'text-orange-600' },
+  { name: 'TensorFlow', category: 'Deep learning', icon: SiTensorflow, color: 'text-orange-600' },
+  { name: 'Scikit-learn', category: 'Machine learning', icon: SiScikitlearn, color: 'text-sky-600' },
+  { name: 'AWS', category: 'Cloud', icon: SiAmazon, color: 'text-orange-600' },
+  { name: 'Microsoft Azure', category: 'Cloud', icon: TbBrandAzure, color: 'text-sky-600' },
+  { name: 'Apache Spark', category: 'Big data', icon: SiApachespark, color: 'text-amber-600' },
+  { name: 'Apache Kafka', category: 'Streaming', icon: SiApachekafka, color: 'text-zinc-600' },
+  { name: 'Apache Airflow', category: 'Orquestração', icon: SiApacheairflow, color: 'text-red-600' },
+  { name: 'Snowflake', category: 'Data warehouse', icon: SiSnowflake, color: 'text-cyan-600' },
+  { name: 'Python', category: 'Linguagem', icon: FaPython, color: 'text-blue-600' },
+  { name: 'JavaScript', category: 'Linguagem', icon: SiJavascript, color: 'text-yellow-600' },
+  { name: 'TypeScript', category: 'Linguagem', icon: SiTypescript, color: 'text-blue-600' },
+  { name: 'Flutter', category: 'Mobile / UI', icon: SiFlutter, color: 'text-cyan-600' },
+  { name: 'React', category: 'Frontend', icon: FaReact, color: 'text-cyan-600' },
+  { name: 'Node.js', category: 'Backend', icon: FaNode, color: 'text-green-600' },
+  { name: 'Docker', category: 'Containers', icon: SiDocker, color: 'text-blue-600' },
+  { name: 'Kubernetes', category: 'Orquestração', icon: SiKubernetes, color: 'text-blue-600' },
+  { name: 'Terraform', category: 'IaC', icon: SiTerraform, color: 'text-purple-600' },
+  { name: 'Databricks', category: 'Lakehouse', icon: SiDatabricks, color: 'text-orange-600' },
+  { name: 'Metabase', category: 'BI', icon: SiMetabase, color: 'text-violet-600' },
+  { name: 'PostgreSQL', category: 'Database', icon: SiPostgresql, color: 'text-blue-600' },
 ]
 
 const TechCard = ({ name, category, icon: Icon, color }) => (
   <li className="w-[10.5rem] shrink-0 snap-start sm:w-[12rem]">
-    <div className="group flex h-full flex-col items-center rounded-kihon border border-white/10 bg-white/[0.04] p-5 text-center backdrop-blur-sm transition-colors duration-300 hover:border-kihon-red/40">
+    <div className="group flex h-full flex-col items-center rounded-kihon border border-kihon-line bg-white p-5 text-center transition-colors duration-300 hover:border-kihon-red/50">
       <span className={`text-3xl transition-transform duration-300 group-hover:scale-110 ${color}`}>
         <Icon aria-hidden="true" />
       </span>
-      <h3 className="mt-3 font-display text-base font-semibold leading-snug text-kihon-paper">
+      <h3 className="mt-3 font-display text-base font-semibold leading-snug text-kihon-ink">
         {name}
       </h3>
       <p className="mt-1 font-mono text-[0.6rem] uppercase tracking-wide text-kihon-faint">
@@ -59,7 +59,7 @@ const ArrowButton = ({ dir, onClick, disabled }) => (
     onClick={onClick}
     disabled={disabled}
     aria-label={dir === 'prev' ? 'Tecnologias anteriores' : 'Próximas tecnologias'}
-    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-kihon-chalk transition-colors hover:border-kihon-red hover:text-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-kihon-red/35 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-white/15 disabled:hover:text-kihon-chalk"
+    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-kihon-line text-kihon-muted transition-colors hover:border-kihon-ink hover:text-kihon-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kihon-red/50 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-kihon-line disabled:hover:text-kihon-muted"
   >
     {dir === 'prev' ? (
       <HiChevronLeft className="h-6 w-6" aria-hidden="true" />
@@ -102,7 +102,7 @@ const TechnologiesStack = () => {
   }
 
   return (
-    <section id="tecnologias" className="section-kihon relative overflow-hidden bg-kihon-ink">
+    <section id="tecnologias" className="section-kihon relative overflow-hidden bg-kihon-paper">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-[0.05]"
@@ -114,7 +114,6 @@ const TechnologiesStack = () => {
       <div className="container-max relative z-10">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeading
-            onInk
             align="left"
             eyebrow="Stacks tecnológicas"
             title="Ferramentas que o mercado valoriza, aplicadas com critério"

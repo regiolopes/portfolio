@@ -74,7 +74,7 @@ function KihonSobre() {
             { t: 'Valores', list: valores },
           ].map((card, i) => (
             <Reveal key={card.t} delay={i * 0.08} className="h-full">
-              <div className="flex h-full flex-col rounded-kihon border border-kihon-line bg-white p-7 shadow-card">
+              <div className="flex h-full flex-col rounded-kihon border border-kihon-line bg-white p-7">
                 <h3 className="font-display text-xl font-bold text-kihon-ink">{card.t}</h3>
                 {card.d && (
                   <p className="mt-3 text-base leading-relaxed text-kihon-muted">{card.d}</p>
@@ -107,7 +107,7 @@ function KihonSobre() {
             lead="A Kihon é conduzida por quem coloca a mão no código e responde pelo resultado."
           />
           <Reveal delay={0.08} className="mx-auto mt-10 max-w-2xl">
-            <div className="rounded-kihon border border-kihon-line bg-white p-7 shadow-card sm:p-9">
+            <div className="rounded-kihon border border-kihon-line bg-white p-7 sm:p-9">
               <p className="font-display text-xl font-semibold text-kihon-ink">Regio Lopes</p>
               <p className="mt-1 font-mono text-xs uppercase tracking-eyebrow text-kihon-muted">
                 Engenheiro de dados & desenvolvedor

@@ -118,7 +118,7 @@ function KihonContato() {
         <div className="container-max grid gap-10 lg:grid-cols-12 lg:gap-12">
           {/* Formulário */}
           <Reveal className="lg:col-span-7">
-            <form onSubmit={handleSubmit} noValidate className="rounded-kihon border border-kihon-line bg-white p-6 shadow-card sm:p-8">
+            <form onSubmit={handleSubmit} noValidate className="rounded-kihon border border-kihon-line bg-white p-6 sm:p-8">
               <div className="grid gap-5 sm:grid-cols-2">
                 <div className="sm:col-span-1">
                   <label htmlFor="nome" className="mb-2 block text-sm font-semibold text-kihon-ink">
@@ -265,7 +265,7 @@ function KihonContato() {
           {/* Sidebar */}
           <Reveal delay={0.1} className="lg:col-span-5">
             <div className="space-y-6">
-              <div className="rounded-kihon border border-kihon-line bg-white p-6 shadow-card sm:p-7">
+              <div className="rounded-kihon border border-kihon-line bg-white p-6 sm:p-7">
                 <h2 className="font-display text-xl font-bold text-kihon-ink">Prefere conversar direto?</h2>
                 <p className="mt-2 text-sm leading-relaxed text-kihon-muted">
                   O WhatsApp é o caminho mais rápido — respondo pessoalmente.

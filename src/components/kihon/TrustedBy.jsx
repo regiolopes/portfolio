@@ -2,15 +2,24 @@ import React, { useState } from 'react'
 import Reveal from './Reveal'
 import SectionHeading from './SectionHeading'
 
-/** Clientes: `logo` pode ser `/clients/...` (public/) ou URL absoluta. */
+/**
+ * Clientes. Todo `logo` aponta para `public/clients/`, nunca para o site do
+ * próprio cliente: hotlink quebra sem aviso quando o outro lado muda o caminho
+ * ou passa a recusar requisição de outra origem — já aconteceu três vezes aqui.
+ *
+ * Um item sem `logo` cai no fallback de texto e continua na faixa.
+ */
 const trustedClients = [
-  { name: 'Grupo Fornecedora', logo: 'https://www.grupofornecedora.com.br/wp-content/uploads/2021/07/cropped-Logo_grupo-fornecedora-1.png' },
-  { name: 'Fornecedora Engelog', logo: 'https://fornecedoraengelog.com.br/wp-content/uploads/2021/07/LOGO-ISO.png' },
+  { name: 'Grupo Fornecedora', logo: '/clients/grupo-fornecedora.png' },
+  { name: 'Fornecedora Engelog', logo: '/clients/fornecedora-engelog.png' },
   { name: 'Heian Dojo', logo: '/clients/heiandojo.png' },
   { name: 'Pires & Lima Advogados', logo: '/clients/pires-lima.png' },
   { name: 'Mendonça e Pires Advogados', logo: '/clients/mendonca-pires.png' },
-  { name: 'Contabilidade DiPonta', logo: 'https://contabilidadediponta.com.br/_next/image?url=%2Flogo.png&w=640&q=75' },
+  { name: 'Contabilidade DiPonta', logo: '/clients/contabilidade-diponta.png' },
   { name: 'CE Prof.ª Rosimar', logo: '/clients/cepr.jpg' },
+  { name: 'Sunord Engenharia', logo: '/clients/sunord.png' },
+  { name: 'Renova Demolições e Escavações', logo: '/clients/renova.png' },
+  { name: 'Cavalcante Lima Advocacia', logo: '/clients/cavalcante-lima.png' },
 ]
 
 function LogoItem({ name, logo, ariaHidden = false }) {
@@ -25,14 +34,17 @@ function LogoItem({ name, logo, ariaHidden = false }) {
       aria-hidden={ariaHidden || undefined}
       className="mx-2.5 flex w-[150px] shrink-0 items-center justify-center sm:mx-3 sm:w-[172px]"
     >
-      <div className="flex h-24 w-full items-center justify-center rounded-kihon border border-kihon-line bg-white p-5 shadow-card">
+      <div className="flex h-24 w-full items-center justify-center rounded-kihon border border-kihon-line bg-white p-5">
         {logo ? (
           <img
             src={logo}
             alt={ariaHidden ? '' : name}
             width={172}
             height={72}
-            loading="lazy"
+            // A faixa anda por transform: o IntersectionObserver do lazy não
+            // acompanha, e os clones da trilha duplicada nunca carregavam —
+            // abrindo buracos no loop. São 10 logos pequenos; carrega tudo.
+            loading="eager"
             decoding="async"
             onError={() => setFailed(true)}
             className="max-h-[60px] max-w-full object-contain opacity-70 grayscale transition-[opacity,filter] duration-500 group-hover:opacity-100 group-hover:grayscale-0"
@@ -46,7 +58,7 @@ function LogoItem({ name, logo, ariaHidden = false }) {
 }
 
 const TrustedBy = () => (
-  <section className="section-kihon border-b border-kihon-line bg-kihon-paper">
+  <section className="section-kihon border-y border-kihon-line bg-kihon-paper">
     <div className="container-max">
       <SectionHeading
         eyebrow="Quem confia na Kihon"

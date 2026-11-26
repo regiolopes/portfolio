@@ -121,7 +121,7 @@ const categoryIcon = {
 function CaseCard({ item }) {
   const Icon = categoryIcon[item.category] || FaGears
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-kihon border border-kihon-line bg-white shadow-card transition-colors duration-200 hover:border-kihon-ink/35">
+    <article className="flex h-full flex-col overflow-hidden rounded-kihon border border-kihon-line bg-white transition-colors duration-200 hover:border-kihon-ink/35">
       <div className="relative flex h-44 items-center justify-center overflow-hidden bg-kihon-ink">
         <div
           aria-hidden="true"

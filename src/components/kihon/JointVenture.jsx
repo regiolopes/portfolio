@@ -49,7 +49,7 @@ const JointVenture = () => (
             {roles.map((r) => (
               <div
                 key={r.brand}
-                className="rounded-kihon border border-kihon-line bg-white p-5 shadow-card"
+                className="rounded-kihon border border-kihon-line bg-white p-5"
               >
                 <span className="flex h-11 w-11 items-center justify-center rounded-kihon bg-kihon-red-tint text-kihon-red-ink">
                   <r.icon className="h-5 w-5" aria-hidden="true" />

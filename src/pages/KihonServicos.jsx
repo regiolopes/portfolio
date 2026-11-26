@@ -150,7 +150,7 @@ function KihonServicos() {
             <Reveal key={service.id} className="scroll-mt-28" >
               <article
                 id={service.id}
-                className="overflow-hidden rounded-kihon border border-kihon-line bg-white shadow-card"
+                className="overflow-hidden rounded-kihon border border-kihon-line bg-white"
               >
                 <div className="border-b border-kihon-line p-7 sm:p-9">
                   <div className="flex items-start gap-4">
